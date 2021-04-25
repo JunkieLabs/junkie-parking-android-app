@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_launcher_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.components.launcher.ActivityLauncher"
+    android:background="@drawable/dr_rect_gradient_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/length_216"
+            android:layout_height="@dimen/length_96"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_launcher_image" />
+
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/offset_4"
+            android:text="Plan B"
+            android:textAppearance="@style/Tb.TextAppearance.h1.bold"
+            android:textColor="@color/md_white_1000" />
+        <TextView
+            android:padding="@dimen/offset_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOOK, LISTEN &amp; LEARN "
+            android:gravity="center"
+            android:textColor="@color/md_white_1000_75"
+            android:textAppearance="@style/Tb.TextAppearance.h5"/>
+-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/length_20"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="@dimen/length_128" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/offset_36"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Junkie Parking"
+                android:layout_marginBottom="@dimen/offset_8"
+                android:textAppearance="@style/Tb.TextAppearance.h4"
+                android:textColor="@color/md_white_1000" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Guard App"
+                android:textAppearance="@style/Tb.TextAppearance.p2"
+                android:textColor="@color/md_white_1000_50" />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

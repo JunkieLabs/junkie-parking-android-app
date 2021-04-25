@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_shop_detail_app_bar_layout"
+        android:layout_width="match_parent"
+        app:elevation="@dimen/offset_0"
+        android:background="@color/transparent"
+        android:layout_height="wrap_content">
+
+        <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@color/white"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/transparent"
+            app:layout_collapseMode="pin"
+
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextAppearance="@style/Tb.TextAppearance.h3"
+            app:titleTextColor="@color/colorPrimary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    <include layout="@layout/chat_background"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <FrameLayout
+            android:id="@+id/frame_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </FrameLayout>
+
+        <LinearLayout
+
+            android:layout_marginEnd="@dimen/offset_20"
+            android:layout_marginStart="@dimen/offset_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="@dimen/length_64"
+                android:layout_height="@dimen/length_64"
+                android:layout_margin="@dimen/offset_4"
+                app:strokeColor="@color/colorPrimary"
+                app:cornerRadius="@dimen/offset_16"
+                android:id="@+id/activity_walk_through_btn_know"
+                android:textAppearance="@style/Tb.TextAppearance.Button"/>
+
+            <in.junkielabs.parking.ui.widgets.PagerIndicatorView
+                android:id="@+id/view_pager_dots"
+                android:layout_marginStart="@dimen/offset_8"
+                android:layout_marginEnd="@dimen/offset_8"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:colorBackground="@color/material_on_surface_disabled"
+                android:colorFocusedHighlight="@color/colorPrimary"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                app:pi_edgeAnimation="size|alpha"
+                app:pi_length="12dp"
+                app:pi_padding="2dp"
+                app:pi_size="6dp"
+                app:pi_type="circle" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_64"
+                android:layout_margin="@dimen/offset_4"
+                android:textColor="@color/md_white_1000"
+                app:cornerRadius="@dimen/offset_16"
+                android:id="@+id/activity_walk_through_btn_next"
+                android:textAppearance="@style/Tb.TextAppearance.Button"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <!--    <include layout="@layout/chat_message_box" />-->
+    <!--    <include layout="@layout/frame_progress_top_line"/>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

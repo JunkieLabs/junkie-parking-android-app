@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/offset_16">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/activity_main_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/offset_8"
+            android:layout_marginBottom="@dimen/offset_8"/>
+
+        <Button
+            android:id="@+id/activity_main_launcher_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:text="Launcher" />
+        <Button
+            android:id="@+id/activity_main_app_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:text="App" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_600"/>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/offset_8"
+            android:gravity="center_horizontal"
+            android:text="Auth" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_600"/>
+        <Button
+            android:id="@+id/activity_main_signin_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:text="Sign in" />
+
+        <Button
+            android:id="@+id/activity_main_logout_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:text="Logout" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_600"/>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sections"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/offset_8"/>
+        <!--
+                <Button
+                    android:id="@+id/activity_main_logout_btn"
+                    style="@style/ButtonNormal"
+                    android:layout_marginTop="@dimen/offset_6"
+                    android:text="Logout" />
+
+                <Button
+                    android:id="@+id/activity_main_test_btn"
+                    style="@style/ButtonNormal"
+                    android:layout_marginTop="@dimen/offset_6"
+                    android:text="Token" />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/activity_main_login_btn"-->
+        <!--            style="@style/ButtonNormal"-->
+        <!--            android:layout_marginTop="@dimen/offset_6"-->
+        <!--            android:text="Login" />-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_600"/>
+
+        <Button
+            android:id="@+id/activity_main_walk_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:textColor="@color/white"
+            android:text="Onboard Intro" />
+
+
+        <Button
+            android:id="@+id/activity_main_know_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:textColor="@color/white"
+            android:text="Know More" />
+
+        <Button
+            android:id="@+id/activity_main_phone_verify_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:textColor="@color/white"
+            android:text="Phone Verify" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_600"/>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="other Parts"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/offset_8"/>
+
+        <!--        <Button-->
+        <!--            android:id="@+id/activity_main_login_btn"-->
+        <!--            style="@style/ButtonNormal"-->
+        <!--            android:textColor="@color/colorPrimaryDark"-->
+        <!--            android:layout_marginTop="@dimen/offset_6"-->
+        <!--            android:text="Login" />-->
+
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

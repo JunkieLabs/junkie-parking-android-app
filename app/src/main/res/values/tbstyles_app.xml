@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--  dialog theme. -->
+    <style name="Tb.style.Dialog.BottomSheet" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+<!--    <style name="Tb.Progress.Light" parent="Theme.AppCompat.Light">-->
+<!--        <item name="colorAccent">@color/md_white_1000</item>-->
+<!--    </style>-->
+
+
+    <!--Custom style -->
+    <!--Material Button-->
+    <style name="ButtonNormal" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/length_48</item>
+        <item name="android:textColor">@color/md_white_1000</item>
+        <item name="cornerRadius">@dimen/offset_6</item>
+        <item name="android:layout_marginBottom">@dimen/offset_4</item>
+        <item name="android:textAppearance">@style/Tb.TextAppearance.Button</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+
+
+
+
+
+
+    <!--Material InputLayout-->
+    <style name="Tb.style.TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <item name="boxCornerRadiusTopStart">@dimen/offset_12</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/offset_12</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/offset_12</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/offset_12</item>
+    </style>
+
+</resources>

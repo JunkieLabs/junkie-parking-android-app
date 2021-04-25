@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="pi_style" format="reference" />
+
+    <attr name="pi_type" format="enum">
+        <enum name="line" value="0" />
+        <enum name="circle" value="1" />
+    </attr>
+
+    <attr name="pi_edgeAnimation" format="flags">
+        <flag name="size" value="1" />
+        <flag name="alpha" value="2" />
+    </attr>
+
+    <declare-styleable name="PagerIndicatorView">
+        <attr name="pi_type" />
+        <attr name="pi_edgeAnimation" />
+        <attr name="pi_size" format="dimension" />
+        <attr name="pi_padding" format="dimension" />
+        <attr name="pi_length" format="dimension" />
+        <attr name="pi_maxVisibleItems" format="integer" />
+        <attr name="android:colorBackground" />
+        <attr name="android:colorFocusedHighlight" />
+    </declare-styleable>
+
+    <style name="PagerIndicator" />
+
+    <style name="PagerIndicator.Circle"/>
+
+
+    <style name="PagerIndicator.Line">
+        <item name="android:colorFocusedHighlight">#ffffff</item>
+        <item name="android:colorBackground">#99000000</item>
+    </style>
+</resources>

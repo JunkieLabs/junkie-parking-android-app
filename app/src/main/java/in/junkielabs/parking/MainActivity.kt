@@ -2,6 +2,8 @@ package `in`.junkielabs.parking
 
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
 import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
+import `in`.junkielabs.parking.ui.components.onboard.ActivityOnboard
+import `in`.junkielabs.parking.ui.components.walkthrough.ActivityWalkThrough
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +35,15 @@ class MainActivity : AppCompatActivity() {
             startLauncher()
         }
 
+        binding.activityMainWalkBtn.setOnClickListener {
+                        startActivity<ActivityWalkThrough>()
 
+        }
+
+        binding.activityMainOnboardBtn.setOnClickListener {
+            startActivity<ActivityOnboard>()
+
+        }
 
     }
     fun startLauncher(){

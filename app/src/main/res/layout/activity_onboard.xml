@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dr_rect_gradient_accent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_shop_detail_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        app:elevation="@dimen/offset_0">
+
+        <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@color/white"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/transparent"
+            app:layout_collapseMode="pin"
+
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextAppearance="@style/Tb.TextAppearance.h3"
+            app:titleTextColor="@color/colorPrimary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/offset_24"
+            android:paddingTop="@dimen/offset_20"
+            android:paddingEnd="@dimen/offset_24"
+            android:paddingBottom="@dimen/offset_20">
+
+            <TextView
+                android:id="@+id/activity_onboard_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Account"
+                android:textAppearance="@style/Tb.TextAppearance.h2.light"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/activity_onboard_details_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/offset_4"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activity_onboard_detail_text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Junkie Parking"
+                    android:textAppearance="@style/Tb.TextAppearance.h5"
+                    android:textColor="@color/md_white_1000_50" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/activity_onboard_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitCenter"
+                tools:src="@drawable/pic_create_account"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/length_128" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+         android:orientation="vertical">
+        <com.google.android.material.button.MaterialButton
+            style="@style/Tb.MaterialComponents.Button.White"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/length_68"
+            android:layout_margin="@dimen/offset_20"
+            android:text="Login with Google"
+            app:icon="@drawable/ic_google_24"
+            app:iconSize="@dimen/length_20"
+            app:iconGravity="start"
+            app:iconTint="@null"
+            app:iconPadding="@dimen/length_0"
+            android:textColor="@color/md_grey_900"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="@dimen/offset_12"
+            android:id="@+id/knowmore_subscription_card_btn_know"
+            android:textAppearance="@style/Tb.TextAppearance.Button"/>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/offset_24"
+    android:paddingTop="@dimen/offset_20"
+    android:paddingEnd="@dimen/offset_24"
+    android:paddingBottom="@dimen/offset_20">
+
+    <TextView
+        android:id="@+id/walk_through_pager_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Tb.TextAppearance.h2"
+        android:textColor="@color/white"
+        tools:text="Texting" />
+
+    <LinearLayout
+        android:id="@+id/walk_through_pager_item_details_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/offset_4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/walk_through_pager_item_detail_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Tb.TextAppearance.h5"
+            android:textColor="@color/md_white_1000_50"
+            tools:text="Keep in touch with your friends through text messages. Surprise your old friends by inviting them on aabboo anonymously. " />
+    </LinearLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/offset_12"
+        android:layout_marginEnd="@dimen/offset_12"
+        android:layout_weight="1">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/offset_36"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            android:background="@drawable/dr_circle_black_25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/offset_32"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            android:background="@drawable/dr_circle_white_25"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <ImageView
+            android:id="@+id/walk_through_pager_item_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintWidth_percent="0.8"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/walk_through_pager_item_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/offset_12"
+        android:layout_marginBottom="@dimen/offset_12"
+        android:text="dsdsds"
+        android:textAlignment="center"
+        android:textAppearance="@style/Tb.TextAppearance.h5"
+        android:textColor="@color/md_white_1000" />
+
+</LinearLayout>

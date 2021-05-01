@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JunkieParking">
-        <activity android:name=".ui.components.walkthrough.ActivityWalkThrough"></activity>
+        <activity android:name=".ui.components.onboard.ActivityOnboard"></activity>
+        <activity android:name=".ui.components.walkthrough.ActivityWalkThrough" />
         <activity android:name=".ui.components.launcher.ActivityLauncher" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -103,15 +103,15 @@
             style="@style/ButtonNormal"
             android:layout_marginTop="@dimen/offset_6"
             android:textColor="@color/white"
-            android:text="Onboard Intro" />
+            android:text="Walk through" />
 
 
         <Button
-            android:id="@+id/activity_main_know_btn"
+            android:id="@+id/activity_main_onboard_btn"
             style="@style/ButtonNormal"
             android:layout_marginTop="@dimen/offset_6"
             android:textColor="@color/white"
-            android:text="Know More" />
+            android:text="Onboard" />
 
         <Button
             android:id="@+id/activity_main_phone_verify_btn"

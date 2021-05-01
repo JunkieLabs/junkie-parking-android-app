@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/dr_rect_gradient_accent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/activity_shop_detail_app_bar_layout"
@@ -49,7 +50,8 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                tools:listitem="@layout/walk_through_pager_item"/>
 
 
         </FrameLayout>
@@ -65,24 +67,34 @@
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="@dimen/length_64"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/length_56"
                 android:layout_height="@dimen/length_64"
-                android:layout_margin="@dimen/offset_4"
-                app:strokeColor="@color/colorPrimary"
+                android:layout_margin="@dimen/offset_8"
+                android:layout_gravity="center_vertical"
+                android:insetLeft="@dimen/length_0"
+                app:strokeColor="@color/color_state_enable_primary"
+
+                android:insetRight="@dimen/length_0"
+                app:iconPadding="@dimen/length_0"
                 app:cornerRadius="@dimen/offset_16"
-                android:id="@+id/activity_walk_through_btn_know"
+                app:iconSize="@dimen/length_18"
+                app:icon="@drawable/ic_left_arrow"
+                android:id="@+id/activity_walk_through_btn_prev"
                 android:textAppearance="@style/Tb.TextAppearance.Button"/>
 
             <in.junkielabs.parking.ui.widgets.PagerIndicatorView
                 android:id="@+id/view_pager_dots"
-                android:layout_marginStart="@dimen/offset_8"
-                android:layout_marginEnd="@dimen/offset_8"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="24dp"
+                android:layout_marginStart="@dimen/offset_20"
+                android:layout_marginEnd="@dimen/offset_20"
                 android:layout_gravity="center_vertical"
                 android:colorBackground="@color/material_on_surface_disabled"
                 android:colorFocusedHighlight="@color/colorPrimary"
                 android:paddingTop="4dp"
+
                 android:paddingBottom="4dp"
                 app:pi_edgeAnimation="size|alpha"
                 app:pi_length="12dp"
@@ -92,11 +104,21 @@
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/length_64"
-                android:layout_margin="@dimen/offset_4"
+                android:minWidth="@dimen/length_56"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/offset_8"
                 android:textColor="@color/md_white_1000"
+                app:iconPadding="@dimen/length_0"
+                android:gravity="center"
                 app:cornerRadius="@dimen/offset_16"
+                android:insetLeft="@dimen/length_0"
+
+                android:insetRight="@dimen/length_0"
+
+                app:iconSize="@dimen/length_18"
+                app:icon="@drawable/ic_right_arrow"
                 android:id="@+id/activity_walk_through_btn_next"
                 android:textAppearance="@style/Tb.TextAppearance.Button"/>
         </LinearLayout>

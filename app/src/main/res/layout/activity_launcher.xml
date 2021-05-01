@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.components.launcher.ActivityLauncher"
-    android:background="@drawable/dr_rect_gradient_primary">
+    android:background="@drawable/dr_rect_gradient_accent">
 
     <LinearLayout
         android:layout_width="match_parent"

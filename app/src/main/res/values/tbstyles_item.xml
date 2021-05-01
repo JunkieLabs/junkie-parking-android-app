@@ -25,7 +25,48 @@
         <item name="cornerSizeBottomRight">@dimen/length_24</item>
     </style>
 
-<!--    Button -->
+<!--   Button new -->
+
+    <style name="Tb.MaterialComponents.TextButton.ThemeOverlay.Accent" parent="">
+        <item name="colorPrimary">@color/colorAccent</item>
+    </style>
+
+    <style name="Tb.MaterialComponents.Button.ThemeOverlay.Accent" parent="">
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorOnPrimary">@color/colorAccent</item>
+    </style>
+
+    <style name="Tb.MaterialComponents.Button.Outline.Icon.Accent" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
+        <item name="materialThemeOverlay">@style/Tb.MaterialComponents.Button.ThemeOverlay.Accent</item>
+        <item name="android:textAppearance">@style/Tb.MaterialComponents.TextButton.ThemeOverlay.Accent</item>
+        <item name="strokeColor">@color/color_state_enable_primary</item>
+
+    </style>
+
+    <style name="Tb.MaterialComponents.Button.Icon.Accent" parent="Widget.MaterialComponents.Button.Icon">
+        <item name="materialThemeOverlay">@style/Tb.MaterialComponents.TextButton.ThemeOverlay.Accent</item>
+<!--        <item name="android:textAppearance">@style/Tb.MaterialComponents.Button.ThemeOverlay.Accent</item>-->
+<!--        <item name="strokeColor">@color/color_state_enable_primary</item>-->
+
+    </style>
+
+    <style name="Tb.MaterialComponents.TextButton.ThemeOverlay.Black" parent="">
+        <item name="colorPrimary">@color/black</item>
+    </style>
+
+    <style name="Tb.MaterialComponents.Button.ThemeOverlay.White" parent="">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+    <style name="Tb.MaterialComponents.Button.White" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/Tb.MaterialComponents.Button.ThemeOverlay.White</item>
+                <item name="android:textAppearance">@style/Tb.MaterialComponents.TextButton.ThemeOverlay.Black</item>
+        <!--        <item name="strokeColor">@color/color_state_enable_primary</item>-->
+
+    </style>
+
+
+    <!--    Button -->
 
     <style name="Tb.Button" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/md_white_1000</item>

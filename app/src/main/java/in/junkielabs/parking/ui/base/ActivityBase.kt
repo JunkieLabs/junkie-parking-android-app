@@ -84,7 +84,8 @@ abstract class ActivityBase : AppCompatActivity(), AnkoLogger {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            window.statusBarColor = color
 //        }
-        UtilTheme.setStatusBar(window.decorView, this, color, isDefaultStatus)
+        setStatusBar(color)
+
 //        UtilTheme.setAccentStatusBar(window.decorView, this)
     }
     override fun setContentView(view: View) {
@@ -96,8 +97,13 @@ abstract class ActivityBase : AppCompatActivity(), AnkoLogger {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            window.statusBarColor = color
 //        }
-        UtilTheme.setStatusBar(window.decorView, this, color, isDefaultStatus)
+        setStatusBar(color)
+
 //        UtilTheme.setAccentStatusBar(window.decorView, this)
+    }
+
+    open fun setStatusBar(color:  Int){
+        UtilTheme.setStatusBar(window.decorView, this, color, isDefaultStatus)
     }
 
 

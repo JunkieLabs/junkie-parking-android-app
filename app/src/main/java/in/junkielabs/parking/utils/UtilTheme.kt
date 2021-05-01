@@ -12,12 +12,14 @@ import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import androidx.annotation.ColorInt
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 
 
 /**
  * Created by niraj on 21-04-2021.
  */
-object UtilTheme {
+object UtilTheme: AnkoLogger {
 
     @JvmStatic fun setDefaultStatusBar(view: View, activity: Activity, @ColorInt color: Int) {
         val window: Window = activity.getWindow()
@@ -43,6 +45,8 @@ object UtilTheme {
 //                APPEARANCE_LIGHT_STATUS_BARS,
 //                APPEARANCE_LIGHT_STATUS_BARS
 //            )
+            window.setStatusBarColor(color)
+            return
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             var flags = view.systemUiVisibility
 
@@ -51,6 +55,8 @@ object UtilTheme {
 
             }
             view.systemUiVisibility = flags
+            window.setStatusBarColor(color)
+            return
         }
 
 
@@ -65,7 +71,62 @@ object UtilTheme {
 // set any light background color to the status bar. e.g. - white or light blue
 
 // set any light background color to the status bar. e.g. - white or light blue
-        window.setStatusBarColor(color)
+
+    }
+
+    @JvmStatic
+    fun setDarkStatusBar(view: View, activity: Activity, @ColorInt color: Int) {
+        val mode =
+            activity.getResources().getConfiguration().uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        val window: Window = activity.getWindow()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+
+            info { "setDarkStatusBar mode 2: ==" }
+            val wic = view.windowInsetsController
+//            wic?.setSystemBarsAppearance(
+//                0,
+//                APPEARANCE_LIGHT_STATUS_BARS
+//            )
+            if (mode == Configuration.UI_MODE_NIGHT_YES) {
+
+                wic?.setSystemBarsAppearance(
+                    APPEARANCE_LIGHT_STATUS_BARS,
+                    APPEARANCE_LIGHT_STATUS_BARS
+                )
+            } else {
+                wic?.setSystemBarsAppearance(
+                    0,
+                    APPEARANCE_LIGHT_STATUS_BARS
+                )
+            }
+
+//            wic?.setSystemBarsAppearance(
+//                APPEARANCE_LIGHT_STATUS_BARS,
+//                APPEARANCE_LIGHT_STATUS_BARS
+//            )
+            window.setStatusBarColor(color)
+            return
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            var flags = view.systemUiVisibility
+
+
+            info { "setDarkStatusBar mode 4: ==" }
+            if (mode == Configuration.UI_MODE_NIGHT_YES) {
+
+                info { "setDarkStatusBar mode 5: ==" }
+                flags = flags or (View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+            } else {
+
+                info { "setDarkStatusBar mode 6: ==" }
+                flags = flags.minus(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+            }
+            view.systemUiVisibility = flags
+            window.setStatusBarColor(color)
+        }
+
+        return
     }
 
     @JvmStatic fun setAccentStatusBar(view: View, activity: Activity) {

@@ -4,6 +4,7 @@ import `in`.junkielabs.parking.R
 import `in`.junkielabs.parking.databinding.ActivityLauncherBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.utils.UtilColor
+import `in`.junkielabs.parking.utils.UtilTheme
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +20,7 @@ class ActivityLauncher : ActivityBase() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLauncherBinding.inflate(layoutInflater)
-        setStatusDefault(true)
+        setStatusDefault(false)
         setContentView(binding.root)
     }
 
@@ -32,6 +33,10 @@ class ActivityLauncher : ActivityBase() {
 //        val endColor = ContextCompat.getColor(applicationContext, a.resourceId)
 //        val endColor = ContextCompat.getColor(context, R.color.yellow)
 //        return ColorUtils.blendARGB(Color.parseColor("#FA2AD0"), endColor, 0.12F)
-        return ContextCompat.getColor(this, R.color.colorPrimary)//UtilColor.getColorForAlpha(, 0.12F)
+        return ContextCompat.getColor(this, R.color.colorAccentDark)//UtilColor.getColorForAlpha(, 0.12F)
+    }
+
+    override fun setStatusBar(color: Int) {
+        UtilTheme.setDarkStatusBar(window.decorView, this, color)
     }
 }

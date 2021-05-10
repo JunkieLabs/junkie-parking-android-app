@@ -71,6 +71,7 @@ dependencies {
      */
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.google.android:flexbox:2.0.1'
+    implementation 'com.asdev.PhoneEditText-Android:PhoneEditText-Android:1.1.1'
 
 
     testImplementation 'junit:junit:4.+'

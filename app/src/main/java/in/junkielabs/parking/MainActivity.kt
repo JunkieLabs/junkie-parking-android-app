@@ -1,8 +1,10 @@
 package `in`.junkielabs.parking
 
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
+import `in`.junkielabs.parking.ui.components.home.ActivityHome
 import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
 import `in`.junkielabs.parking.ui.components.onboard.ActivityOnboard
+import `in`.junkielabs.parking.ui.components.wait.ActivityWait
 import `in`.junkielabs.parking.ui.components.walkthrough.ActivityWalkThrough
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -43,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         binding.activityMainOnboardBtn.setOnClickListener {
             startActivity<ActivityOnboard>()
 
+        }
+
+        binding.activityMainWaitBtn.setOnClickListener {
+            startActivity<ActivityWait>()
+        }
+
+        binding.activityMainHomeBtn.setOnClickListener {
+            startActivity<ActivityHome>()
         }
 
     }

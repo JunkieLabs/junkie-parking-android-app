@@ -62,19 +62,17 @@
         <item name="android:ellipsize">end</item>
 <!--        <item name="fontPath">fonts/lora_regular.ttf</item>-->
         <item name="android:marqueeRepeatLimit">marquee_forever</item>
-        <item name="android:fontFamily">@font/inter_700</item>
-        <item name="fontFamily">@font/inter_700</item>
+        <item name="android:fontFamily">@font/inter_500</item>
+        <item name="fontFamily">@font/inter_500</item>
+
 <!--        &lt;!&ndash;<item name="fontPath">fonts/worksans_regular.ttf</item>&ndash;&gt;-->
         <!--<item name="android:fontFamily">sans-serif-light</item>-->
         <item name="android:textSize">@dimen/font_28</item>
     </style>
 
-    <style name="Tb.TextAppearance.h3.medium" parent="TextAppearance.MaterialComponents.Headline3">
-        <item name="android:ellipsize">end</item>
-        <!--        <item name="fontPath">fonts/lora_regular.ttf</item>-->
-        <item name="android:marqueeRepeatLimit">marquee_forever</item>
-        <item name="android:fontFamily">@font/inter_500</item>
-        <item name="fontFamily">@font/inter_500</item>
+    <style name="Tb.TextAppearance.h3.bold" parent="Tb.TextAppearance.h3">
+        <item name="android:fontFamily">@font/inter_700</item>
+        <item name="fontFamily">@font/inter_700</item>
         <!--        &lt;!&ndash;<item name="fontPath">fonts/worksans_regular.ttf</item>&ndash;&gt;-->
         <!--<item name="android:fontFamily">sans-serif-light</item>-->
     </style>

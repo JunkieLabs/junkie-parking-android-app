@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_shop_detail_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        app:elevation="@dimen/offset_0">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/transparent"
+            app:layout_collapseMode="pin"
+
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextAppearance="@style/Tb.TextAppearance.h3"
+            app:titleTextColor="@color/colorPrimary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/offset_32"
+                android:paddingTop="@dimen/offset_20"
+                android:paddingEnd="@dimen/offset_24"
+                android:paddingBottom="@dimen/offset_20">
+
+                <TextView
+                    android:id="@+id/activity_onboard_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Junkie Park"
+                    android:textAppearance="@style/Tb.TextAppearance.h3.bold"
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:id="@+id/activity_onboard_details_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/activity_onboard_detail_text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Manage Vehicle with ease"
+                        android:textAppearance="@style/Tb.TextAppearance.h5"
+                        android:textColor="@color/md_white_1000_50" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_24"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/wheeler_item_bike"
+                    layout="@layout/wheeler_item_bike" />
+
+                <include
+                    android:id="@+id/wheeler_item_car"
+                    layout="@layout/wheeler_item_car" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/offset_28"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/home_input_layout_phone"
+                    style="@style/Tb.Widget.TextInputLayout.Filled.OnPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxBackgroundMode="filled">
+
+                    <!--<com.asdev.phoneedittext.PhoneEditText
+                        android:id="@+id/home_input_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:textAppearance="@style/Tb.TextAppearance.h4"
+
+                        />-->
+                    <!-- <com.pepstudy.ui.widgets.TextInputEditTextPrefix
+                         android:id="@+id/auth_signup_create_fragment_edit_name"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:textAppearance="@style/Tb.TextAppearance.h4"
+                         app:prefixText="+91"
+                         android:inputType="number"
+                         android:selectAllOnFocus="true"
+
+                         />-->
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:textColor="@color/white"
+                        android:id="@+id/home_input_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_96" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/offset_28"
+                    android:paddingTop="@dimen/offset_20"
+                    android:paddingEnd="@dimen/offset_28"
+                    android:paddingBottom="@dimen/offset_20"
+                    android:text="Confirm"
+                    android:textAppearance="@style/Tb.TextAppearance.Button"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/black"
+                    app:cornerRadius="@dimen/offset_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:backgroundTint="@color/colorAccentDark"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:fabCradleMargin="@dimen/offset_8"
+        app:hideOnScroll="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:foreground="?selectableItemBackground"
+                android:minHeight="@dimen/offset_64">
+
+                <ImageView
+                    android:layout_width="@dimen/length_24"
+                    android:layout_height="@dimen/length_24"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_if_option" />
+            </FrameLayout>
+
+            <View
+                android:layout_width="@dimen/length_72"
+                android:layout_height="@dimen/offset_8" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:foreground="?selectableItemBackground"
+                android:minHeight="@dimen/offset_64">
+
+                <ImageView
+                    android:layout_width="@dimen/length_24"
+                    android:layout_height="@dimen/length_24"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_profile" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_anchor="@id/bottomAppBar"
+
+        app:layout_anchorGravity="start"
+        app:srcCompat="@drawable/ic_if_scan" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- android:background="@drawable/dr_gradient_blue"
+   -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wheeler_car"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/offset_8"
+    android:clickable="true"
+    android:checkable="true"
+    app:checkedIcon="@null"
+
+    app:strokeWidth="@dimen/offset_2"
+    app:strokeColor="@color/sc_wheeler_stroke"
+    android:foreground="?selectableItemBackground"
+    app:cardBackgroundColor="@color/sc_wheeler_background"
+    app:cardCornerRadius="@dimen/offset_28"
+    android:stateListAnimator="@animator/wheeler_elevation">
+
+    <!--
+
+    app:cardElevation="@dimen/offset_0"
+    android:foreground="?selectableItemBackground"
+    -->
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/offset_28">
+
+            <ImageView
+                android:layout_width="@dimen/length_72"
+                android:layout_height="@dimen/length_68"
+                android:src="@drawable/ic_car"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitCenter"/>
+
+
+            <CheckedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+
+
+                android:duplicateParentState="true"
+                android:text="4 wheeler"
+                android:textAppearance="@style/Tb.TextAppearance.h5"
+                android:textColor="@color/sc_wheeler_text" />
+
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>

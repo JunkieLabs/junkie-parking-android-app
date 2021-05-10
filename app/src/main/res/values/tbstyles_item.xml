@@ -65,6 +65,24 @@
 
     </style>
 
+<!--  TextInput  -->
+    <style name="Tb.ThemeOverlay.TextInputLayout.OnAccent" parent="">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/colorAccentLight</item>
+        <item name="colorSurface">@color/colorAccent</item>
+        <item name="colorError">@color/md_amber_500</item>
+        <item name="editTextBackground">@color/transparent</item>
+        <item name="editTextColor">@color/white</item>
+        <item name="textAppearanceSubtitle1">@style/Tb.TextAppearance.h4.medium</item>
+        <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputEditText.FilledBox</item>
+
+    </style>
+
+    <style name="Tb.Widget.TextInputLayout.Filled.OnPrimary" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="materialThemeOverlay">@style/Tb.ThemeOverlay.TextInputLayout.OnAccent</item>
+        <item name="hintTextColor">?attr/colorOnSurface</item>
+
+    </style>
 
     <!--    Button -->
 

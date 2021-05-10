@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JunkieParking">
-        <activity android:name=".ui.components.onboard.ActivityOnboard"></activity>
+        <activity android:name=".ui.components.home.ActivityHome"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.components.wait.ActivityWait" />
+        <activity android:name=".ui.components.onboard.ActivityOnboard" />
         <activity android:name=".ui.components.walkthrough.ActivityWalkThrough" />
         <activity android:name=".ui.components.launcher.ActivityLauncher" />
         <activity android:name=".MainActivity">

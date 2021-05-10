@@ -2,11 +2,12 @@
 <resources>
 
     <color name="colorAccent">@color/junkie_parking_brown_500</color>
+    <color name="colorAccent400">@color/junkie_parking_brown_400</color>
     <color name="colorAccentDark">@color/junkie_parking_brown_600</color>
-    <color name="colorAccentLight">@color/junkie_parking_brown_300</color>
+    <color name="colorAccentLight">@color/junkie_parking_brown_200</color>
     <color name="colorPrimary">@color/junkie_parking_orange_500</color>
     <color name="colorPrimaryDark">@color/junkie_parking_orange_700</color>
-    <color name="colorPrimaryLight">@color/junkie_parking_orange_300</color>
+    <color name="colorPrimaryLight">@color/junkie_parking_orange_200</color>
 
 
 
@@ -660,9 +661,9 @@
     </array>
     <color name="junkie_parking_brown_50">#eeecea</color>
     <color name="junkie_parking_brown_100">#ddd9d5</color>
-    <color name="junkie_parking_brown_200">#bbb3ac</color>
-    <color name="junkie_parking_brown_300">#9a8e82</color>
-    <color name="junkie_parking_brown_400">#786859</color>
+    <color name="junkie_parking_brown_200">#BC9D81</color>
+    <color name="junkie_parking_brown_300">#947A62</color>
+    <color name="junkie_parking_brown_400">#6D5642</color>
     <color name="junkie_parking_brown_500">#574330</color>
     <color name="junkie_parking_brown_600">#362A1E</color>
     <color name="junkie_parking_brown_700">#352416</color>

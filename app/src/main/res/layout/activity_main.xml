@@ -114,11 +114,18 @@
             android:text="Onboard" />
 
         <Button
-            android:id="@+id/activity_main_phone_verify_btn"
+            android:id="@+id/activity_main_wait_btn"
             style="@style/ButtonNormal"
             android:layout_marginTop="@dimen/offset_6"
             android:textColor="@color/white"
-            android:text="Phone Verify" />
+            android:text="Wait" />
+
+        <Button
+            android:id="@+id/activity_main_home_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:textColor="@color/white"
+            android:text="Home" />
 
         <View
             android:layout_width="match_parent"

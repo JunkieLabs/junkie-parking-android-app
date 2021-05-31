@@ -46,7 +46,6 @@ object UtilColor {
     }
 
     fun getColorForAlpha(colorCode: Int, ratio: Float): Int {
-        // convert color code into hexa string and remove starting 2 digit
         var newColor = 0
         val alpha = Math.round(Color.alpha(colorCode) * ratio)
         Log.i("Adde: ", "getColorForAlpha ase color sd: $alpha")

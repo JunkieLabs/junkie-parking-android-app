@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/motion_layout"
+    tools:context=".ui.common.scanner.ActivityQrScanner"
+    app:layoutDescription="@xml/activity_qr_scanner_scene"
+    app:motionDebug="SHOW_ALL"
+    tools:showPaths="true">
+
+
+
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/activity_qr_scanner_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/transparent"
+        app:layout_collapseMode="pin"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextAppearance="@style/Tb.TextAppearance.h4"
+        app:titleTextColor="@color/white" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

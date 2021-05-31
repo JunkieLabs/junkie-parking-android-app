@@ -3,6 +3,8 @@
     package="in.junkielabs.parking">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:name=".application.ApplicationMy"
@@ -12,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JunkieParking">
-        <activity android:name=".ui.components.home.ActivityHome"
+        <activity android:name=".ui.common.scanner.ActivityQrScanner"></activity>
+        <activity
+            android:name=".ui.components.home.ActivityHome"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.components.wait.ActivityWait" />

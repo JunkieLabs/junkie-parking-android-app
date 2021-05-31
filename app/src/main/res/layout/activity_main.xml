@@ -127,6 +127,13 @@
             android:textColor="@color/white"
             android:text="Home" />
 
+        <Button
+            android:id="@+id/activity_main_scanner_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:textColor="@color/white"
+            android:text="Scanner" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

@@ -1,6 +1,7 @@
 package `in`.junkielabs.parking
 
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
+import `in`.junkielabs.parking.ui.common.scanner.ActivityQrScanner
 import `in`.junkielabs.parking.ui.components.home.ActivityHome
 import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
 import `in`.junkielabs.parking.ui.components.onboard.ActivityOnboard
@@ -55,9 +56,13 @@ class MainActivity : AppCompatActivity() {
             startActivity<ActivityHome>()
         }
 
-    }
-    fun startLauncher(){
-        startActivity<ActivityLauncher>()
+        binding.activityMainScannerBtn.setOnClickListener {
+            startActivity<ActivityQrScanner>()
+        }
 
+    }
+
+    private fun startLauncher(){
+        startActivity<ActivityLauncher>()
     }
 }

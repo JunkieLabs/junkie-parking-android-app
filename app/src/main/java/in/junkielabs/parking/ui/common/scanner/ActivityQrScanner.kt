@@ -4,6 +4,7 @@ import `in`.junkielabs.parking.R
 import `in`.junkielabs.parking.databinding.ActivityQrScannerBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import android.Manifest
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Size
 import android.view.MenuItem
@@ -38,6 +39,7 @@ import java.util.concurrent.ExecutionException
 
 @AndroidEntryPoint
 class ActivityQrScanner : ActivityBase() {
+    private var mImageAnalyzer: QrCodeImageAnalyzer? = null
     private lateinit var mCameraProviderFuture: ListenableFuture<ProcessCameraProvider>
     private lateinit var vBinding: ActivityQrScannerBinding
 
@@ -50,6 +52,9 @@ class ActivityQrScanner : ActivityBase() {
         toolbarTitle = ""
         mCameraProviderFuture = ProcessCameraProvider.getInstance(this);
         requestPermission()
+        vBinding.activityQrScannerIndicator.setFrameCornersRadius(8)
+        vBinding.activityQrScannerIndicator.setFrameColor(Color.RED)
+        vBinding.activityQrScannerIndicator.setFrameCornersSize(40)
 
     }
 
@@ -92,26 +97,20 @@ class ActivityQrScanner : ActivityBase() {
     }
 
     private fun bindCameraPreview(cameraProvider: ProcessCameraProvider) {
-        vBinding.activityQrScannerPreview.implementationMode = PreviewView.ImplementationMode.COMPATIBLE
+        vBinding.activityQrScannerPreview.implementationMode =
+            PreviewView.ImplementationMode.COMPATIBLE
         val preview = Preview.Builder()
             .build()
         val cameraSelector = CameraSelector.Builder()
             .requireLensFacing(CameraSelector.LENS_FACING_BACK)
             .build()
         preview.setSurfaceProvider(vBinding.activityQrScannerPreview.surfaceProvider)
-
-
-        val imageAnalysis = ImageAnalysis.Builder()
-            .setTargetResolution(Size(1280, 720))
-            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-            .build()
-
-        imageAnalysis.setAnalyzer(
-            ContextCompat.getMainExecutor(this),
+        mImageAnalyzer =
             QrCodeImageAnalyzer(object : QrCodeImageAnalyzer.QrCodeImageAnalyzerListener {
                 override fun onQRCodeFound(text: String) {
 //                    qrCode = _qrCode
-                    info { text }
+                    mImageAnalyzer?.shouldAnalyse(false)
+                    info { "QrCodeImageAnalyzer $text" }
 //                    toast(text)
 //                    qrCodeFoundButton.setVisibility(View.VISIBLE)
                 }
@@ -119,14 +118,30 @@ class ActivityQrScanner : ActivityBase() {
                 override fun qrCodeNotFound() {
 
 
-                    info { "qrCodeNotFound" }
+//                    info { "qrCodeNotFound" }
 //                    qrCodeFoundButton.setVisibility(View.INVISIBLE)
                 }
             })
+
+        val imageAnalysis = ImageAnalysis.Builder()
+//            .setTargetResolution(Size(1280, 720))
+
+            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+            .build()
+
+        imageAnalysis.setAnalyzer(
+            ContextCompat.getMainExecutor(this),
+            mImageAnalyzer!!
         )
 
+
         val camera: Camera =
-            cameraProvider.bindToLifecycle((this as LifecycleOwner), cameraSelector, imageAnalysis , preview)
+            cameraProvider.bindToLifecycle(
+                (this as LifecycleOwner),
+                cameraSelector,
+                imageAnalysis,
+                preview
+            )
     }
 
     /* ********************************************************************************************

@@ -147,6 +147,18 @@
             android:gravity="center_horizontal"
             android:layout_marginTop="@dimen/offset_8"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_600"/>
+
+        <Button
+            android:id="@+id/activity_main_slide_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:textColor="@color/white"
+            android:text="Slide Btn" />
+
         <!--        <Button-->
         <!--            android:id="@+id/activity_main_login_btn"-->
         <!--            style="@style/ButtonNormal"-->

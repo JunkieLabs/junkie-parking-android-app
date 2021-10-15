@@ -1,20 +1,21 @@
 package `in`.junkielabs.parking
 
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
+import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.ui.common.scanner.ActivityQrScanner
 import `in`.junkielabs.parking.ui.components.home.ActivityHome
 import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
 import `in`.junkielabs.parking.ui.components.onboard.ActivityOnboard
 import `in`.junkielabs.parking.ui.components.wait.ActivityWait
 import `in`.junkielabs.parking.ui.components.walkthrough.ActivityWalkThrough
-import androidx.appcompat.app.AppCompatActivity
+import `in`.junkielabs.parking.ui.labs.slidebutton.LabsActivitySlide
+import android.content.Intent
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
-import org.jetbrains.anko.startActivity
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : ActivityBase() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,34 +36,43 @@ class MainActivity : AppCompatActivity() {
 
         binding.activityMainLauncherBtn.setOnClickListener {
             //            startActivity<ActivityAuth>()
-            startLauncher()
+            var i = Intent(this, ActivityLauncher::class.java)
+            startActivity(i)
         }
 
         binding.activityMainWalkBtn.setOnClickListener {
-                        startActivity<ActivityWalkThrough>()
+            var i = Intent(this, ActivityWalkThrough::class.java)
+            startActivity(i)
 
         }
 
         binding.activityMainOnboardBtn.setOnClickListener {
-            startActivity<ActivityOnboard>()
+            var i = Intent(this, ActivityOnboard::class.java)
+            startActivity(i)
 
         }
 
         binding.activityMainWaitBtn.setOnClickListener {
-            startActivity<ActivityWait>()
+            var i = Intent(this, ActivityWait::class.java)
+            startActivity(i)
         }
 
         binding.activityMainHomeBtn.setOnClickListener {
-            startActivity<ActivityHome>()
+            var i = Intent(this, ActivityHome::class.java)
+            startActivity(i)
         }
 
         binding.activityMainScannerBtn.setOnClickListener {
-            startActivity<ActivityQrScanner>()
+            var i = Intent(this, ActivityQrScanner::class.java)
+            startActivity(i)
+        }
+
+        binding.activityMainSlideBtn.setOnClickListener {
+            var i = Intent(this, LabsActivitySlide::class.java)
+            startActivity(i)
         }
 
     }
 
-    private fun startLauncher(){
-        startActivity<ActivityLauncher>()
-    }
+
 }

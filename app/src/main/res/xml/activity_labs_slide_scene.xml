@@ -72,11 +72,21 @@
         app:constraintSetEnd="@+id/end"
         app:constraintSetStart="@+id/start"
         app:duration="300">
+<!--
+            app:dragThreshold="0"-->
+
+
+
+<!--
+            app:onTouchUp="autoComplete"-->
         <OnSwipe
             app:dragDirection="dragRight"
-            app:onTouchUp="autoComplete"
-            app:touchRegionId="@id/activity_labs_slide_button"/>
+            app:touchRegionId="@id/activity_labs_slide_frame"/>
 
+       <!-- <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/activity_labs_slide_button"
+            />-->
 
     </Transition>
 

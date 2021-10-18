@@ -14,6 +14,8 @@ https://github.com/G00fY2/quickie/blob/main/quickie/src/main/kotlin/io/github/g0
 
 - https://stackoverflow.com/questions/62406493/how-to-run-particular-transition-in-motionlayout
 - https://stackoverflow.com/questions/64230143/how-to-check-if-motionscene-is-at-transition-start-or-end
+- https://stackoverflow.com/questions/52339024/can-we-use-onswipe-and-onclick-in-the-same-transition-for-android-motionlayout
+- https://stackoverflow.com/questions/61345198/motionlayout-prevents-clicklistener-on-all-views
 
 # circular reveal
 

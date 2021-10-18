@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/length_56"/>
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
+    <in.junkielabs.parking.ui.widgets.ClickableMotionLayout
+        android:id="@+id/activity_labs_slide_motion_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -63,7 +64,6 @@
             android:id="@+id/activity_labs_slide_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="false"
             android:paddingStart="@dimen/offset_32"
             android:textAppearance="@style/Tb.TextAppearance.Button"
             android:paddingTop="@dimen/offset_16"
@@ -72,6 +72,6 @@
             app:cornerRadius="@dimen/offset_20"
             app:backgroundTint="@color/md_grey_900"
             android:text="Confirm" />
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+    </in.junkielabs.parking.ui.widgets.ClickableMotionLayout>
 
 </LinearLayout>

@@ -50,6 +50,14 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/md_grey_600"/>
+
+
+        <Button
+            android:id="@+id/activity_main_function_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:text="Function" />
+
         <Button
             android:id="@+id/activity_main_signin_btn"
             style="@style/ButtonNormal"

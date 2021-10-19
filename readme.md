@@ -22,3 +22,9 @@ https://github.com/G00fY2/quickie/blob/main/quickie/src/main/kotlin/io/github/g0
 - https://medium.com/android-news/login-screen-on-dialog-box-with-circular-reveal-animation-77d4766a4931
 
 - https://gist.github.com/divyanshub024/87fc43c5265e78733e2ad6a00dfbc00e
+
+# api
+
+- https://johncodeos.com/how-to-parse-json-with-retrofit-converters-using-kotlin/
+
+- https://github.com/kittinunf/fuel

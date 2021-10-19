@@ -1,5 +1,6 @@
 package `in`.junkielabs.parking
 
+import `in`.junkielabs.parking.components.firebase.functions.controller.FbFunctionTestController
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.ui.common.scanner.ActivityQrScanner
@@ -12,11 +13,17 @@ import `in`.junkielabs.parking.ui.labs.slidebutton.LabsActivitySlide
 import android.content.Intent
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
+import org.jetbrains.anko.info
 
 
 @AndroidEntryPoint
 class MainActivity : ActivityBase() {
     private lateinit var binding: ActivityMainBinding
+    private val job = SupervisorJob()
+    private val scope = CoroutineScope(Dispatchers.Main + job)
+
+    private var fbFunctionTestController : FbFunctionTestController = FbFunctionTestController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +39,17 @@ class MainActivity : ActivityBase() {
         initButton()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        job.cancel()
+    }
+
     private fun initButton() {
+
+        binding.activityMainFunctionBtn.setOnClickListener {
+            //            startActivity<ActivityAuth>()
+            testFunction()
+        }
 
         binding.activityMainLauncherBtn.setOnClickListener {
             //            startActivity<ActivityAuth>()
@@ -72,6 +89,14 @@ class MainActivity : ActivityBase() {
             startActivity(i)
         }
 
+    }
+
+    private fun testFunction() {
+
+        scope.launch {
+            var result = fbFunctionTestController.test("dee");
+            info { "result: $result" }
+        }
     }
 
 

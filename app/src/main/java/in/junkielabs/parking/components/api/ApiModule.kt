@@ -3,6 +3,8 @@ package `in`.junkielabs.parking.components.api
 import `in`.junkielabs.parking.BuildConfig
 import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.api.internal.MethodRequestCache
+import `in`.junkielabs.parking.components.api.routepoints.ApiPointAuth
+import `in`.junkielabs.parking.components.api.routepoints.ApiPointGuard
 import android.app.Application
 import com.squareup.moshi.Moshi
 import okhttp3.Cache
@@ -107,7 +109,8 @@ object ApiModule {
         .build()
 
 
-//    fun provideApiAuth(retrofit: Retrofit): ApiPointAuth = retrofit.create(ApiPointAuth::class.java)
+    fun provideApiAuth(): ApiPointAuth = retrofit.create(ApiPointAuth::class.java)
 
+    fun provideApiGuard(): ApiPointGuard = retrofit.create(ApiPointGuard::class.java)
 
 }

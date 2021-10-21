@@ -10,9 +10,9 @@ data class ParamParkingArea(
     var id: String,
 
     /** name */
-    var n: String?,
+    var name: String?,
     /** parkingAccountId */
-    var pAcId: String?, //id
+    var parkingAccountId: String?, //id
 
     var rates: List<ParamWheelerRate>,) : Serializable {
 }

@@ -5,15 +5,15 @@ package `in`.junkielabs.parking.components.api.models.wheeler
  */
 class ParamWheelerRate(
     /** type */
-    var t: Int,
+    var type: Int,
 
     /** tyre count  */
-    var tc: Int,
+    var tyreCount: Int,
 
     /** label */
-    var n: String?,
+    var label: String?,
 
     /**  rate */
-    var r: Float?
+    var rate: Float?
 ) {
 }

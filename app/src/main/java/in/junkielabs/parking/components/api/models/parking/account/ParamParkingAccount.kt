@@ -7,5 +7,5 @@ import java.io.Serializable
  */
 data class ParamParkingAccount(var id: String,
                                /** name */
-                               var n: String) : Serializable {
+                               var name: String) : Serializable {
 }

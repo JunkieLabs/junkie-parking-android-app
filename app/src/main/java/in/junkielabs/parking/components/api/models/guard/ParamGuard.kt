@@ -8,15 +8,15 @@ import java.io.Serializable
 data class ParamGuard(var id: String,
                       var uid: String,
                       /** name */
-                      var n: String?,
+                      var name: String?,
                       /** email */
-                      var e: String?,
+                      var email: String?,
                       /** parking account id */
-                      var pAcId: String?,
+                      var parkingAccountId: String?,
                       /** parking area id */
-                      var pArId: String?,
+                      var parkingAreaId: String?,
                       /** avatar url */
-                      var au: String?,
+                      var avatarUrl: String?,
                       /** status */
-                      var s: Number): Serializable {
+                      var status: Number): Serializable {
 }

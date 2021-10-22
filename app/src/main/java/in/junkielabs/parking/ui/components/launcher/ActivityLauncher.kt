@@ -6,6 +6,7 @@ import `in`.junkielabs.parking.components.account.AccountConstants
 import `in`.junkielabs.parking.databinding.ActivityLauncherBinding
 import `in`.junkielabs.parking.tools.livedata.LiveDataObserver
 import `in`.junkielabs.parking.ui.base.ActivityBase
+import `in`.junkielabs.parking.ui.components.auth.ActivityAuth
 import `in`.junkielabs.parking.ui.components.home.ActivityHome
 import `in`.junkielabs.parking.ui.components.launcher.viewmodel.LauncherViewModel
 import `in`.junkielabs.parking.ui.components.launcher.viewmodel.LauncherViewModelFactory
@@ -15,6 +16,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +31,12 @@ class ActivityLauncher : ActivityBase() {
 
 //    ownerProducer = { return@viewModels this }
     )
+
+    private val mActivityResultAuth =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            info{"mActivityResultSignin: ${result.data}"}
+            onAuthenticationResult(result.data, result.resultCode)
+        }
 
     private lateinit var binding: ActivityLauncherBinding
 
@@ -47,7 +55,7 @@ class ActivityLauncher : ActivityBase() {
         mViewModel.mEventAccountState.observe(this,
             LiveDataObserver { t ->
 
-                info { "Accounnt State: $t" }
+                info { "mEventAccountState: $t" }
                 when (t) {
                     AccountConstants.AccountUser.STATE_NOT_EXIST -> {
 //                        mViewModel.reqAuth(this)
@@ -57,7 +65,7 @@ class ActivityLauncher : ActivityBase() {
                         startApp()
                     }
                     AccountConstants.AccountUser.STATE_REAUTH -> {
-                       // mViewModel.reqReAuth(this)
+                         startActivityReAuth()
                     }
                 }
 
@@ -75,7 +83,10 @@ class ActivityLauncher : ActivityBase() {
 //        val endColor = ContextCompat.getColor(applicationContext, a.resourceId)
 //        val endColor = ContextCompat.getColor(context, R.color.yellow)
 //        return ColorUtils.blendARGB(Color.parseColor("#FA2AD0"), endColor, 0.12F)
-        return ContextCompat.getColor(this, R.color.colorAccentDark)//UtilColor.getColorForAlpha(, 0.12F)
+        return ContextCompat.getColor(
+            this,
+            R.color.colorAccentDark
+        )//UtilColor.getColorForAlpha(, 0.12F)
     }
 
     override fun setStatusBar(color: Int) {
@@ -105,5 +116,36 @@ class ActivityLauncher : ActivityBase() {
 
         startActivity(i)
         finish()
+    }
+
+    /* ***************************************************************************
+        *                               Auth
+        */
+
+    private fun startActivityReAuth() {
+        val i = Intent(this, ActivityAuth::class.java)
+        i.putExtra(AccountConstants.Account.Arguments.ACCOUNT_ACTION, AccountConstants.Account.ACTION_REAUTH)
+        mActivityResultAuth.launch(intent)
+        //        i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        i.data = intent.data
+
+//        startActivity(i)
+//        finish()
+    }
+
+    private fun onAuthenticationResult(data: Intent?, resultCode: Int) {
+        mViewModel.onSignInResult()
+       /* if (resultCode == RESULT_OK) {
+
+
+            // startActivityAuth()
+
+        } else {
+
+            //finishAuthenticationWithFailMessage("Canceled")
+
+        }*/
+
     }
 }

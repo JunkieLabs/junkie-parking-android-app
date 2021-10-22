@@ -23,6 +23,8 @@ class ApplicationMy:  Application() {
         }
     }
 
+    lateinit var appAccount: AppAccount
+
     //    lateinit var appAccount: AppAccount
     private lateinit var appActivityLifecycleCallbacks: AppActivityLifecycleCallbacks
 
@@ -30,7 +32,8 @@ class ApplicationMy:  Application() {
 
     override fun onCreate() {
         super.onCreate()
-//        appAccount = AppAccount(this)
+        appAccount = AppAccount()
+
         appActivityLifecycleCallbacks = AppActivityLifecycleCallbacks(this)
         instance = this
 //

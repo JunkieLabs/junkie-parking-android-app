@@ -1,5 +1,6 @@
 package `in`.junkielabs.parking.application
 
+import `in`.junkielabs.parking.components.account.AccountPreference
 import `in`.junkielabs.parking.components.api.models.guard.ParamGuard
 
 /**
@@ -8,30 +9,65 @@ import `in`.junkielabs.parking.components.api.models.guard.ParamGuard
 class AppAccount {
 
 
+
+
     private var mGuard: ParamGuard? = null
 
-    private var accountChecked: Boolean = false
+    private var mParkingAreaId: String? = null
+    private var mGuardId: String? = null
+
+
+    private var isPreferenceLoaded = false
 
     fun hasAccount(): Boolean {
         return mGuard!=null
     }
 
     fun reset() {
+        AccountPreference.getInstance().clearPrefs()
         mGuard = null
+        mGuardId = null
+        mParkingAreaId = null
     }
 
     fun getGuard(): ParamGuard? {
+
         return mGuard
     }
 
+
+
     fun getGuardId(): String?{
-        return mGuard?.id
+
+        if(!isPreferenceLoaded){
+            loadPreference()
+        }
+        return mGuardId
     }
 
     fun setGuard(guard: ParamGuard): Boolean {
 //        info { "Guard: $guard" }
         mGuard = guard
+        AccountPreference.getInstance().setGuardId(mGuard?.id)
+        AccountPreference.getInstance().setParkingAccountId(mGuard?.parkingAccountId)
+        AccountPreference.getInstance().setParkingAreaId(mGuard?.parkingAreaId)
+        loadPreference()
         return true
+    }
+
+    fun getParkingAreaId(): String? {
+
+        if(!isPreferenceLoaded){
+            loadPreference()
+        }
+        return mParkingAreaId
+    }
+
+    private fun loadPreference(){
+       mGuardId =  AccountPreference.getInstance().getGuardId()
+        mParkingAreaId =  AccountPreference.getInstance().getParkingAreaId()
+        isPreferenceLoaded = true
+
     }
 
 }

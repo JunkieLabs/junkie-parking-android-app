@@ -1,25 +1,25 @@
-package `in`.junkielabs.parking.ui.components.launcher.viewmodel
+package `in`.junkielabs.parking.ui.components.onboard.viewmodel
 
 import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.account.AccountConstants
-import `in`.junkielabs.parking.components.api.base.ApiResponse
 import `in`.junkielabs.parking.components.api.repository.ApiRepoAuth
 import `in`.junkielabs.parking.components.api.repository.ApiRepoGuard
-import `in`.junkielabs.parking.components.firebase.auth.FirebaseToken
 import `in`.junkielabs.parking.tools.livedata.LiveDataEvent
-import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 /**
- * Created by Niraj on 20-10-2021.
+ * Created by Niraj on 22-10-2021.
  */
-class LauncherViewModel(
+class OnboardViewModel(
     application: Application,
     var apiRepoAuth: ApiRepoAuth,
     var apiRepoGuard: ApiRepoGuard
@@ -32,31 +32,8 @@ class LauncherViewModel(
         super.onCleared()
     }
 
-    fun checkHasAccount() {
-
-        viewModelScope.launch {
-            var accountState = getAccountState()
-            Log.i("LauncherViewModel", "checkHasAccount account state")
-
-
-            if (accountState == AccountConstants.AccountUser.STATE_AUTHORIZED || accountState == AccountConstants.AccountUser.STATE_WAITING) {
-                Log.i(
-                    "LauncherViewModel",
-                    "Enrollment info called for account state ${AccountConstants.AccountUser.STATE_AUTHORIZED}"
-                )
-
-                apiGetGuardInfo()
-                accountState = getAccountState()
-
-            }
-
-            _mEventAccountState.postValue(LiveDataEvent(accountState))
-
-//            (application as ApplicationMy).appAccount.setHasAccount(hasAccount)
-
-        }
-
-
+    fun signIn() {
+        _mEventAccountState.postValue(LiveDataEvent(AccountConstants.AccountUser.STATE_NOT_EXIST))
     }
 
     private suspend fun getAccountState() = suspendCoroutine<Int> {
@@ -94,35 +71,5 @@ class LauncherViewModel(
 
         }
     }
-
-
-/*
-    fun reqReAuth(activity: ActivityLauncher) {
-        val options = Bundle()
-        options.putString(
-            AccountConstants.Account.Arguments.ACCOUNT_ACTION,
-            AccountConstants.Account.ACTION_REAUTH
-        )
-        mAppAccountManager.requestAddAccount(activity, options, accountCallback())
-    }
-*/
-
-    /* ************************************************************************************
-     *                                      api
-     */
-
-    private suspend fun apiGetGuardInfo() {
-        var guardId = getApplication<ApplicationMy>().appAccount.getGuardId()
-
-        var token = FirebaseToken.getToken()
-        if (guardId != null && token != null) {
-            var response = apiRepoGuard.getById(token, guardId);
-            if (response.status == ApiResponse.Status.SUCCESS && response.data != null) {
-
-                getApplication<ApplicationMy>().appAccount.setGuard(response.data!!)
-            }
-        }
-    }
-
 
 }

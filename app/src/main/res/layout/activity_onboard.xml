@@ -118,7 +118,7 @@
             android:textColor="@color/md_grey_900"
             app:backgroundTint="@color/white"
             app:cornerRadius="@dimen/offset_12"
-            android:id="@+id/knowmore_subscription_card_btn_know"
+            android:id="@+id/activity_onboard_google_btn"
             android:textAppearance="@style/Tb.TextAppearance.Button"/>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

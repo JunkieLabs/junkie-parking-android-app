@@ -57,11 +57,16 @@ class AccountPreference {
 
 
 
-    fun setParkingAccountId(  id: String) {
+    fun setParkingAccountId(  id: String?) {
         val sp = getSharedPreferences()
-        sp.edit()
-            .putString(PARKING_ACCOUNT_ID, id)
-            .apply()
+        val editor = sp.edit()
+        if(id!=null){
+            editor.putString(PARKING_ACCOUNT_ID, id)
+                .apply()
+        }else{
+            editor.remove(PARKING_ACCOUNT_ID)
+        }
+
     }
 
 
@@ -74,11 +79,16 @@ class AccountPreference {
     }
 
 
-    fun setParkingAreaId(id: String) {
+    fun setParkingAreaId(id: String?) {
         val sp = getSharedPreferences()
-        sp.edit()
-            .putString(PARKING_AREA_ID, id)
-            .apply()
+        val editor = sp.edit()
+        if(id!=null){
+            editor.putString(PARKING_AREA_ID, id)
+                .apply()
+        }else{
+            editor.remove(PARKING_AREA_ID)
+        }
+
     }
 
 
@@ -91,11 +101,16 @@ class AccountPreference {
     }
 
 
-    fun setGuardId(id: String) {
+    fun setGuardId(id: String?) {
         val sp = getSharedPreferences()
-        sp.edit()
-            .putString(GUARD_ID, id)
-            .apply()
+        val editor = sp.edit()
+            if(id!=null){
+                editor.putString(GUARD_ID, id)
+                    .apply()
+            }else{
+                editor.remove(GUARD_ID)
+            }
+
     }
 
 

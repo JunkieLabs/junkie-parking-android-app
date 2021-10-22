@@ -6,14 +6,17 @@ import `in`.junkielabs.parking.databinding.ActivityWalkThroughBinding
 import `in`.junkielabs.parking.tools.timer.Stopwatch
 import `in`.junkielabs.parking.tools.viewpager.transformer.ZoomOutPageTransformer
 import `in`.junkielabs.parking.ui.base.ActivityBase
+import `in`.junkielabs.parking.ui.components.onboard.ActivityOnboard
 import `in`.junkielabs.parking.ui.widgets.ViewPager2PagerListener
 import `in`.junkielabs.parking.utils.UtilColor
 import `in`.junkielabs.parking.utils.UtilTheme
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -134,14 +137,30 @@ class ActivityWalkThrough : ActivityBase(),
     fun moveNext() {
         val currentItem = binding.viewPager2.currentItem
 
-        if (currentItem == 3) {
+        Log.i("ActivityWalkThrough", "moveNext $currentItem")
+        if (currentItem == 2) {
             //            Todo startAuth()
+            startActivityOnboard()
 
         } else {
             binding.viewPager2.setCurrentItem(currentItem + 1, true)
 //            binding.activityWalkThroughBtnPrev.isEnabled = true
 
         }
+    }
+
+    /* ***************************************************************************
+     *                      walk through
+     */
+
+    private fun startActivityOnboard() {
+        val i = Intent(this, ActivityOnboard::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.data = intent.data
+
+        startActivity(i)
+        finish()
     }
 
 }

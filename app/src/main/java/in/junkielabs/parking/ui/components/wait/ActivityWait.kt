@@ -1,15 +1,11 @@
 package `in`.junkielabs.parking.ui.components.wait
 
 import `in`.junkielabs.parking.R
-import `in`.junkielabs.parking.databinding.ActivityOnboardBinding
 import `in`.junkielabs.parking.databinding.ActivityWaitBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import org.jetbrains.anko.info
 
 @AndroidEntryPoint
 class ActivityWait : ActivityBase() {

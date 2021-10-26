@@ -36,11 +36,13 @@
 
         <activity
             android:name=".ui.components.auth.ActivityAuth"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
 
         <activity
+            android:exported="false"
             android:name=".ui.components.auth.google.ActivityAuthGoogle"
-            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JunkieParking.Transparent"
             android:windowSoftInputMode="stateVisible|adjustResize" />
     </application>
 

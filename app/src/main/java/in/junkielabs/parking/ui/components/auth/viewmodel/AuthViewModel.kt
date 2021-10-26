@@ -8,6 +8,7 @@ import `in`.junkielabs.parking.components.api.repository.ApiRepoGuard
 import `in`.junkielabs.parking.components.firebase.auth.FirebaseToken
 import `in`.junkielabs.parking.tools.livedata.LiveDataEvent
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -61,8 +62,10 @@ class AuthViewModel(application: Application,
     }
 
     fun onAuthorized() {
+
+        Log.i("AuthViewModel", "onAuthorized")
         viewModelScope.launch {
-            apiVerify()
+            //apiVerify()
         }
     }
 
@@ -125,6 +128,7 @@ class AuthViewModel(application: Application,
             }else{
                 if (response.status == ApiResponse.Status.ERROR) {
 
+                    Log.e("AuthViewModel: error", response.errorData.toString())
 //                    info { "erer : ${it.message}" }
 
 //                    _mEventErrorMessage.value = LiveDataEvent(it.message.toString())

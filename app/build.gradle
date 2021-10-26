@@ -28,7 +28,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        buildConfigField 'String', 'API_URL', '"https://hee.com"'
+        buildConfigField 'String', 'API_URL', '"https://asia-south1-junkielabs-57977.cloudfunctions.net/parkingApi/"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

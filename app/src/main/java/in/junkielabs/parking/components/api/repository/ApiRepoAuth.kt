@@ -13,7 +13,7 @@ class ApiRepoAuth : ApiRepositoryBase<ParamErrorRes>(ParamErrorRes::class.java) 
     private var apiPointAuth: ApiPointAuth = ApiModule.provideApiAuth()
 
     suspend fun verify(token: String) =
-        requestForCookie {
+        request {
             apiPointAuth.verify(ParamAuthVerifyReq(token))
         }
 

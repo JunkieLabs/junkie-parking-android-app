@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--below is the style for transparent activity and here we are using no action bar.-->
+<!--    parent="Theme.AppCompat.Dialog"-->
+    <style name="Theme.JunkieParking.Transparent" parent="Theme.JunkieParking">
+<!--        <item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+<!--        <item name="android:windowContentOverlay">@null</item>-->
+<!--        <item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:windowIsFloating">true</item>-->
+<!--        <item name="android:backgroundDimEnabled">false</item>-->
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+</resources>

@@ -18,6 +18,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import org.jetbrains.anko.info
@@ -65,7 +66,7 @@ class ActivityLauncher : ActivityBase() {
                         startApp()
                     }
                     AccountConstants.AccountUser.STATE_REAUTH -> {
-                         startActivityReAuth()
+                          startActivityReAuth()
                     }
                 }
 
@@ -125,7 +126,9 @@ class ActivityLauncher : ActivityBase() {
     private fun startActivityReAuth() {
         val i = Intent(this, ActivityAuth::class.java)
         i.putExtra(AccountConstants.Account.Arguments.ACCOUNT_ACTION, AccountConstants.Account.ACTION_REAUTH)
-        mActivityResultAuth.launch(intent)
+//        mActivityResultAuth.launch(i)
+//       i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(i)
         //        i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        i.data = intent.data

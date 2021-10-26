@@ -1,7 +1,10 @@
 package `in`.junkielabs.parking.ui.components.auth
 
+import `in`.junkielabs.parking.R
 import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.account.AccountConstants
+import `in`.junkielabs.parking.databinding.ActivityAuthBinding
+import `in`.junkielabs.parking.databinding.ActivityAuthGoogleBinding
 import `in`.junkielabs.parking.tools.livedata.LiveDataObserver
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.ui.common.progress.FrameProgressDialog
@@ -10,14 +13,21 @@ import `in`.junkielabs.parking.ui.components.auth.viewmodel.AuthViewModel
 import `in`.junkielabs.parking.ui.components.auth.viewmodel.AuthViewModelFactory
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import org.jetbrains.anko.info
 
 /**
  * Created by Niraj on 22-10-2021.
  */
-class ActivityAuth : ActivityBase(){
+class ActivityAuth : ActivityBase() {
     private val mViewModel: AuthViewModel by viewModels(
         factoryProducer = { AuthViewModelFactory(ApplicationMy.instance) }
 
@@ -32,9 +42,37 @@ class ActivityAuth : ActivityBase(){
             onAuthenticationResult(result.data, result.resultCode)
         }
 
+
+    private lateinit var vBinding: ActivityAuthBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_JunkieParking_Transparent);
         super.onCreate(savedInstanceState)
+//        window.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT))
+//        window.decorView.setBackgroundColor(Color.TRANSPARENT)
+
+        vBinding = ActivityAuthBinding.inflate(layoutInflater)
+//        vBinding.root.setBackgroundColor(Color.TRANSPARENT)
+        setContentView(vBinding.root)
+        /*if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+        }*/
         setUpViewModel()
+    }
+
+    override fun getStatusBarColor(): Int {
+//        val startColor = Color.parseColor("#FA2AD0")
+//        val a = TypedValue()
+//        theme.resolveAttribute(R.attr.colorSurface, a, true)
+
+        info { "getStatusBarColor 1" }
+//        val endColor = ContextCompat.getColor(applicationContext, a.resourceId)
+//        val endColor = ContextCompat.getColor(context, R.color.yellow)
+//        return ColorUtils.blendARGB(Color.parseColor("#FA2AD0"), endColor, 0.12F)
+        return ContextCompat.getColor(
+            this,
+            R.color.colorAccentDark
+        )//UtilColor.getColorForAlpha(, 0.12F)
     }
 
     private fun setUpViewModel() {
@@ -67,21 +105,20 @@ class ActivityAuth : ActivityBase(){
         mViewModel.mEventIsCreated.observe(this,
             LiveDataObserver { t ->
 
-                if(t){
+                if (t) {
                     finishAuthenticationWithSuccessMessage("Success Full")
-                }else{
+                } else {
                     finishAuthenticationWithFailMessage("Failed to save account")
                 }
-
 
 
             }
         )
 
-        mViewModel.mEventLoggedOut.observe(this, LiveDataObserver{
-            if(it){
+        mViewModel.mEventLoggedOut.observe(this, LiveDataObserver {
+            if (it) {
                 finishAuthenticationWithSuccessMessage("Successfully Logged Out.")
-            }else{
+            } else {
                 finishAuthenticationWithFailMessage("Failed to logout")
             }
 
@@ -92,7 +129,7 @@ class ActivityAuth : ActivityBase(){
         when (actionRequest) {
 
             AccountConstants.Account.ACTION_SIGNIN -> {
-                startActivitySignin()
+//             TODO   startActivitySignin()
             }
 
             AccountConstants.Account.ACTION_REAUTH -> {
@@ -107,22 +144,29 @@ class ActivityAuth : ActivityBase(){
             }
 
 
-            else -> { }// TODO remove account
+            else -> {
+            }// TODO remove account
         }
 
     }
 
     private fun startActivitySignin() {
-        val intent = Intent(this, ActivityAuthGoogle::class.java)
-        intent.putExtra(AccountConstants.Account.Arguments.ACCOUNT_ACTION, AccountConstants.Account.ACTION_SIGNIN)
+        val i = Intent(this, ActivityAuthGoogle::class.java)
+        i.putExtra(
+            AccountConstants.Account.Arguments.ACCOUNT_ACTION,
+            AccountConstants.Account.ACTION_SIGNIN
+        )
 
-        mActivityResultGoogle.launch(intent)
+        mActivityResultGoogle.launch(i)
     }
 
     private fun startActivityRemove() {
-        val intent = Intent(this, ActivityAuthGoogle::class.java)
-        intent.putExtra(AccountConstants.Account.Arguments.ACCOUNT_ACTION, AccountConstants.Account.ACTION_REMOVE)
-        mActivityResultGoogle.launch(intent)
+        val i = Intent(this, ActivityAuthGoogle::class.java)
+        i.putExtra(
+            AccountConstants.Account.Arguments.ACCOUNT_ACTION,
+            AccountConstants.Account.ACTION_REMOVE
+        )
+        mActivityResultGoogle.launch(i)
     }
 
 
@@ -131,9 +175,9 @@ class ActivityAuth : ActivityBase(){
         if (resultCode == RESULT_OK) {
 
             var action = mViewModel.getCurrentAction()
-            if(action == AccountConstants.Account.ACTION_REMOVE){
+            if (action == AccountConstants.Account.ACTION_REMOVE) {
                 mViewModel.logout()
-            }else if(action == AccountConstants.Account.ACTION_SIGNIN){
+            } else if (action == AccountConstants.Account.ACTION_SIGNIN) {
                 mViewModel.onAuthorized()
             }
 
@@ -213,7 +257,6 @@ class ActivityAuth : ActivityBase(){
     /* *************************************************************************************
      *                                      finish work
      */
-
 
 
 }

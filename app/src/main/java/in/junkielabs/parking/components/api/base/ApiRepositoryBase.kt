@@ -1,6 +1,7 @@
 package `in`.junkielabs.parking.components.api.base
 
 import `in`.junkielabs.parking.components.api.models.ErrorResult
+import android.util.Log
 import com.squareup.moshi.Moshi
 import retrofit2.HttpException
 import retrofit2.Response
@@ -159,7 +160,7 @@ abstract class ApiRepositoryBase<out E : ErrorResult>(private val typeE: Class<E
 //        return ApiResponse.error("Network call has failed for a following reason: $message")
 //    }
     private fun <T> error(message: String, errorBody: E?): ApiResponse<T, E> {
-        error { "remoteDataSource $message $errorBody " }
+        Log.e( "ApiRepositoryBase","remoteDataSource $message $errorBody " )
 //        return ApiResponse.error("Network call has failed for a following reason: $message")
         return ApiResponse.error(message, null, errorBody)
     }

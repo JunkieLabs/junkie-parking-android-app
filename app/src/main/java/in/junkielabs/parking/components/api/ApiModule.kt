@@ -21,16 +21,16 @@ import java.util.concurrent.TimeUnit
  * Created by Niraj on 19-10-2021.
  */
 object ApiModule {
-    private var retrofit: Retrofit
+    private var retrofit: Retrofit? = null
 
     init {
-        retrofit = provideRetrofit(
-            provideOkHttpClient(
-                provideCacheInterceptor(),
-                provideCache(ApplicationMy.instance)
-            ),
-            provideBaseUrl()
-        )
+        /*  retrofit = provideRetrofit(
+              provideOkHttpClient(
+                  provideCacheInterceptor(),
+                  provideCache(ApplicationMy.instance)
+              ),
+              provideBaseUrl()
+          )*/
     }
 
     private fun provideBaseUrl() = BuildConfig.API_URL
@@ -102,15 +102,26 @@ object ApiModule {
     fun provideMoshiAdapter(): Moshi = Moshi.Builder().build()
 
 
-    fun provideRetrofit(okHttpClient: OkHttpClient, apiUrl: String): Retrofit = Retrofit.Builder()
-        .baseUrl(apiUrl)
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
+    fun provideRetrofit(): Retrofit {
+        if (retrofit != null) {
+            return retrofit!!;
+        } else {
+            retrofit = Retrofit.Builder()
+                .baseUrl(provideBaseUrl())
+                .client(
+                    provideOkHttpClient(
+                        provideCacheInterceptor(),
+                        provideCache(ApplicationMy.instance)
+                    )
+                ).addConverterFactory(MoshiConverterFactory.create())
+                .build()
+            return retrofit!!;
+        }
+    }
 
 
-    fun provideApiAuth(): ApiPointAuth = retrofit.create(ApiPointAuth::class.java)
+    fun provideApiAuth(): ApiPointAuth = provideRetrofit().create(ApiPointAuth::class.java)
 
-    fun provideApiGuard(): ApiPointGuard = retrofit.create(ApiPointGuard::class.java)
+    fun provideApiGuard(): ApiPointGuard = provideRetrofit().create(ApiPointGuard::class.java)
 
 }

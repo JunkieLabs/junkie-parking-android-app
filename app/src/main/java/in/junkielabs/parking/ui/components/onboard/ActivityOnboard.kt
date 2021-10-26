@@ -109,15 +109,10 @@ class ActivityOnboard : ActivityBase() {
         */
 
     private fun startActivityAuth() {
+        info { "startActivityAuth" }
         val i = Intent(this, ActivityAuth::class.java)
          i.putExtra(AccountConstants.Account.Arguments.ACCOUNT_ACTION, AccountConstants.Account.ACTION_SIGNIN)
-        mActivityResultAuth.launch(intent)
-    //        i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        i.data = intent.data
-
-//        startActivity(i)
-//        finish()
+        mActivityResultAuth.launch(i)
     }
 
     private fun onAuthenticationResult(data: Intent?, resultCode: Int) {

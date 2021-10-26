@@ -8,10 +8,8 @@ import java.io.Serializable
  * Created by niraj on 02-01-2020.
  */
 @JsonClass(generateAdapter = true)
-data class ParamAuthUser(
-var id: String,
-var name: String?,
-var puid: String?,
-var roles: List<Int>
+data class ParamAuthVerify(
+var user: ParamAuthUser,
+var guard: ParamGuard
 
 ): Serializable

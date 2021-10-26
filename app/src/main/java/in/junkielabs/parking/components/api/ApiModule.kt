@@ -6,6 +6,7 @@ import `in`.junkielabs.parking.components.api.internal.MethodRequestCache
 import `in`.junkielabs.parking.components.api.routepoints.ApiPointAuth
 import `in`.junkielabs.parking.components.api.routepoints.ApiPointGuard
 import android.app.Application
+import android.util.Log
 import com.squareup.moshi.Moshi
 import okhttp3.Cache
 import okhttp3.CacheControl
@@ -103,6 +104,8 @@ object ApiModule {
 
 
     fun provideRetrofit(): Retrofit {
+        var baseUrl = provideBaseUrl()
+        Log.i("ApiModule baseUrl:", baseUrl)
         if (retrofit != null) {
             return retrofit!!;
         } else {

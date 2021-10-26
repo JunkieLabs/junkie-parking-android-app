@@ -42,7 +42,7 @@
         <activity
             android:exported="false"
             android:name=".ui.components.auth.google.ActivityAuthGoogle"
-            android:theme="@style/Theme.JunkieParking.Transparent"
+            android:theme="@style/Theme.AppCompat.Dialog"
             android:windowSoftInputMode="stateVisible|adjustResize" />
     </application>
 

@@ -50,7 +50,9 @@ class ActivityAuth : ActivityBase() {
         super.onCreate(savedInstanceState)
 //        window.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT))
 //        window.decorView.setBackgroundColor(Color.TRANSPARENT)
-
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+        }
         vBinding = ActivityAuthBinding.inflate(layoutInflater)
 //        vBinding.root.setBackgroundColor(Color.TRANSPARENT)
         setContentView(vBinding.root)
@@ -129,7 +131,7 @@ class ActivityAuth : ActivityBase() {
         when (actionRequest) {
 
             AccountConstants.Account.ACTION_SIGNIN -> {
-//             TODO   startActivitySignin()
+               startActivitySignin()
             }
 
             AccountConstants.Account.ACTION_REAUTH -> {

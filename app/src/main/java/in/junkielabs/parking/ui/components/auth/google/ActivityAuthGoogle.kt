@@ -42,6 +42,7 @@ class ActivityAuthGoogle : ActivityBase() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_JunkieParking_Transparent);
         super.onCreate(savedInstanceState)
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)

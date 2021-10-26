@@ -65,7 +65,10 @@ class AuthViewModel(application: Application,
 
         Log.i("AuthViewModel", "onAuthorized")
         viewModelScope.launch {
-            //apiVerify()
+            // var token = FirebaseToken.getUserIdToken()
+//            Log.i("AuthViewModel Token:", token.toString());
+
+             apiVerify()
         }
     }
 
@@ -112,21 +115,24 @@ class AuthViewModel(application: Application,
      *                              Api
      */
 
-    private fun apiVerify(){
-        viewModelScope.launch {
+    private suspend fun apiVerify(){
 
             var token = FirebaseToken.getUserIdToken()
-            if(token==null)return@launch
+
+            if(token==null)return
 
 
             var response = apiRepoAuth.verify(token)
 
             if(response.status == ApiResponse.Status.SUCCESS){
+                Log.i("AuthViewModel: result", response.data.toString())
+//
                 var data = response.data
                 data?.guard?.let { getApplication<ApplicationMy>().appAccount.setGuard(it) }
                 onCreateAccountSuccess(true)
             }else{
                 if (response.status == ApiResponse.Status.ERROR) {
+
 
                     Log.e("AuthViewModel: error", response.errorData.toString())
 //                    info { "erer : ${it.message}" }
@@ -139,7 +145,6 @@ class AuthViewModel(application: Application,
             }
 
 
-        }
     }
 
 }

@@ -1,5 +1,6 @@
 package `in`.junkielabs.parking
 
+import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.firebase.functions.controller.FbFunctionTestController
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
@@ -12,6 +13,7 @@ import `in`.junkielabs.parking.ui.components.walkthrough.ActivityWalkThrough
 import `in`.junkielabs.parking.ui.labs.slidebutton.LabsActivitySlide
 import android.content.Intent
 import android.os.Bundle
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import org.jetbrains.anko.info
@@ -46,6 +48,11 @@ class MainActivity : ActivityBase() {
 
     private fun initButton() {
 
+        binding.activityMainLogoutBtn.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            ApplicationMy.instance.appAccount.reset()
+
+        }
         binding.activityMainFunctionBtn.setOnClickListener {
             //            startActivity<ActivityAuth>()
             testFunction()

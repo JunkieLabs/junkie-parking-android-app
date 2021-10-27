@@ -12,7 +12,7 @@ class ApiRepoGuard : ApiRepositoryBase<ParamErrorRes>(ParamErrorRes::class.java)
     private var apiPointGuard: ApiPointGuard = ApiModule.provideApiGuard()
 
     suspend fun getById(accessToken: String, id: String) =
-        requestForCookie {
+        request {
             apiPointGuard.byId(accessToken, id)
         }
 

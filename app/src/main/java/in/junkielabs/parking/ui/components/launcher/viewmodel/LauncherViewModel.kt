@@ -119,6 +119,7 @@ class LauncherViewModel(
             var response = apiRepoGuard.getById(token, guardId);
             if (response.status == ApiResponse.Status.SUCCESS && response.data != null) {
 
+                Log.i("apiGetGuardInfo", "${response.data}");
                 getApplication<ApplicationMy>().appAccount.setGuard(response.data!!)
             }
         }

@@ -13,6 +13,7 @@ import `in`.junkielabs.parking.ui.components.launcher.viewmodel.LauncherViewMode
 import `in`.junkielabs.parking.ui.components.launcher.viewmodel.LauncherViewModelFactory
 import `in`.junkielabs.parking.ui.components.onboard.viewmodel.OnboardViewModel
 import `in`.junkielabs.parking.ui.components.onboard.viewmodel.OnboardViewModelFactory
+import `in`.junkielabs.parking.ui.components.wait.ActivityWait
 import `in`.junkielabs.parking.utils.UtilTheme
 import android.content.Intent
 import android.os.Bundle
@@ -82,11 +83,29 @@ class ActivityOnboard : ActivityBase() {
                         startApp()
                     }
 
+                    AccountConstants.AccountUser.STATE_WAITING -> {
+                        startActivityWaiting()
+                    }
+
                 }
 
 
             }
         )
+    }
+
+    /* *******************************************************************************
+     *                                   Waiting
+     */
+
+    private fun startActivityWaiting(){
+        val i = Intent(this, ActivityWait::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.data = intent.data
+
+        startActivity(i)
+        finish()
     }
 
     /* **************************************************************************************

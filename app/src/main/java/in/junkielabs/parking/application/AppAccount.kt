@@ -48,6 +48,8 @@ class AppAccount {
     fun setGuard(guard: ParamGuard): Boolean {
 //        info { "Guard: $guard" }
         mGuard = guard
+        mParkingAreaId = guard.parkingAreaId
+
         AccountPreference.getInstance().setGuardId(mGuard?.id)
         AccountPreference.getInstance().setParkingAccountId(mGuard?.parkingAccountId)
         AccountPreference.getInstance().setParkingAreaId(mGuard?.parkingAreaId)

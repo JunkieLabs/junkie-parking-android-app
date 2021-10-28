@@ -5,6 +5,7 @@ import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.api.internal.MethodRequestCache
 import `in`.junkielabs.parking.components.api.routepoints.ApiPointAuth
 import `in`.junkielabs.parking.components.api.routepoints.ApiPointGuard
+import `in`.junkielabs.parking.components.api.routepoints.ApiPointParkingArea
 import android.app.Application
 import android.util.Log
 import com.squareup.moshi.Moshi
@@ -126,5 +127,6 @@ object ApiModule {
     fun provideApiAuth(): ApiPointAuth = provideRetrofit().create(ApiPointAuth::class.java)
 
     fun provideApiGuard(): ApiPointGuard = provideRetrofit().create(ApiPointGuard::class.java)
+    fun provideApiParkingArea(): ApiPointParkingArea = provideRetrofit().create(ApiPointParkingArea::class.java)
 
 }

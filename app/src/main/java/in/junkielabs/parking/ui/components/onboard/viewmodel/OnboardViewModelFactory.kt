@@ -3,6 +3,7 @@ package `in`.junkielabs.parking.ui.components.onboard.viewmodel
 import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.api.repository.ApiRepoAuth
 import `in`.junkielabs.parking.components.api.repository.ApiRepoGuard
+import `in`.junkielabs.parking.components.api.repository.ApiRepoParkingArea
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -17,9 +18,10 @@ class OnboardViewModelFactory(var application: ApplicationMy) :
         return modelClass.getConstructor(
             Application::class.java,
             ApiRepoAuth::class.java,
-            ApiRepoGuard::class.java
+            ApiRepoGuard::class.java,
+            ApiRepoParkingArea::class.java
         )
-            .newInstance(application, ApiRepoAuth(), ApiRepoGuard())
+            .newInstance(application, ApiRepoAuth(), ApiRepoGuard(), ApiRepoParkingArea())
     }
 
 }

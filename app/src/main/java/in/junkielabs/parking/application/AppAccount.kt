@@ -2,6 +2,7 @@ package `in`.junkielabs.parking.application
 
 import `in`.junkielabs.parking.components.account.AccountPreference
 import `in`.junkielabs.parking.components.api.models.guard.ParamGuard
+import `in`.junkielabs.parking.components.api.models.parking.area.ParamParkingArea
 
 /**
  * Created by Niraj on 20-10-2021.
@@ -9,8 +10,7 @@ import `in`.junkielabs.parking.components.api.models.guard.ParamGuard
 class AppAccount {
 
 
-
-
+    private var mParkingArea: ParamParkingArea? = null
     private var mGuard: ParamGuard? = null
 
     private var mParkingAreaId: String? = null
@@ -55,6 +55,14 @@ class AppAccount {
         AccountPreference.getInstance().setParkingAreaId(mGuard?.parkingAreaId)
         loadPreference()
         return true
+    }
+
+    fun setParkingArea(parkingArea: ParamParkingArea?) {
+        mParkingArea = parkingArea
+    }
+
+    fun getParkingArea(): ParamParkingArea? {
+        return mParkingArea
     }
 
     fun getParkingAreaId(): String? {

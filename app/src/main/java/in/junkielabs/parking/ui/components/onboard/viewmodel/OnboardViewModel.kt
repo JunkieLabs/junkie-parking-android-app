@@ -2,8 +2,11 @@ package `in`.junkielabs.parking.ui.components.onboard.viewmodel
 
 import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.account.AccountConstants
+import `in`.junkielabs.parking.components.api.base.ApiResponse
 import `in`.junkielabs.parking.components.api.repository.ApiRepoAuth
 import `in`.junkielabs.parking.components.api.repository.ApiRepoGuard
+import `in`.junkielabs.parking.components.api.repository.ApiRepoParkingArea
+import `in`.junkielabs.parking.components.firebase.auth.FirebaseToken
 import `in`.junkielabs.parking.tools.livedata.LiveDataEvent
 import android.app.Application
 import android.util.Log
@@ -22,7 +25,8 @@ import kotlin.coroutines.suspendCoroutine
 class OnboardViewModel(
     application: Application,
     var apiRepoAuth: ApiRepoAuth,
-    var apiRepoGuard: ApiRepoGuard
+    var apiRepoGuard: ApiRepoGuard,
+    var apiRepoParkingArea: ApiRepoParkingArea
 ) : AndroidViewModel(application) {
 
     private val _mEventAccountState = MutableLiveData<LiveDataEvent<Int>>()
@@ -61,14 +65,35 @@ class OnboardViewModel(
 
     fun onSignInResult() {
         viewModelScope.launch {
+
+
             var accountState = getAccountState()
             if (accountState == AccountConstants.AccountUser.STATE_AUTHORIZED || accountState == AccountConstants.AccountUser.STATE_WAITING) {
+                apiGetParkingArea()
                 _mEventAccountState.postValue(LiveDataEvent(accountState))
 
             }
 
 
 
+        }
+    }
+
+    /* ****************************************************************************
+     *                                  Api
+     */
+
+    private suspend fun apiGetParkingArea() {
+        var parkingAreaId = getApplication<ApplicationMy>().appAccount.getParkingAreaId()
+
+        var token = FirebaseToken.getToken()
+        if (parkingAreaId != null && token != null) {
+            var response = apiRepoParkingArea.getById(token, parkingAreaId);
+            if (response.status == ApiResponse.Status.SUCCESS && response.data != null) {
+
+                Log.i("apiGetParkingArea", "${response.data}");
+                getApplication<ApplicationMy>().appAccount.setParkingArea(response.data!!)
+            }
         }
     }
 

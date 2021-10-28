@@ -5,6 +5,7 @@ import `in`.junkielabs.parking.components.account.AccountConstants
 import `in`.junkielabs.parking.components.api.base.ApiResponse
 import `in`.junkielabs.parking.components.api.repository.ApiRepoAuth
 import `in`.junkielabs.parking.components.api.repository.ApiRepoGuard
+import `in`.junkielabs.parking.components.api.repository.ApiRepoParkingArea
 import `in`.junkielabs.parking.components.firebase.auth.FirebaseToken
 import `in`.junkielabs.parking.tools.livedata.LiveDataEvent
 import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
@@ -22,7 +23,8 @@ import kotlin.coroutines.suspendCoroutine
 class LauncherViewModel(
     application: Application,
     var apiRepoAuth: ApiRepoAuth,
-    var apiRepoGuard: ApiRepoGuard
+    var apiRepoGuard: ApiRepoGuard,
+    var apiRepoParkingArea: ApiRepoParkingArea
 ) : AndroidViewModel(application) {
 
     private val _mEventAccountState = MutableLiveData<LiveDataEvent<Int>>()
@@ -46,6 +48,7 @@ class LauncherViewModel(
                 )
 
                 apiGetGuardInfo()
+                apiGetParkingArea()
                 accountState = getAccountState()
 
             }
@@ -121,6 +124,20 @@ class LauncherViewModel(
 
                 Log.i("apiGetGuardInfo", "${response.data}");
                 getApplication<ApplicationMy>().appAccount.setGuard(response.data!!)
+            }
+        }
+    }
+
+    private suspend fun apiGetParkingArea() {
+        var parkingAreaId = getApplication<ApplicationMy>().appAccount.getParkingAreaId()
+
+        var token = FirebaseToken.getToken()
+        if (parkingAreaId != null && token != null) {
+            var response = apiRepoParkingArea.getById(token, parkingAreaId);
+            if (response.status == ApiResponse.Status.SUCCESS && response.data != null) {
+
+                Log.i("apiGetParkingArea", "${response.data}");
+                getApplication<ApplicationMy>().appAccount.setParkingArea(response.data!!)
             }
         }
     }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<in.junkielabs.parking.ui.widgets.ClickableMotionLayout android:id="@+id/checkinout_slide_motion_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:minWidth="@dimen/length_200"
+    app:layoutDescription="@xml/checkinout_slide_scene"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:id="@+id/checkinout_slide_outline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:background="@drawable/dr_rect_outline_rounded_white_2dp">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/checkinout_slide_frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:background="@drawable/dr_rect_round_on_surface_10_24dp">
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/checkinout_slide_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/offset_24"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/length_20"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_round_keyboard_arrow_right_24"
+            app:tint="@color/md_white_1000_25"/>
+
+        <ImageView
+            android:layout_marginStart="@dimen/offset_8"
+            android:layout_width="@dimen/length_20"
+            android:layout_height="match_parent"
+            app:tint="@color/md_white_1000_75"
+            app:srcCompat="@drawable/ic_round_keyboard_arrow_right_24"/>
+
+    </FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/checkinout_slide_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/offset_32"
+        android:textAppearance="@style/Tb.TextAppearance.Button"
+        android:paddingTop="@dimen/offset_16"
+        android:paddingEnd="@dimen/offset_32"
+        android:paddingBottom="@dimen/offset_16"
+        app:cornerRadius="@dimen/offset_20"
+        app:backgroundTint="@color/md_grey_900"
+        android:text="Confirm" />
+</in.junkielabs.parking.ui.widgets.ClickableMotionLayout>

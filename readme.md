@@ -28,3 +28,7 @@ https://github.com/G00fY2/quickie/blob/main/quickie/src/main/kotlin/io/github/g0
 - https://johncodeos.com/how-to-parse-json-with-retrofit-converters-using-kotlin/
 
 - https://github.com/kittinunf/fuel
+
+# keyboard hide
+
+- https://stackoverflow.com/questions/25216749/soft-keyboard-open-and-close-listener-in-an-activity-in-android

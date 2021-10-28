@@ -52,7 +52,7 @@ class ActivityLauncher : ActivityBase() {
 
     private fun setUpViewModel() {
 
-        Handler(Looper.getMainLooper()).postDelayed({ mViewModel.checkHasAccount() }, 700)
+        Handler(Looper.getMainLooper()).postDelayed({ mViewModel.checkHasAccount() }, 100)
 
         mViewModel.mEventAccountState.observe(this,
             LiveDataObserver { t ->

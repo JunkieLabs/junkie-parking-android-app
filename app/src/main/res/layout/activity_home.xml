@@ -51,10 +51,10 @@
                 android:paddingBottom="@dimen/offset_20">
 
                 <TextView
-                    android:id="@+id/activity_onboard_title"
+                    android:id="@+id/activity_home_area_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Junkie Park"
+                    tools:text="Junkie Park"
                     android:textAppearance="@style/Tb.TextAppearance.h3.bold"
                     android:textColor="@color/white" />
 
@@ -143,7 +143,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/length_96" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <include
+                android:id="@+id/checkinout_slide"
+                layout="@layout/checkinout_slide"/>
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -163,7 +167,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
         </LinearLayout>
@@ -233,6 +237,8 @@
         android:layout_height="wrap_content"
         app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@id/bottomAppBar"
+        android:id="@+id/activity_home_fab"
+        android:clickable="true"
 
         app:layout_anchorGravity="start"
         app:srcCompat="@drawable/ic_if_scan" />

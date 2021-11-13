@@ -9,11 +9,13 @@ import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModel
 import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModelFactory
 import `in`.junkielabs.parking.ui.components.onboard.viewmodel.OnboardViewModel
 import `in`.junkielabs.parking.ui.components.onboard.viewmodel.OnboardViewModelFactory
+import `in`.junkielabs.parking.utils.UtilRegex
 import `in`.junkielabs.parking.utils.UtilTheme
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.telephony.TelephonyManager
+import android.text.InputFilter
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
@@ -30,8 +32,7 @@ import org.jetbrains.anko.info
 import java.util.*
 
 import android.view.ViewGroup
-
-
+import androidx.core.widget.addTextChangedListener
 
 
 @AndroidEntryPoint
@@ -49,17 +50,19 @@ class ActivityHome : ActivityBase() {
         val heightDiff: Int = heightRoot - heightLayout// - vBinding.getHeight()
         val contentViewTop = window.findViewById<View>(Window.ID_ANDROID_CONTENT).top
 
-        if(heightDiff <= contentViewTop){
+        if (heightDiff <= contentViewTop) {
             showBottomTab()
 
-        }else{
+        } else {
 
             Handler(Looper.getMainLooper()).postDelayed({ hideBottomTab() }, 500)
 
         }
 
-        Log.i("ActivityHome: mKeyboardListener:", "$heightRoot $heightLayout  $heightDiff $contentViewTop")
-
+        Log.i(
+            "ActivityHome: mKeyboardListener:",
+            "$heightRoot $heightLayout  $heightDiff $contentViewTop"
+        )
 
 
     }
@@ -85,6 +88,8 @@ class ActivityHome : ActivityBase() {
         setupView()
         setupViewModel()
 
+        setupForm()
+
     }
 
     override fun getStatusBarColor(): Int {
@@ -103,14 +108,15 @@ class ActivityHome : ActivityBase() {
         }
     }
 
-    private fun setupView(){
+    private fun setupView() {
         /*vBinding.wheelerItemBike.wheelerBike.setOnCheckedChangeListener { card, isChecked -> mViewModel.setWheelerChecked(ParkingConstants.Wheeler.TYPE_BIKE) }
 
         vBinding.wheelerItemCar.wheelerCar.setOnCheckedChangeListener { card, isChecked ->
             mViewModel.setWheelerChecked(ParkingConstants.Wheeler.TYPE_CAR) }
 */
         vBinding.wheelerItemBike.wheelerBike.setOnClickListener {
-            mViewModel.setWheelerChecked(ParkingConstants.Wheeler.TYPE_BIKE) }
+            mViewModel.setWheelerChecked(ParkingConstants.Wheeler.TYPE_BIKE)
+        }
 
         vBinding.wheelerItemCar.wheelerCar.setOnClickListener {
             mViewModel.setWheelerChecked(ParkingConstants.Wheeler.TYPE_CAR)
@@ -151,25 +157,26 @@ class ActivityHome : ActivityBase() {
         mKeyboardListenersAttached = true
     }
 
-    private fun setupViewModel(){
+    private fun setupViewModel() {
         mViewModel.initData()
 
         mViewModel.bParkingArea.observe(this, {
-            vBinding.activityHomeAreaName.text = it.name?.replace("_", " ")?.replaceFirstChar { it1 -> it1.titlecase() }
+            vBinding.activityHomeAreaName.text =
+                it.name?.replace("_", " ")?.replaceFirstChar { it1 -> it1.titlecase() }
         })
 
-        mViewModel.bWheelerBike.observe(this,{
-            if(it!=null){
+        mViewModel.bWheelerBike.observe(this, {
+            if (it != null) {
                 vBinding.wheelerItemBike.root.visibility = View.VISIBLE
-            }else{
+            } else {
                 vBinding.wheelerItemBike.root.visibility = View.GONE
             }
         })
 
-        mViewModel.bWheelerCar.observe(this,{
-            if(it!=null){
+        mViewModel.bWheelerCar.observe(this, {
+            if (it != null) {
                 vBinding.wheelerItemCar.root.visibility = View.VISIBLE
-            }else{
+            } else {
                 vBinding.wheelerItemCar.root.visibility = View.GONE
             }
         })
@@ -177,13 +184,13 @@ class ActivityHome : ActivityBase() {
         mViewModel.bWheelerType.observe(this, {
 
             Log.i("ActivityHome", "bWheelerType $it")
-            if(it == ParkingConstants.Wheeler.TYPE_BIKE){
+            if (it == ParkingConstants.Wheeler.TYPE_BIKE) {
                 vBinding.wheelerItemBike.wheelerBike.isChecked = true
                 vBinding.wheelerItemBike.wheelerBikeText.isChecked = true
 
                 vBinding.wheelerItemCar.wheelerCar.isChecked = false
                 vBinding.wheelerItemCar.wheelerCarText.isChecked = true
-            }else if(it == ParkingConstants.Wheeler.TYPE_CAR){
+            } else if (it == ParkingConstants.Wheeler.TYPE_CAR) {
                 vBinding.wheelerItemBike.wheelerBike.isChecked = false
                 vBinding.wheelerItemBike.wheelerBikeText.isChecked = false
 
@@ -195,18 +202,39 @@ class ActivityHome : ActivityBase() {
 
     }
 
-    private fun setRoundedCorner(){
-        val bottomBarBackground  =  vBinding.bottomAppBar.background as MaterialShapeDrawable
-        bottomBarBackground.shapeAppearanceModel = bottomBarBackground.shapeAppearanceModel.toBuilder()
-            .setTopLeftCorner(RoundedCornerTreatment()).setTopLeftCornerSize(RelativeCornerSize(0.5f))
-            .setTopRightCorner(RoundedCornerTreatment()).setTopRightCornerSize(
-                RelativeCornerSize(
-                    0.5f
+    private fun setRoundedCorner() {
+        val bottomBarBackground = vBinding.bottomAppBar.background as MaterialShapeDrawable
+        bottomBarBackground.shapeAppearanceModel =
+            bottomBarBackground.shapeAppearanceModel.toBuilder()
+                .setTopLeftCorner(RoundedCornerTreatment())
+                .setTopLeftCornerSize(RelativeCornerSize(0.5f))
+                .setTopRightCorner(RoundedCornerTreatment()).setTopRightCornerSize(
+                    RelativeCornerSize(
+                        0.5f
+                    )
                 )
-            )
-            .build()
+                .build()
     }
 
+    private fun setupForm() {
+        vBinding.homeInputVehicleNumber.filters = arrayOf(InputFilter.AllCaps(), InputFilter.LengthFilter(ParkingConstants.Vehicle.INPUT_FORMAT.length))
+        vBinding.homeInputVehicleNumber.addTextChangedListener { text ->
+            var matches =
+                UtilRegex.getInputBoxes(ParkingConstants.Vehicle.INPUT_FORMAT, text.toString())
+
+            var resultText = matches.joinToString("")
+            Log.d("ActivityHome:", "setupForm: ${text.toString().length} $text $matches $resultText")
+            if (resultText != text.toString()) {
+                text?.clear()
+
+                text?.replace(0, text.toString().length, resultText)
+                vBinding.homeInputVehicleNumber.setSelection(resultText.length)
+//                vBinding.homeInputVehicleNumber.setText(resultText)
+
+            }
+        }
+
+    }
 
 
 }

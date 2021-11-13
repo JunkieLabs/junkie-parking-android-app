@@ -73,14 +73,19 @@
         <item name="colorError">@color/md_amber_500</item>
         <item name="editTextBackground">@color/transparent</item>
         <item name="editTextColor">@color/white</item>
+
+        <item name="colorControlActivated">@color/teal_200</item>
         <item name="textAppearanceSubtitle1">@style/Tb.TextAppearance.h4.medium</item>
         <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputEditText.FilledBox</item>
 
     </style>
 
+
+
     <style name="Tb.Widget.TextInputLayout.Filled.OnPrimary" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="materialThemeOverlay">@style/Tb.ThemeOverlay.TextInputLayout.OnAccent</item>
         <item name="hintTextColor">?attr/colorOnSurface</item>
+        <item name="colorControlActivated">@color/md_red_600</item>
 
     </style>
 

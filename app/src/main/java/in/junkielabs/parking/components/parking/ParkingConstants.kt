@@ -11,4 +11,9 @@ class ParkingConstants {
         var TYPE_CAR =  0x2
 
     }
+
+    object Vehicle {
+        var INPUT_FORMAT = "XX XX XX XXXX"
+//        var INPUT_FORMAT = "XX XX XX XXXX"
+    }
 }

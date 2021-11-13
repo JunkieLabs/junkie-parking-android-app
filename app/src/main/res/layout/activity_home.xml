@@ -99,6 +99,28 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/home_input_layout_vehicle"
+                    style="@style/Tb.Widget.TextInputLayout.Filled.OnPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Vehicle Number"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxBackgroundMode="filled">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:textColor="@color/white"
+                        android:id="@+id/home_input_vehicle_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:inputType="text|textCapCharacters" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/home_input_layout_phone"
                     style="@style/Tb.Widget.TextInputLayout.Filled.OnPrimary"
                     android:layout_width="match_parent"
@@ -107,24 +129,6 @@
                     app:boxBackgroundColor="@android:color/transparent"
                     app:boxBackgroundMode="filled">
 
-                    <!--<com.asdev.phoneedittext.PhoneEditText
-                        android:id="@+id/home_input_phone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="phone"
-                        android:textAppearance="@style/Tb.TextAppearance.h4"
-
-                        />-->
-                    <!-- <com.pepstudy.ui.widgets.TextInputEditTextPrefix
-                         android:id="@+id/auth_signup_create_fragment_edit_name"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:textAppearance="@style/Tb.TextAppearance.h4"
-                         app:prefixText="+91"
-                         android:inputType="number"
-                         android:selectAllOnFocus="true"
-
-                         />-->
                     <com.google.android.material.textfield.TextInputEditText
 
                         android:textColor="@color/white"
@@ -134,7 +138,6 @@
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
 
             </LinearLayout>
 

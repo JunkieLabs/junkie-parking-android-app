@@ -31,7 +31,7 @@ android {
         versionName "1.0"
 
 //        buildConfigField 'String', 'API_URL', '"https://asia-south1-junkielabs-57977.cloudfunctions.net/parkingApi/"'
-         buildConfigField 'String', 'API_URL', '"http://192.168.0.107:5000/junkielabs-57977/asia-south1/parkingApi/"'
+         buildConfigField 'String', 'API_URL', '"http://192.168.0.105:5000/junkielabs-57977/asia-south1/parkingApi/"'
 //        buildConfigField 'String', 'API_URL', '"http://192.168.43.41:5000/junkielabs-57977/asia-south1/parkingApi/"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

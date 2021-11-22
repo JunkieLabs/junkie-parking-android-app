@@ -9,13 +9,18 @@ import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModel
 import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModelFactory
 import `in`.junkielabs.parking.ui.components.onboard.viewmodel.OnboardViewModel
 import `in`.junkielabs.parking.ui.components.onboard.viewmodel.OnboardViewModelFactory
+import `in`.junkielabs.parking.utils.UtilAnimation
 import `in`.junkielabs.parking.utils.UtilRegex
 import `in`.junkielabs.parking.utils.UtilTheme
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.telephony.TelephonyManager
+import android.text.Editable
 import android.text.InputFilter
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
@@ -37,6 +42,7 @@ import androidx.core.widget.addTextChangedListener
 
 @AndroidEntryPoint
 class ActivityHome : ActivityBase() {
+    private var _mKeyBoardOpen: Boolean = false
     private lateinit var vBinding: ActivityHomeBinding
 
     private val mViewModel: HomeViewModel by viewModels(
@@ -52,10 +58,16 @@ class ActivityHome : ActivityBase() {
 
         if (heightDiff <= contentViewTop) {
             showBottomTab()
-
+            _mKeyBoardOpen = false
+            vBinding.bottomAppBar.hideOnScroll = true
         } else {
 
-            Handler(Looper.getMainLooper()).postDelayed({ hideBottomTab() }, 500)
+            Handler(Looper.getMainLooper()).postDelayed({
+                _mKeyBoardOpen = true
+
+                vBinding.bottomAppBar.hideOnScroll = false
+                hideBottomTab()
+            }, 500)
 
         }
 
@@ -133,9 +145,11 @@ class ActivityHome : ActivityBase() {
         }
         vBinding.checkinoutSlide.checkinoutSlideButton.setOnClickListener {
             info { "clciked" }
-            var ewew = vBinding.checkinoutSlide.checkinoutSlideMotionLayout.currentState
-            if (ewew == vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState) {
-                vBinding.checkinoutSlide.checkinoutSlideMotionLayout.transitionToEnd()
+            var currentState = vBinding.checkinoutSlide.checkinoutSlideMotionLayout.currentState
+            if (currentState == vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState) {
+                vBinding.checkinoutSlide.checkinoutSlideMotionLayout.transitionToEnd {
+                    revealProgress();
+                }
 
             } else {
                 vBinding.checkinoutSlide.checkinoutSlideMotionLayout.transitionToStart()
@@ -143,9 +157,28 @@ class ActivityHome : ActivityBase() {
             }
         }
 
+
         attachKeyboardListeners()
 
 
+    }
+
+    private fun revealProgress() {
+        var x =
+            vBinding.checkinoutSlide.root.x.toInt() + vBinding.checkinoutSlide.root.width.toInt() - vBinding.checkinoutSlide.checkinoutSlideButton.width / 2
+        var y =
+            vBinding.checkinoutSlide.root.y.toInt() + vBinding.checkinoutSlide.checkinoutSlideButton.height / 2
+        UtilAnimation.revealView(
+            vBinding.frameProgress.frameProgress,
+            x,
+            y,
+            vBinding.coordinatorLayout.height,
+            vBinding.coordinatorLayout.width,
+            object : AnimatorListenerAdapter() {
+
+
+            })
+        vBinding.checkinoutSlide.root.animate().alpha(0F).start()
     }
 
     protected fun attachKeyboardListeners() {
@@ -217,22 +250,57 @@ class ActivityHome : ActivityBase() {
     }
 
     private fun setupForm() {
-        vBinding.homeInputVehicleNumber.filters = arrayOf(InputFilter.AllCaps(), InputFilter.LengthFilter(ParkingConstants.Vehicle.INPUT_FORMAT.length))
-        vBinding.homeInputVehicleNumber.addTextChangedListener { text ->
-            var matches =
-                UtilRegex.getInputBoxes(ParkingConstants.Vehicle.INPUT_FORMAT, text.toString())
-
-            var resultText = matches.joinToString("")
-            Log.d("ActivityHome:", "setupForm: ${text.toString().length} $text $matches $resultText")
-            if (resultText != text.toString()) {
-                text?.clear()
-
-                text?.replace(0, text.toString().length, resultText)
-                vBinding.homeInputVehicleNumber.setSelection(resultText.length)
-//                vBinding.homeInputVehicleNumber.setText(resultText)
+        vBinding.homeInputVehicleNumber.filters = arrayOf(
+            InputFilter.AllCaps()
+//            ,
+//            InputFilter.LengthFilter(ParkingConstants.Vehicle.INPUT_FORMAT.length)
+        )
+        vBinding.homeInputVehicleNumber.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
-        }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                vBinding.homeInputVehicleNumber.removeTextChangedListener(this)
+                var matches =
+                    UtilRegex.getInputBoxes(ParkingConstants.Vehicle.INPUT_FORMAT, s.toString())
+
+                var resultText = matches.joinToString("")
+                Log.d("ActivityHome:", "setupForm: ${s.toString().length} $s $matches $resultText")
+                Log.d(
+                    "ActivityHome: ",
+                    "aftertextchanged: ${s.toString().length} ${vBinding.homeInputVehicleNumber.selectionEnd}"
+                )
+                if (resultText != s.toString()) {
+//                    s?.clear()
+
+
+/*                    s?.replace(0, vBinding.homeInputVehicleNumber.selectionEnd, resultText)*/
+
+                    if (s.toString().length > ParkingConstants.Vehicle.INPUT_FORMAT.length) {
+                        s?.delete(ParkingConstants.Vehicle.INPUT_FORMAT.length, s.toString().length)
+                        vBinding.homeInputVehicleNumber.setText(s)
+                        vBinding.homeInputVehicleNumber.setSelection(s.toString().length)
+                    } else {
+                        vBinding.homeInputVehicleNumber.setText(resultText)
+                        vBinding.homeInputVehicleNumber.setSelection(resultText.length)
+
+                    }
+//                vBinding.homeInputVehicleNumber.setText(resultText)
+
+                }
+
+                vBinding.homeInputVehicleNumber.addTextChangedListener(this)
+            }
+
+        })
+        /* vBinding.homeInputVehicleNumber.addTextChangedListener { text ->
+
+         }*/
 
     }
 

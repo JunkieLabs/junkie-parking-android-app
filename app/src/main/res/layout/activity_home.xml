@@ -54,9 +54,9 @@
                     android:id="@+id/activity_home_area_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Junkie Park"
                     android:textAppearance="@style/Tb.TextAppearance.h3.bold"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:text="Junkie Park" />
 
                 <LinearLayout
                     android:id="@+id/activity_onboard_details_ll"
@@ -92,6 +92,10 @@
                     layout="@layout/wheeler_item_car" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/offset_36" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,19 +109,24 @@
                     android:layout_height="wrap_content"
                     android:hint="Vehicle Number"
                     app:boxBackgroundColor="@android:color/transparent"
-                    app:boxBackgroundMode="filled">
+                    app:boxBackgroundMode="filled"
+                    app:placeholderText="XX XX XX XXXX"
+                    app:startIconDrawable="@drawable/ic_car_wheel">
 
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:textColor="@color/white"
                         android:id="@+id/home_input_vehicle_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text|textCapCharacters"
 
-                        android:inputType="text|textCapCharacters" />
+                        android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/offset_24" />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -127,15 +136,19 @@
                     android:layout_height="wrap_content"
                     android:hint="Phone Number"
                     app:boxBackgroundColor="@android:color/transparent"
-                    app:boxBackgroundMode="filled">
+                    app:boxBackgroundMode="filled"
+                    app:prefixText="+91"
+                    app:startIconDrawable="@drawable/ic_phone">
 
                     <com.google.android.material.textfield.TextInputEditText
 
-                        android:textColor="@color/white"
                         android:id="@+id/home_input_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:maxLength="10"
+
+                        android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,33 +157,33 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_96" />
+                android:layout_height="@dimen/length_24" />
 
             <include
                 android:id="@+id/checkinout_slide"
-                layout="@layout/checkinout_slide"/>
+                layout="@layout/checkinout_slide" />
 
-<!--            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <!--            <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/offset_28"
-                    android:paddingTop="@dimen/offset_20"
-                    android:paddingEnd="@dimen/offset_28"
-                    android:paddingBottom="@dimen/offset_20"
-                    android:text="Confirm"
-                    android:textAppearance="@style/Tb.TextAppearance.Button"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/black"
-                    app:cornerRadius="@dimen/offset_16"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>-->
+                            <com.google.android.material.button.MaterialButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/offset_28"
+                                android:paddingTop="@dimen/offset_20"
+                                android:paddingEnd="@dimen/offset_28"
+                                android:paddingBottom="@dimen/offset_20"
+                                android:text="Confirm"
+                                android:textAppearance="@style/Tb.TextAppearance.Button"
+                                android:textColor="@color/white"
+                                app:backgroundTint="@color/black"
+                                app:cornerRadius="@dimen/offset_16"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
         </LinearLayout>
@@ -236,15 +249,18 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_home_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@id/bottomAppBar"
-        android:id="@+id/activity_home_fab"
-        android:clickable="true"
 
         app:layout_anchorGravity="start"
         app:srcCompat="@drawable/ic_if_scan" />
+
+    <include  layout="@layout/frame_progress"
+        android:id="@+id/frame_progress"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

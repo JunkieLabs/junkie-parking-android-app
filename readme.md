@@ -39,3 +39,8 @@ https://github.com/G00fY2/quickie/blob/main/quickie/src/main/kotlin/io/github/g0
 - https://www.javamex.com/tutorials/regular_expressions/character_classes.shtml
 - https://github.com/Gary111/MaskedEditText
 - https://github.com/RedMadRobot/input-mask-android
+
+# ticket view
+
+- https://github.com/vipulasri/TicketView
+- https://github.com/mreram/TicketView/blob/master/ticketview/src/main/java/com/mreram/ticketview/TicketView.kt

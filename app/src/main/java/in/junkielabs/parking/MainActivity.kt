@@ -4,6 +4,7 @@ import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.firebase.functions.controller.FbFunctionTestController
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
+import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckInDialog
 import `in`.junkielabs.parking.ui.common.scanner.ActivityQrScanner
 import `in`.junkielabs.parking.ui.components.home.ActivityHome
 import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
@@ -58,6 +59,10 @@ class MainActivity : ActivityBase() {
             testFunction()
         }
 
+        binding.activityMainDialogBtn.setOnClickListener {
+            dialogCheckin()
+        }
+
         binding.activityMainLauncherBtn.setOnClickListener {
             //            startActivity<ActivityAuth>()
             var i = Intent(this, ActivityLauncher::class.java)
@@ -104,6 +109,26 @@ class MainActivity : ActivityBase() {
             var result = fbFunctionTestController.test("dee");
             info { "result: $result" }
         }
+    }
+
+    /* ******************************************************************************
+ *                                       Alert Error
+ */
+
+    private fun dialogCheckin() {
+        val b = Bundle()
+
+        val alert = CheckInDialog.newInstance(
+            101,
+            b
+        )
+
+        alert.isCancelable = true
+
+        alert.show(
+            supportFragmentManager,
+            CheckInDialog::class.java.simpleName
+        )
     }
 
 

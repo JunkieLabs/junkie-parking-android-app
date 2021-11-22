@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <in.junkielabs.parking.ui.widgets.TicketView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:tv_anchor="@+id/cl_head"
+        app:tv_dashColor="@color/material_on_surface_disabled"
+        android:background="@drawable/dr_dialog_background"
+        app:tv_circleRadius="9dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_22"
+                android:text="dfdfd"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_72"/>
+
+
+            <View
+                android:id="@+id/cl_head"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_24"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_72"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_72"/>
+            <View
+                android:id="@+id/cl_center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_24"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_72"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_22"
+                android:text="dfdfd"/>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_72"/>
+        </LinearLayout>
+    </in.junkielabs.parking.ui.widgets.TicketView>
+
+
+</FrameLayout>

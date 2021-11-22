@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_blue_grey_700"
     android:padding="@dimen/offset_16">
 
     <LinearLayout
@@ -32,6 +33,12 @@
             style="@style/ButtonNormal"
             android:layout_marginTop="@dimen/offset_6"
             android:text="App" />
+
+        <Button
+            android:id="@+id/activity_main_dialog_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:text="Dialog" />
 
         <View
             android:layout_width="match_parent"

@@ -6,6 +6,7 @@
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable-hdpi/dr_dialog_background.xml" value="0.1" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable-ldpi/dr_rect_outline_white_rounded_2dp.xml" value="0.18645833333333334" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable-ldpi/dr_rect_round_on_surface_10_24dp.xml" value="0.18645833333333334" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable/dr_dialog_background.xml" value="0.12314814814814815" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable/dr_rect_round_on_surface_10_24dp.xml" value="0.18645833333333334" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable/dr_transparent.xml" value="0.165625" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_auth.xml" value="0.1" />
@@ -19,6 +20,7 @@
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_qr_scanner.xml" value="0.1" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/checkin_dialog.xml" value="0.128" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/checkinout_slide.xml" value="0.1" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/checkout_dialog.xml" value="0.10400000000000001" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/frame_progress.xml" value="0.11200000000000002" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/frame_progress_dialog.xml" value="0.14947916666666666" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/home_form_layout.xml" value="0.171875" />

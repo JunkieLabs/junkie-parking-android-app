@@ -14,6 +14,8 @@
         android:orientation="vertical"
         android:focusable="true">
 
+        <include layout="@layout/checkin_dialog"/>
+
         <TextView
             android:id="@+id/activity_main_version"
             android:layout_width="match_parent"

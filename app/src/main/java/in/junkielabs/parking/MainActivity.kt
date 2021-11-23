@@ -5,6 +5,7 @@ import `in`.junkielabs.parking.components.firebase.functions.controller.FbFuncti
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckInDialog
+import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckOutDialog
 import `in`.junkielabs.parking.ui.common.scanner.ActivityQrScanner
 import `in`.junkielabs.parking.ui.components.home.ActivityHome
 import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
@@ -60,7 +61,7 @@ class MainActivity : ActivityBase() {
         }
 
         binding.activityMainDialogBtn.setOnClickListener {
-            dialogCheckin()
+            dialogCheckOut()
         }
 
         binding.activityMainLauncherBtn.setOnClickListener {
@@ -128,6 +129,22 @@ class MainActivity : ActivityBase() {
         alert.show(
             supportFragmentManager,
             CheckInDialog::class.java.simpleName
+        )
+    }
+
+    private fun dialogCheckOut() {
+        val b = Bundle()
+
+        val alert = CheckOutDialog.newInstance(
+            101,
+            b
+        )
+
+        alert.isCancelable = true
+
+        alert.show(
+            supportFragmentManager,
+            CheckOutDialog::class.java.simpleName
         )
     }
 

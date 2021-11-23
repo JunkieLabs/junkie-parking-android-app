@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.RelativeLayout
 import android.graphics.PorterDuffXfermode
+import android.util.Log
 
 /**
  * Created by Niraj on 22-11-2021.
@@ -38,15 +39,21 @@ class TicketView @JvmOverloads constructor(
     private val dashPath = Path()
     private val dashPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
+    private val mCirclePositionsMap = mutableMapOf<Int, Float>()
+
     init {
 
         setLayerType(View.LAYER_TYPE_HARDWARE, null)
 
         val a = context.obtainStyledAttributes(attrs, R.styleable.TicketView)
         try {
-            circleRadius = a.getDimension(R.styleable.TicketView_tv_circleRadius, getDp(DEFAULT_RADIUS).toFloat())
+            circleRadius = a.getDimension(
+                R.styleable.TicketView_tv_circleRadius,
+                getDp(DEFAULT_RADIUS).toFloat()
+            )
             mLayoutAnchorViewId = a.getResourceId(R.styleable.TicketView_tv_anchor, NO_VALUE)
-            circleSpace = a.getDimension(R.styleable.TicketView_tv_circleSpace, getDp(15f).toFloat())
+            circleSpace =
+                a.getDimension(R.styleable.TicketView_tv_circleSpace, getDp(15f).toFloat())
             dashColor = a.getColor(R.styleable.TicketView_tv_dashColor, Color.parseColor("#0085be"))
             dashSize = a.getDimension(R.styleable.TicketView_tv_dashSize, getDp(1.5f).toFloat())
         } finally {
@@ -58,7 +65,8 @@ class TicketView @JvmOverloads constructor(
         dashPaint.color = dashColor
         dashPaint.style = Style.STROKE
         dashPaint.strokeWidth = dashSize
-        dashPaint.pathEffect = DashPathEffect(floatArrayOf(getDp(3f).toFloat(), getDp(3f).toFloat()), 0f)
+        dashPaint.pathEffect =
+            DashPathEffect(floatArrayOf(getDp(3f).toFloat(), getDp(3f).toFloat()), 0f)
     }
 
     fun setRadius(radius: Float) {
@@ -77,6 +85,24 @@ class TicketView @JvmOverloads constructor(
         postInvalidate()
     }
 
+    fun addAnchor(view: View) {
+        val rect = Rect()
+        view.getDrawingRect(rect)
+        offsetDescendantRectToMyCoords(view, rect)
+        mCirclePositionsMap[view.id] = rect.bottom.toFloat()
+
+        Log.i("TicketView", "addAnchor ${rect.bottom.toFloat()}")
+        postInvalidate()
+    }
+
+    fun removeAnchor(view: View) {
+        if (mCirclePositionsMap.containsKey(view.id)) {
+            mCirclePositionsMap.remove(view.id)
+            postInvalidate()
+        }
+
+    }
+
     override fun drawChild(canvas: Canvas?, child: View?, drawingTime: Long): Boolean {
         val drawChild = super.drawChild(canvas, child, drawingTime)
         drawHoles(canvas!!)
@@ -91,7 +117,7 @@ class TicketView @JvmOverloads constructor(
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        if (mLayoutAnchorViewId != null ) {
+        if (mLayoutAnchorViewId != null) {
             val anchorView = findViewById<View>(mLayoutAnchorViewId!!)
             viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
                 override fun onGlobalLayout() {
@@ -138,8 +164,34 @@ class TicketView @JvmOverloads constructor(
         // add holes on the ticketView by erasing them
         with(circlesPath) {
             //anchor1
-            addCircle(-circleRadius / 4, mCirclePosition, circleRadius, Path.Direction.CW) // bottom left hole
-            addCircle(w + circleRadius / 4, mCirclePosition, circleRadius, Path.Direction.CW)// bottom right hole
+            addCircle(
+                -circleRadius / 4,
+                mCirclePosition,
+                circleRadius,
+                Path.Direction.CW
+            ) // bottom left hole
+            addCircle(
+                w + circleRadius / 4,
+                mCirclePosition,
+                circleRadius,
+                Path.Direction.CW
+            )// bottom right hole
+
+            mCirclePositionsMap.values.forEach {
+                addCircle(
+                    -circleRadius / 4,
+                    it,
+                    circleRadius,
+                    Path.Direction.CW
+                ) // bottom left hole
+                addCircle(
+                    w + circleRadius / 4,
+                    it,
+                    circleRadius,
+                    Path.Direction.CW
+                )// bottom right hole
+
+            }
 
 
         }
@@ -149,6 +201,12 @@ class TicketView @JvmOverloads constructor(
             moveTo(circleRadius, mCirclePosition)
             quadTo(w - circleRadius, mCirclePosition, w - circleRadius, mCirclePosition)
 
+            mCirclePositionsMap.values.forEach {
+                moveTo(circleRadius, it)
+                quadTo(w - circleRadius, it, w - circleRadius, it)
+
+
+            }
 
         }
 

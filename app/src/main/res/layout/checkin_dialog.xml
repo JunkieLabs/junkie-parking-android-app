@@ -1,63 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <in.junkielabs.parking.ui.widgets.TicketView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:tv_anchor="@+id/cl_head"
-        app:tv_dashColor="@color/material_on_surface_disabled"
         android:background="@drawable/dr_dialog_background"
-        app:tv_circleRadius="9dp">
+        app:tv_anchor="@+id/cl_head"
+        app:tv_circleRadius="9dp"
+        app:tv_dashColor="@color/material_on_surface_disabled">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_32" />
+
+            <ImageView
+
+                android:id="@+id/checkin_dialog_qr_iv"
+                android:layout_width="@dimen/length_160"
+                android:layout_height="@dimen/length_160"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/offset_8" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_22"
-                android:text="dfdfd"/>
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="@style/Tb.TextAppearance.h4"
+                android:textColor="@color/material_on_surface_emphasis_high_type"
+                tools:text="QWERTYEEQW" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_72"/>
-
+                android:layout_height="@dimen/length_16" />
 
             <View
                 android:id="@+id/cl_head"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_24"/>
+                android:layout_height="@dimen/length_8" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_72"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/length_72"/>
-            <View
-                android:id="@+id/cl_center"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/length_24"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/length_72"/>
+                android:layout_height="@dimen/length_32" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_22"
-                android:text="dfdfd"/>
+                android:layout_gravity="center_horizontal"
+                android:text="Ticket Created"
+                android:textAppearance="@style/Tb.TextAppearance.h2"
+                android:textColor="@color/material_on_surface_emphasis_high_type" />
+
+            <View
+                android:id="@+id/cl_center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/length_28"
+                android:layout_marginEnd="@dimen/offset_28"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vehicle Number"
+                        android:textAppearance="@style/Tb.TextAppearance.h6"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Tb.TextAppearance.h5"
+                        android:textColor="@color/material_on_surface_emphasis_high_type"
+                        tools:text="BL 5c 34 3436" />
 
 
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/length_2"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vehicle Type"
+                        android:textAppearance="@style/Tb.TextAppearance.h6"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Tb.TextAppearance.h5"
+                        android:textColor="@color/material_on_surface_emphasis_high_type"
+                        tools:text="4 wheeler" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_32" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/length_28"
+                android:layout_marginEnd="@dimen/offset_28"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start Time"
+                        android:textAppearance="@style/Tb.TextAppearance.h6"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Tb.TextAppearance.h5"
+                        android:textColor="@color/material_on_surface_emphasis_high_type"
+                        tools:text="12:41 AM" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_72"/>
+                android:layout_height="@dimen/length_32" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_68"
+                android:layout_marginStart="@dimen/offset_32"
+                android:layout_marginEnd="@dimen/offset_32"
+                android:text="Ok"
+                app:iconPadding="@dimen/length_0"
+                app:cornerRadius="@dimen/offset_20"
+                android:id="@+id/checkin_dialog_btn_ok"
+                android:textAppearance="@style/Tb.TextAppearance.Button"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_24" />
         </LinearLayout>
     </in.junkielabs.parking.ui.widgets.TicketView>
 

@@ -4,6 +4,7 @@ import `in`.junkielabs.parking.BuildConfig
 import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.api.internal.MethodRequestCache
 import `in`.junkielabs.parking.components.api.routepoints.ApiPointAuth
+import `in`.junkielabs.parking.components.api.routepoints.ApiPointCheckInOut
 import `in`.junkielabs.parking.components.api.routepoints.ApiPointGuard
 import `in`.junkielabs.parking.components.api.routepoints.ApiPointParkingArea
 import android.app.Application
@@ -128,5 +129,6 @@ object ApiModule {
 
     fun provideApiGuard(): ApiPointGuard = provideRetrofit().create(ApiPointGuard::class.java)
     fun provideApiParkingArea(): ApiPointParkingArea = provideRetrofit().create(ApiPointParkingArea::class.java)
+    fun provideApiCheckInOut(): ApiPointCheckInOut = provideRetrofit().create(ApiPointCheckInOut::class.java)
 
 }

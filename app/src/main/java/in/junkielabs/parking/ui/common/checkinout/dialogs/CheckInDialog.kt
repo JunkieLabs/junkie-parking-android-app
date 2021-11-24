@@ -74,5 +74,8 @@ class CheckInDialog : DialogBase() {
 
     }
 
-
+    interface CheckInDialogListener{
+        fun onCheckInDialogCancel()
+        fun onCheckInDialogOk()
+    }
 }

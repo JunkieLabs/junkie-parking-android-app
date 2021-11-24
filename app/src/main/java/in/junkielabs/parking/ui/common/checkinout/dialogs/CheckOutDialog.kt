@@ -87,5 +87,10 @@ class CheckOutDialog : DialogBase() {
 
     }
 
+    interface CheckOutDialogListener {
+        fun onCheckOutDialogCancel()
+        fun onCheckOutDialogOk()
+    }
+
 
 }

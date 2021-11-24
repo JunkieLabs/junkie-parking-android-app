@@ -221,7 +221,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vehicle Number"
+                        android:text="Duration"
                         android:textAppearance="@style/Tb.TextAppearance.h6"
                         android:textColor="@color/colorPrimary" />
 
@@ -230,7 +230,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/Tb.TextAppearance.h4.medium"
                         android:textColor="?colorOnSurface"
-                        tools:text="BL 5c 34 3436" />
+                        tools:text="2.3 hrs" />
 
 
                 </LinearLayout>
@@ -248,7 +248,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vehicle Type"
+                        android:text="Total"
                         android:textAppearance="@style/Tb.TextAppearance.h6"
                         android:textColor="@color/colorPrimary" />
 
@@ -257,7 +257,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/Tb.TextAppearance.h4.medium"
                         android:textColor="?colorOnSurface"
-                        tools:text="4 wheeler" />
+                        tools:text="₹100" />
 
 
                 </LinearLayout>

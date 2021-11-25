@@ -108,10 +108,8 @@ class HomeViewModel(
     /* ******************************************************************************************
      *                                              api
      */
-    suspend fun apiCheckInOut() {
-        var token = FirebaseToken.getToken()
-
-        if (token == null) return
+    private suspend fun apiCheckInOut() {
+        var token: String? = FirebaseToken.getToken() ?: return
 
 
         var paramRepoCheckInOut = ParamReqCheckInOut(
@@ -122,7 +120,7 @@ class HomeViewModel(
             null,
             null
         )
-        var response = apiRepoCheckInOut.checkInOut(token, paramRepoCheckInOut)
+        var response = apiRepoCheckInOut.checkInOut(token!!, paramRepoCheckInOut)
 
         if (response.status == ApiResponse.Status.SUCCESS) {
             Log.i("AuthViewModel: result", response.data.toString())

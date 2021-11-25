@@ -1,5 +1,6 @@
 package `in`.junkielabs.parking.components.api.base
 
+import `in`.junkielabs.parking.components.api.ApiModule
 import `in`.junkielabs.parking.components.api.models.ErrorResult
 import android.util.Log
 import com.squareup.moshi.Moshi
@@ -12,75 +13,10 @@ import javax.inject.Inject
  */
 abstract class ApiRepositoryBase<out E : ErrorResult>(private val typeE: Class<E>)  {
 
-    @Inject
-    lateinit var mMosi: Moshi
+    var mMosi: Moshi
+    init {
+     mMosi =  ApiModule.provideMoshiAdapter()
 
-
-    @Deprecated("old implementation, will be removed in future")
-    protected suspend fun <T> getResult(call: suspend () -> Response<T>): ApiResponse<T, E> {
-        try {
-            val response = call()
-            if (response.isSuccessful) {
-                val body = response.body()
-                if (body != null) return ApiResponse.success(body)
-            }
-            var message = response.message()
-            var errorRes: E? = null
-            if (response.errorBody() != null) {
-                val adapter = mMosi.adapter<E>(typeE)
-
-                errorRes = adapter.fromJson(response.errorBody()!!.source())
-                if (errorRes != null) {
-                    message = errorRes.message()
-                }
-
-            }
-//            info { "getResult 2, ${message}" }
-            //" ${response.code()} ${message}"
-            return error(message, errorRes)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            if (e is HttpException) {
-
-
-            }
-            return error(e.message ?: e.toString(), null)
-        }
-    }
-
-    @Deprecated("old implementation, will be removed in future")
-    protected suspend fun <T> getResultWithCookie(call: suspend () -> Response<T>): ApiResponse<T, E> {
-        try {
-            val response = call()
-            if (response.isSuccessful) {
-                val body = response.body()
-                val setCookie = response.headers()["Set-Cookie"];
-                if (body != null && setCookie != null) return ApiResponse.successWithCookie(
-                    body,
-                    cookieParam = setCookie
-                )
-            }
-            var message = response.message()
-            var errorRes: E? = null
-            if (response.errorBody() != null) {
-                val adapter = mMosi.adapter<E>(typeE)
-
-                errorRes = adapter.fromJson(response.errorBody()!!.source())
-                if (errorRes != null) {
-                    message = errorRes.message()
-                }
-
-            }
-//            info { "getResult 2, ${message}" }
-            //" ${response.code()} ${message}"
-            return error(message, errorRes)
-        } catch (e: Exception) {
-            if (e is HttpException) {
-
-
-            }
-            return error(e.message ?: e.toString(), null)
-        }
     }
 
 

@@ -1,5 +1,6 @@
 package `in`.junkielabs.parking.components.api.models.checkinout
 
+import `in`.junkielabs.parking.components.api.models.wheeler.ParamWheelerRate
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import com.squareup.moshi.JsonClass
@@ -18,7 +19,7 @@ class ParamCheckInOut(
     var vehicleNumber: String,
     var inTimestamp: Long,
     var outTimestamp: Long?,
-    var wheeler: Int,
+    var wheelerRate: ParamWheelerRate,
     var finalAmount: Double?,
     var status: Int
 ) : Parcelable {

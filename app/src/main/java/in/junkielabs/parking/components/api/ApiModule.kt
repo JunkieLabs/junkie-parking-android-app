@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit
  */
 object ApiModule {
     private var retrofit: Retrofit? = null
+    private var moshi: Moshi? = null
 
     init {
         /*  retrofit = provideRetrofit(
@@ -102,8 +103,13 @@ object ApiModule {
     }
 
 
-    fun provideMoshiAdapter(): Moshi = Moshi.Builder().build()
+    fun provideMoshiAdapter(): Moshi {
+        if(moshi==null) {
+            moshi = Moshi.Builder().build()
+        }
+        return moshi!!;
 
+    }
 
     fun provideRetrofit(): Retrofit {
         var baseUrl = provideBaseUrl()

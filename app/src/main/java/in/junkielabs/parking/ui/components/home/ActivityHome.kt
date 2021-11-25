@@ -148,11 +148,14 @@ class ActivityHome : ActivityBase() {
             vBinding.homeInputLayoutPhone.prefixText = dialCode
         }
         vBinding.checkinoutSlide.checkinoutSlideButton.setOnClickListener {
-//            info { "clciked" }
+            Log.d("ActivityHome", "checkinoutSlide clciked")
             var currentState = vBinding.checkinoutSlide.checkinoutSlideMotionLayout.currentState
             if (currentState == vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState) {
                 vBinding.checkinoutSlide.checkinoutSlideMotionLayout.transitionToEnd {
-                    revealProgress();
+
+                    if (vBinding.checkinoutSlide.checkinoutSlideMotionLayout.currentState == vBinding.checkinoutSlide.checkinoutSlideMotionLayout.endState) {
+                        revealProgress();
+                    }
                 }
 
             } else {
@@ -166,7 +169,6 @@ class ActivityHome : ActivityBase() {
 
 
     }
-
 
 
     protected fun attachKeyboardListeners() {
@@ -249,45 +251,6 @@ class ActivityHome : ActivityBase() {
 
     }
 
-    private fun hideSubmitBtn() {
-
-
-        if (vBinding.checkinoutSlide.root.visibility == View.VISIBLE) {
-            vBinding.checkinoutSlide.root.animate().setListener(object : AnimatorListenerAdapter() {
-
-                override fun onAnimationEnd(animation: Animator?) {
-                    super.onAnimationEnd(animation)
-                    vBinding.checkinoutSlide.root.visibility = View.GONE
-                }
-            }).alpha(0F).start()
-        }
-
-
-    }
-
-
-    private fun showSubmitBtn() {
-        if (vBinding.checkinoutSlide.root.visibility == View.GONE) {
-            vBinding.checkinoutSlide.root.alpha = 0.0f
-            vBinding.checkinoutSlide.root.visibility = View.VISIBLE
-            vBinding.checkinoutSlide.root.animate().setListener(object : AnimatorListenerAdapter() {
-
-
-                override fun onAnimationCancel(animation: Animator?) {
-                    super.onAnimationCancel(animation)
-
-                    vBinding.checkinoutSlide.root.alpha = 0.0f
-                    vBinding.checkinoutSlide.root.visibility = View.GONE
-                }
-            }).alpha(1F).start()
-            var currentState = vBinding.checkinoutSlide.checkinoutSlideMotionLayout.currentState
-            if (currentState != vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState) {
-                vBinding.checkinoutSlide.checkinoutSlideMotionLayout.jumpToState(vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState)
-            }
-        }
-
-
-    }
 
     private fun setRoundedCorner() {
         val bottomBarBackground = vBinding.bottomAppBar.background as MaterialShapeDrawable
@@ -368,20 +331,68 @@ class ActivityHome : ActivityBase() {
 
     }
 
+    /* ****************************************************************************
+     *                                Button
+     */
+
+    private fun hideSubmitBtn() {
+
+        Log.d("ActivityHome: ", "hideSubmitBtn: ")
+        if (vBinding.checkinoutSlide.root.visibility == View.VISIBLE) {
+            vBinding.checkinoutSlide.root.animate().setListener(object : AnimatorListenerAdapter() {
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    vBinding.checkinoutSlide.root.visibility = View.GONE
+                }
+            }).alpha(0F).start()
+        }
+
+
+    }
+
+
+    private fun showSubmitBtn() {
+
+        Log.d("ActivityHome: ", "showSubmitBtn: ")
+        if (vBinding.checkinoutSlide.root.visibility == View.GONE) {
+            vBinding.checkinoutSlide.root.alpha = 0.0f
+            vBinding.checkinoutSlide.root.visibility = View.VISIBLE
+            vBinding.checkinoutSlide.root.animate().setListener(object : AnimatorListenerAdapter() {
+
+
+                override fun onAnimationCancel(animation: Animator?) {
+                    super.onAnimationCancel(animation)
+
+                    vBinding.checkinoutSlide.root.alpha = 0.0f
+                    vBinding.checkinoutSlide.root.visibility = View.GONE
+                }
+            }).alpha(1F).start()
+            var currentState = vBinding.checkinoutSlide.checkinoutSlideMotionLayout.currentState
+            if (currentState != vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState) {
+                vBinding.checkinoutSlide.checkinoutSlideMotionLayout.jumpToState(vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState)
+            }
+        }
+
+
+    }
+
     /* *******************************************************************************
      *                                  progress
      */
 
-    private fun hideProgress(){
+    private fun hideProgress() {
         vBinding.frameProgress.root.visibility = View.GONE
 
     }
 
-    private fun showProgress(){
+    private fun showProgress() {
         vBinding.frameProgress.root.visibility = View.VISIBLE
     }
 
     private fun revealProgress() {
+
+        Log.e("ActivityHome", "revealProgress")
         var x =
             vBinding.checkinoutSlide.root.x.toInt() + vBinding.checkinoutSlide.root.width.toInt() - vBinding.checkinoutSlide.checkinoutSlideButton.width / 2
         var y =
@@ -395,20 +406,14 @@ class ActivityHome : ActivityBase() {
             object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     super.onAnimationEnd(animation)
-                    // TODO  mViewModel.onSubmit()
+                    mViewModel.onSubmit()
                 }
 
 
             })
-        vBinding.checkinoutSlide.root.animate().setListener(object : AnimatorListenerAdapter() {
 
-            override fun onAnimationEnd(animation: Animator?) {
-                super.onAnimationEnd(animation)
-
-            }
-        }).alpha(0F).start()
+        hideSubmitBtn()
     }
-
 
 
     /* *******************************************************************************
@@ -416,12 +421,13 @@ class ActivityHome : ActivityBase() {
      */
 
     private fun dialogCheckInOut(checkInOut: ParamCheckInOut) {
-        if(checkInOut.outTimestamp!=null){
+        if (checkInOut.outTimestamp != null) {
             dialogCheckOut(checkInOut)
-        }else{
+        } else {
             dialogCheckIn(checkInOut)
         }
     }
+
     private fun dialogCheckIn(checkInOut: ParamCheckInOut) {
         val b = Bundle()
         b.putParcelable(CheckOutDialog.B_ARG_CHECKINOUT, checkInOut)

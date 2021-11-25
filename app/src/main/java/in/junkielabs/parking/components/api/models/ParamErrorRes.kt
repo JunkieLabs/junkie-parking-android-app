@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
  */
 // https://itnext.io/android-architecture-hilt-mvvm-kotlin-coroutines-live-data-room-and-retrofit-ft-8b746cab4a06
 @JsonClass(generateAdapter = true)
-data class ParamErrorRes(var code: Int?, var message: String="", var errors: List<String> = listOf()):
+data class ParamErrorRes(var code: Int?, var message: String=""):
     ErrorResult {
     override fun message(): String {
         return  message

@@ -2,6 +2,7 @@ package `in`.junkielabs.parking.ui.components.home.viewmodel
 
 import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.api.repository.ApiRepoAuth
+import `in`.junkielabs.parking.components.api.repository.ApiRepoCheckInOut
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,9 +16,10 @@ class HomeViewModelFactory(var application: ApplicationMy) :
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return modelClass.getConstructor(
             Application::class.java,
-            ApiRepoAuth::class.java
+            ApiRepoAuth::class.java,
+            ApiRepoCheckInOut::class.java
         )
-            .newInstance(application, ApiRepoAuth())
+            .newInstance(application, ApiRepoAuth(), ApiRepoCheckInOut())
     }
 
 

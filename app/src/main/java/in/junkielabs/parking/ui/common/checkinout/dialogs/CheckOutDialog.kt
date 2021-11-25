@@ -1,5 +1,6 @@
 package `in`.junkielabs.parking.ui.common.checkinout.dialogs
 
+import `in`.junkielabs.parking.components.api.models.checkinout.ParamCheckInOut
 import `in`.junkielabs.parking.databinding.CheckinDialogBinding
 import `in`.junkielabs.parking.databinding.CheckoutDialogBinding
 import `in`.junkielabs.parking.tools.qrcode.QrCodeEncoder
@@ -20,6 +21,10 @@ class CheckOutDialog : DialogBase() {
 
 
     companion object {
+
+        val B_ARG_CHECKINOUT: String =
+            CheckOutDialog::class.java.simpleName + ".arg_checkinout"
+
         @JvmStatic
         fun newInstance(key: Int, b: Bundle?): CheckOutDialog {
             var bf: Bundle = b ?: Bundle()
@@ -31,11 +36,13 @@ class CheckOutDialog : DialogBase() {
 
     }
 
+    private var mCheckInOut: ParamCheckInOut? = null
     private var vBinding: CheckoutDialogBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        mCheckInOut = arguments?.getParcelable<ParamCheckInOut>(B_ARG_CHECKINOUT)
 
 
     }

@@ -12,7 +12,7 @@ import `in`.junkielabs.parking.components.api.routepoints.ApiPointCheckInOut
 class ApiRepoCheckInOut : ApiRepositoryBase<ParamErrorRes>(ParamErrorRes::class.java) {
     private var apiPointCheckInOut: ApiPointCheckInOut = ApiModule.provideApiCheckInOut()
 
-    suspend fun getById(accessToken: String, reqCheckInOut: ParamReqCheckInOut) =
+    suspend fun checkInOut(accessToken: String, reqCheckInOut: ParamReqCheckInOut) =
         request {
             apiPointCheckInOut.checkInOut(accessToken, reqCheckInOut)
         }

@@ -2,18 +2,21 @@ package `in`.junkielabs.parking.ui.components.home
 
 import `in`.junkielabs.parking.R
 import `in`.junkielabs.parking.application.ApplicationMy
+import `in`.junkielabs.parking.components.api.models.checkinout.ParamCheckInOut
 import `in`.junkielabs.parking.components.parking.ParkingConstants
 import `in`.junkielabs.parking.databinding.ActivityHomeBinding
+import `in`.junkielabs.parking.tools.livedata.LiveDataObserver
 import `in`.junkielabs.parking.ui.base.ActivityBase
+import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckInDialog
+import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckOutDialog
 import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModel
 import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModelFactory
-import `in`.junkielabs.parking.ui.components.onboard.viewmodel.OnboardViewModel
-import `in`.junkielabs.parking.ui.components.onboard.viewmodel.OnboardViewModelFactory
 import `in`.junkielabs.parking.utils.UtilAnimation
 import `in`.junkielabs.parking.utils.UtilRegex
 import `in`.junkielabs.parking.utils.UtilTheme
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -33,11 +36,12 @@ import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
 import dagger.hilt.android.AndroidEntryPoint
-import org.jetbrains.anko.info
 import java.util.*
 
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import com.google.android.material.internal.TextWatcherAdapter
+import com.google.android.material.snackbar.Snackbar
 
 
 @AndroidEntryPoint
@@ -105,7 +109,7 @@ class ActivityHome : ActivityBase() {
     }
 
     override fun getStatusBarColor(): Int {
-        info { "getStatusBarColor 1" }
+//        info { "getStatusBarColor 1" }
         return ContextCompat.getColor(this, R.color.colorAccent)
     }
 
@@ -144,7 +148,7 @@ class ActivityHome : ActivityBase() {
             vBinding.homeInputLayoutPhone.prefixText = dialCode
         }
         vBinding.checkinoutSlide.checkinoutSlideButton.setOnClickListener {
-            info { "clciked" }
+//            info { "clciked" }
             var currentState = vBinding.checkinoutSlide.checkinoutSlideMotionLayout.currentState
             if (currentState == vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState) {
                 vBinding.checkinoutSlide.checkinoutSlideMotionLayout.transitionToEnd {
@@ -163,23 +167,7 @@ class ActivityHome : ActivityBase() {
 
     }
 
-    private fun revealProgress() {
-        var x =
-            vBinding.checkinoutSlide.root.x.toInt() + vBinding.checkinoutSlide.root.width.toInt() - vBinding.checkinoutSlide.checkinoutSlideButton.width / 2
-        var y =
-            vBinding.checkinoutSlide.root.y.toInt() + vBinding.checkinoutSlide.checkinoutSlideButton.height / 2
-        UtilAnimation.revealView(
-            vBinding.frameProgress.frameProgress,
-            x,
-            y,
-            vBinding.coordinatorLayout.height,
-            vBinding.coordinatorLayout.width,
-            object : AnimatorListenerAdapter() {
 
-
-            })
-        vBinding.checkinoutSlide.root.animate().alpha(0F).start()
-    }
 
     protected fun attachKeyboardListeners() {
         if (mKeyboardListenersAttached) {
@@ -192,6 +180,32 @@ class ActivityHome : ActivityBase() {
 
     private fun setupViewModel() {
         mViewModel.initData()
+
+        mViewModel.bFormIsValid.observe(this, {
+
+            Log.d("ActivityHome", "bFormIsValid: $it")
+            if (it) {
+                showSubmitBtn()
+            } else {
+                hideSubmitBtn()
+            }
+        })
+
+        mViewModel.mEventErrorMessage.observe(this, LiveDataObserver { t ->
+            Snackbar.make(
+                vBinding.coordinatorLayout, t,
+                Snackbar.LENGTH_LONG
+            ).show()
+            showSubmitBtn()
+            hideProgress()
+        })
+
+        mViewModel.mEventCheckInOut.observe(this, LiveDataObserver { t ->
+//            show
+            showSubmitBtn()
+            hideProgress()
+            dialogCheckInOut(t)
+        })
 
         mViewModel.bParkingArea.observe(this, {
             vBinding.activityHomeAreaName.text =
@@ -231,6 +245,46 @@ class ActivityHome : ActivityBase() {
                 vBinding.wheelerItemCar.wheelerCarText.isChecked = false
             }
         })
+
+
+    }
+
+    private fun hideSubmitBtn() {
+
+
+        if (vBinding.checkinoutSlide.root.visibility == View.VISIBLE) {
+            vBinding.checkinoutSlide.root.animate().setListener(object : AnimatorListenerAdapter() {
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    vBinding.checkinoutSlide.root.visibility = View.GONE
+                }
+            }).alpha(0F).start()
+        }
+
+
+    }
+
+
+    private fun showSubmitBtn() {
+        if (vBinding.checkinoutSlide.root.visibility == View.GONE) {
+            vBinding.checkinoutSlide.root.alpha = 0.0f
+            vBinding.checkinoutSlide.root.visibility = View.VISIBLE
+            vBinding.checkinoutSlide.root.animate().setListener(object : AnimatorListenerAdapter() {
+
+
+                override fun onAnimationCancel(animation: Animator?) {
+                    super.onAnimationCancel(animation)
+
+                    vBinding.checkinoutSlide.root.alpha = 0.0f
+                    vBinding.checkinoutSlide.root.visibility = View.GONE
+                }
+            }).alpha(1F).start()
+            var currentState = vBinding.checkinoutSlide.checkinoutSlideMotionLayout.currentState
+            if (currentState != vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState) {
+                vBinding.checkinoutSlide.checkinoutSlideMotionLayout.jumpToState(vBinding.checkinoutSlide.checkinoutSlideMotionLayout.startState)
+            }
+        }
 
 
     }
@@ -290,11 +344,21 @@ class ActivityHome : ActivityBase() {
                         vBinding.homeInputVehicleNumber.setSelection(resultText.length)
 
                     }
+
 //                vBinding.homeInputVehicleNumber.setText(resultText)
 
                 }
-
+                mViewModel.formVehicleNumber(resultText)
                 vBinding.homeInputVehicleNumber.addTextChangedListener(this)
+            }
+
+        })
+
+        vBinding.homeInputPhone.addTextChangedListener(object : TextWatcherAdapter() {
+            @SuppressLint("RestrictedApi")
+            override fun afterTextChanged(s: Editable) {
+                super.afterTextChanged(s)
+                mViewModel.formPhoneNumber(s.toString())
             }
 
         })
@@ -304,5 +368,92 @@ class ActivityHome : ActivityBase() {
 
     }
 
+    /* *******************************************************************************
+     *                                  progress
+     */
+
+    private fun hideProgress(){
+        vBinding.frameProgress.root.visibility = View.GONE
+
+    }
+
+    private fun showProgress(){
+        vBinding.frameProgress.root.visibility = View.VISIBLE
+    }
+
+    private fun revealProgress() {
+        var x =
+            vBinding.checkinoutSlide.root.x.toInt() + vBinding.checkinoutSlide.root.width.toInt() - vBinding.checkinoutSlide.checkinoutSlideButton.width / 2
+        var y =
+            vBinding.checkinoutSlide.root.y.toInt() + vBinding.checkinoutSlide.checkinoutSlideButton.height / 2
+        UtilAnimation.revealView(
+            vBinding.frameProgress.frameProgress,
+            x,
+            y,
+            vBinding.coordinatorLayout.height,
+            vBinding.coordinatorLayout.width,
+            object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    // TODO  mViewModel.onSubmit()
+                }
+
+
+            })
+        vBinding.checkinoutSlide.root.animate().setListener(object : AnimatorListenerAdapter() {
+
+            override fun onAnimationEnd(animation: Animator?) {
+                super.onAnimationEnd(animation)
+
+            }
+        }).alpha(0F).start()
+    }
+
+
+
+    /* *******************************************************************************
+     *                                   dialog
+     */
+
+    private fun dialogCheckInOut(checkInOut: ParamCheckInOut) {
+        if(checkInOut.outTimestamp!=null){
+            dialogCheckOut(checkInOut)
+        }else{
+            dialogCheckIn(checkInOut)
+        }
+    }
+    private fun dialogCheckIn(checkInOut: ParamCheckInOut) {
+        val b = Bundle()
+        b.putParcelable(CheckOutDialog.B_ARG_CHECKINOUT, checkInOut)
+
+        val alert = CheckInDialog.newInstance(
+            101,
+            b
+        )
+
+        alert.isCancelable = true
+
+        alert.show(
+            supportFragmentManager,
+            CheckOutDialog::class.java.simpleName
+        )
+    }
+
+    private fun dialogCheckOut(checkInOut: ParamCheckInOut) {
+        val b = Bundle()
+        b.putParcelable(CheckOutDialog.B_ARG_CHECKINOUT, checkInOut)
+
+        val alert = CheckOutDialog.newInstance(
+            101,
+            b
+        )
+
+        alert.isCancelable = true
+
+        alert.show(
+            supportFragmentManager,
+            CheckOutDialog::class.java.simpleName
+        )
+    }
 
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/offset_24"
+    android:layout_marginEnd="@dimen/offset_24"
+    android:layout_gravity="center"
+    android:background="@drawable/dr_rect_round_on_surface_medium_32dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/offset_20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/material_surface_84"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Tb.TextAppearance.h5"
+            android:layout_marginStart="@dimen/offset_20"
+            android:layout_marginEnd="@dimen/offset_20"
+            android:layout_marginBottom="@dimen/offset_20"
+            android:text="Some issue found" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/qr_scanner_error_btn"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/length_56"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/offset_32"
+            android:layout_marginEnd="@dimen/offset_32"
+            android:text="Retry"
+            app:backgroundTint="#DA3337"
+            android:textAppearance="@style/Tb.TextAppearance.Button"
+            app:cornerRadius="@dimen/offset_16"
+            app:iconPadding="@dimen/length_0" />
+
+
+    </LinearLayout>
+</FrameLayout>

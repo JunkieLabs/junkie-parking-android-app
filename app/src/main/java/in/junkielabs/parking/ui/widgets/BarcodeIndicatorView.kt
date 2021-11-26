@@ -25,9 +25,7 @@ import android.graphics.RectF
 import android.graphics.PorterDuff
 
 import android.graphics.PorterDuffXfermode
-
-
-
+import java.util.concurrent.atomic.AtomicBoolean
 
 
 /**
@@ -51,6 +49,9 @@ class BarcodeIndicatorView @JvmOverloads constructor(
     private var mFrameSize = 0.75f
 
 
+    private var mIsPaused  = AtomicBoolean(false)
+
+
     init {
         mMaskPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mMaskPaint?.style = Paint.Style.FILL
@@ -67,6 +68,7 @@ class BarcodeIndicatorView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         val frame = mFrameRect ?: return
+
         val widthF = width
         val heightF = height
         val top: Float = frame.top.toFloat()
@@ -281,16 +283,21 @@ class BarcodeIndicatorView @JvmOverloads constructor(
 
 
         var offset = 4;
-        if(mAnimDirectionDown && (mAnimLength + offset + top) > bottom ){
-            mAnimDirectionDown = false
-        }else if((mAnimLength - offset) < 0 ){
-            mAnimDirectionDown = true
-        }
 
-        if(mAnimDirectionDown){
-            mAnimLength += offset;
-        }else{
-            mAnimLength -= offset;
+        if(!mIsPaused.get()){
+            if(mAnimDirectionDown && (mAnimLength + offset + top) > bottom ){
+                mAnimDirectionDown = false
+            }else if((mAnimLength - offset) < 0 ){
+                mAnimDirectionDown = true
+            }
+
+            if(mAnimDirectionDown){
+                mAnimLength += offset;
+            }else{
+                mAnimLength -= offset;
+            }
+
+
         }
 
 
@@ -358,6 +365,15 @@ class BarcodeIndicatorView @JvmOverloads constructor(
             val frameTop = (height - frameHeight) / 2
             mFrameRect = Rect(frameLeft, frameTop, frameLeft + frameWidth, frameTop + frameHeight)
         }
+    }
+
+    fun pause(){
+        mIsPaused.compareAndSet(false, true)
+    }
+
+    fun resume(){
+        mIsPaused.compareAndSet(true, false)
+
     }
 
 

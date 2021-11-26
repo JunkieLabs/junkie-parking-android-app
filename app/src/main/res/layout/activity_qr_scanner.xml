@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/motion_layout"
-    tools:context=".ui.common.scanner.ActivityQrScanner"
-    app:layoutDescription="@xml/activity_qr_scanner_scene"
-    app:motionDebug="SHOW_ALL"
-    tools:showPaths="true">
-
+    android:background="@color/colorAccent">
 
 
 
@@ -19,25 +15,64 @@
         android:layout_height="match_parent" />
 
 
-
-    <in.junkielabs.parking.ui.widgets.BarcodeIndicatorView
-        android:id="@+id/activity_qr_scanner_indicator"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        android:layout_height="match_parent" />
+        <View
+            android:background="#77000000"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/length_96"/>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <in.junkielabs.parking.ui.widgets.BarcodeIndicatorView
+                android:id="@+id/activity_qr_scanner_indicator"
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+        <FrameLayout
+            android:background="#77000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/length_168">
+            <include layout="@layout/qr_scanner_error"/>
+            <include layout="@layout/qr_scanner_vehicle"/>
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_shop_detail_app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
+        android:layout_height="wrap_content"
+
         android:background="@color/transparent"
-        app:layout_collapseMode="pin"
+        app:elevation="@dimen/offset_0">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextAppearance="@style/Tb.TextAppearance.h4"
-        app:titleTextColor="@color/white" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/transparent"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextAppearance="@style/Tb.TextAppearance.h4"
+            app:titleTextColor="@color/white" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+
+
+</FrameLayout>

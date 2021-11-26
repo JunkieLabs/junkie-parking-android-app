@@ -111,6 +111,7 @@ class ActivityQrScanner : ActivityBase() {
 //                    qrCode = _qrCode
                     mImageAnalyzer?.shouldAnalyse(false)
                     info { "QrCodeImageAnalyzer $text" }
+                    vBinding.activityQrScannerIndicator.pause()
 //                    toast(text)
 //                    qrCodeFoundButton.setVisibility(View.VISIBLE)
                 }
@@ -152,7 +153,7 @@ class ActivityQrScanner : ActivityBase() {
 
         val snackbarPermission =
             SnackbarOnAnyDeniedMultiplePermissionsListener.Builder.with(
-                vBinding.motionLayout,
+                vBinding.frameContent,
                 "All those permissions are needed for this section"
             )
                 .withOpenSettingsButton("Settings")
@@ -166,7 +167,7 @@ class ActivityQrScanner : ActivityBase() {
                 if (p0 != null) {
                     if (p0.areAllPermissionsGranted()) {
                         info { "areAllPermissionsGranted" }
-                        Snackbar.make(vBinding.motionLayout, "Permission Granted !!", 4000).show()
+                        Snackbar.make(vBinding.frameContent, "Permission Granted !!", 4000).show()
                         startCamera()
                     }
                     for (response in p0.grantedPermissionResponses) {
@@ -215,7 +216,7 @@ class ActivityQrScanner : ActivityBase() {
                 CompositeMultiplePermissionsListener(appPermissionsListener, snackbarPermission)
             )
             .withErrorListener {
-                Snackbar.make(vBinding.motionLayout, it.toString(), 4000).show()
+                Snackbar.make(vBinding.frameContent, it.toString(), 4000).show()
             }
             .check();
     }

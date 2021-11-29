@@ -2,9 +2,11 @@ package `in`.junkielabs.parking.ui.common.checkinout.dialogs
 
 import `in`.junkielabs.parking.R
 import `in`.junkielabs.parking.components.api.models.checkinout.ParamCheckInOut
+import `in`.junkielabs.parking.components.parking.ParkingConstants
 import `in`.junkielabs.parking.databinding.CheckinDialogBinding
 import `in`.junkielabs.parking.tools.qrcode.QrCodeEncoder
 import `in`.junkielabs.parking.ui.base.DialogBase
+import `in`.junkielabs.parking.utils.UtilDate
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -57,6 +59,21 @@ class CheckInDialog : DialogBase() {
         super.onViewCreated(view, savedInstanceState)
 
         //BarcodeEncoder
+        if(mCheckInOut!=null){
+            vBinding?.checkinDialogQrTv?.text = mCheckInOut!!.qrCode
+            vBinding?.checkinDialogTextVehicleNumber?.text = mCheckInOut!!.vehicleNumber
+            vBinding?.checkinDialogTextVehicleType?.text = ParkingConstants.Wheeler.getWheelerType(mCheckInOut!!.wheelerRate.type)
+            vBinding?.checkinDialogTextStartTime?.text =  UtilDate.getFormattedDateTime(mCheckInOut!!.inTimestamp,
+                UtilDate.FORMAT_DATE_READABLE2, requireContext())
+
+            // mCheckInOut!!.inTimestamp
+            showQrCode(mCheckInOut!!.qrCode)
+        }
+
+        vBinding?.checkinDialogBtnOk?.setOnClickListener {
+            dismiss()
+        }
+
 
     }
 

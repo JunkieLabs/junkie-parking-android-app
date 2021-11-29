@@ -1,10 +1,12 @@
 package `in`.junkielabs.parking.ui.common.checkinout.dialogs
 
 import `in`.junkielabs.parking.components.api.models.checkinout.ParamCheckInOut
+import `in`.junkielabs.parking.components.parking.ParkingConstants
 import `in`.junkielabs.parking.databinding.CheckinDialogBinding
 import `in`.junkielabs.parking.databinding.CheckoutDialogBinding
 import `in`.junkielabs.parking.tools.qrcode.QrCodeEncoder
 import `in`.junkielabs.parking.ui.base.DialogBase
+import `in`.junkielabs.parking.utils.UtilDate
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -47,11 +49,13 @@ class CheckOutDialog : DialogBase() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         dialog?.getWindow()?.setBackgroundDrawable(ColorDrawable(0));
         vBinding = CheckoutDialogBinding.inflate(inflater, container, false)
-        return  vBinding!!.root
+        return vBinding!!.root
 //        return inflateView(inflater, container, R.layout.checkin_dialog)
     }
 
@@ -60,7 +64,7 @@ class CheckOutDialog : DialogBase() {
         showQrCode("Dsdsd");
 
         vBinding?.checkoutDialogAnchor2?.viewTreeObserver?.addOnGlobalLayoutListener(object :
-            ViewTreeObserver.OnGlobalLayoutListener{
+            ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 getView()?.viewTreeObserver?.removeOnGlobalLayoutListener(this)
                 vBinding?.checkoutDialogTicketview?.addAnchor(vBinding!!.checkoutDialogAnchor2)
@@ -69,10 +73,41 @@ class CheckOutDialog : DialogBase() {
 
         })
 
+        if (mCheckInOut != null) {
+            vBinding?.checkoutDialogQrTv?.text = mCheckInOut!!.qrCode
+            vBinding?.checkoutDialogTextVehicleNumber?.text = mCheckInOut!!.vehicleNumber
+
+            vBinding?.checkoutDialogTextVehicleType?.text =
+                ParkingConstants.Wheeler.getWheelerType(mCheckInOut!!.wheelerRate.type)
+
+            vBinding?.checkoutDialogTextStartTime?.text = UtilDate.getFormattedDateTime(
+                mCheckInOut!!.inTimestamp,
+                UtilDate.FORMAT_DATE_READABLE2, requireContext()
+            )
+            mCheckInOut!!.outTimestamp?.let {
+                vBinding?.checkoutDialogTextEndTime?.text = UtilDate.getFormattedDateTime(
+                    it,
+                    UtilDate.FORMAT_DATE_READABLE2, requireContext()
+                )
+
+                vBinding?.checkoutDialogTextDuration?.text = UtilDate.getHourFromTimeStamp(
+                    it - mCheckInOut!!.inTimestamp
+                )
+
+
+            }
+            vBinding?.checkoutDialogTextFinalAmount?.text = "₹${mCheckInOut!!.finalAmount}"
+
+            // mCheckInOut!!.inTimestamp
+            showQrCode(mCheckInOut!!.qrCode)
+        }
+
+        vBinding?.checkoutDialogBtnOk?.setOnClickListener {
+            dismiss()
+        }
         //BarcodeEncoder
 
     }
-
 
 
     override fun onDestroy() {
@@ -82,11 +117,11 @@ class CheckOutDialog : DialogBase() {
 
     }
 
-    private fun showQrCode(barcode: String){
+    private fun showQrCode(barcode: String) {
         try {
             val barcodeEncoder = QrCodeEncoder()
             val bitmap = barcodeEncoder.encodeBitmap(barcode, BarcodeFormat.QR_CODE, 400, 400)
-            val imageViewQrCode = vBinding?.checkinDialogQrIv
+            val imageViewQrCode = vBinding?.checkoutDialogQrIv
             imageViewQrCode?.setImageBitmap(bitmap)
         } catch (e: Exception) {
 

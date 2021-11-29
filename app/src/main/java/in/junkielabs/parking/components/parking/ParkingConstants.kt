@@ -10,6 +10,12 @@ class ParkingConstants {
         var TYPE_BIKE =  0x1
         var TYPE_CAR =  0x2
 
+        fun getWheelerType(type: Int): String {
+            if(type == TYPE_BIKE)return "2 Wheeler";
+            else if(type == TYPE_CAR)return "4 Wheeler";
+            else return  ""
+        }
+
     }
 
     object Vehicle {

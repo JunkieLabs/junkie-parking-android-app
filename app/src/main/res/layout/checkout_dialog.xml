@@ -22,19 +22,20 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_24" />
+                android:layout_height="@dimen/length_20" />
 
             <ImageView
 
-                android:id="@+id/checkin_dialog_qr_iv"
+                android:id="@+id/checkout_dialog_qr_iv"
                 android:layout_width="@dimen/length_96"
                 android:layout_height="@dimen/length_96"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="@dimen/offset_8"
                 android:layout_marginEnd="@dimen/offset_8"
-                android:layout_marginBottom="@dimen/offset_8" />
+                android:layout_marginBottom="@dimen/offset_4" />
 
             <TextView
+                android:id="@+id/checkout_dialog_qr_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -50,7 +51,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_32" />
+                android:layout_height="@dimen/length_24" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,7 +64,7 @@
             <View
                 android:id="@+id/cl_center"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_24" />
+                android:layout_height="@dimen/length_20" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,11 +91,13 @@
                             android:textColor="@color/colorPrimary" />
 
                         <TextView
+                            android:id="@+id/checkout_dialog_text_vehicle_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/Tb.TextAppearance.h5"
                             android:textColor="@color/material_on_surface_emphasis_high_type"
-                            tools:text="BL 5c 34 3436" />
+                            tools:text="BL 5c 34 3436"
+                            />
 
 
                     </LinearLayout>
@@ -116,6 +119,7 @@
                             android:textColor="@color/colorPrimary" />
 
                         <TextView
+                            android:id="@+id/checkout_dialog_text_start_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/Tb.TextAppearance.h5"
@@ -153,6 +157,7 @@
                             android:textColor="@color/colorPrimary" />
 
                         <TextView
+                            android:id="@+id/checkout_dialog_text_vehicle_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/Tb.TextAppearance.h5"
@@ -179,6 +184,7 @@
                             android:textColor="@color/colorPrimary" />
 
                         <TextView
+                            android:id="@+id/checkout_dialog_text_end_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/Tb.TextAppearance.h5"
@@ -226,6 +232,7 @@
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
+                        android:id="@+id/checkout_dialog_text_duration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/Tb.TextAppearance.h4.medium"
@@ -253,6 +260,7 @@
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
+                        android:id="@+id/checkout_dialog_text_final_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/Tb.TextAppearance.h4.medium"
@@ -269,7 +277,7 @@
                 android:layout_height="@dimen/length_20" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/checkin_dialog_btn_ok"
+                android:id="@+id/checkout_dialog_btn_ok"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/length_68"

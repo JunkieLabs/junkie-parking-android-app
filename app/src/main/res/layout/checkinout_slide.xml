@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 
-        android:background="@drawable/dr_rect_round_on_surface_10_24dp">
+        android:background="@drawable/dr_rect_white_10_24dp">
 
     </FrameLayout>
 

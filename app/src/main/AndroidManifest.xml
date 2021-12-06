@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JunkieParking">
         <activity
+            android:name=".ui.components.report.ActivityReport"
+            android:exported="false" />
+        <activity
             android:name=".ui.labs.slidebutton.LabsActivitySlide"
             android:exported="true" />
         <activity android:name=".ui.common.scanner.ActivityQrScanner" />
@@ -33,15 +36,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.components.auth.ActivityAuth"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
-
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
-            android:exported="false"
             android:name=".ui.components.auth.google.ActivityAuthGoogle"
+            android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog"
             android:windowSoftInputMode="stateVisible|adjustResize" />
     </application>

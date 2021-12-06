@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/offset_24"
+    android:layout_marginEnd="@dimen/offset_24"
+    android:orientation="vertical">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/length_48" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today's"
+        android:textAppearance="@style/Tb.TextAppearance.h3.bold"
+        android:textColor="@color/material_on_surface_emphasis_high_type" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Collection"
+        android:textAppearance="@style/Tb.TextAppearance.h4"
+        android:textColor="@color/material_on_surface_disabled" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/length_24" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:foreground="?selectableItemBackground"
+        android:stateListAnimator="@animator/wheeler_elevation"
+        app:cardBackgroundColor="@color/colorPrimaryLight"
+        app:cardCornerRadius="@dimen/offset_32"
+        app:checkedIcon="@null">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/offset_28"
+            android:paddingTop="@dimen/offset_20"
+            android:paddingEnd="@dimen/offset_28"
+            android:paddingBottom="@dimen/offset_20">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vehicles"
+                        android:textAppearance="@style/Tb.TextAppearance.h6"
+                        android:textColor="@color/md_black_1000_50" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Tb.TextAppearance.h4"
+                        android:textColor="@color/md_black_1000"
+                        tools:text="120" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total"
+                        android:textAppearance="@style/Tb.TextAppearance.h6"
+                        android:textColor="@color/md_black_1000_50" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Tb.TextAppearance.h3"
+                        android:textColor="@color/md_black_1000"
+                        tools:text="₹1200" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/offset_8"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start time"
+                        android:textAppearance="@style/Tb.TextAppearance.h6"
+                        android:textColor="@color/md_black_1000_50" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Tb.TextAppearance.h4"
+                        android:textColor="@color/md_black_1000"
+                        tools:text="11:20" />
+                </LinearLayout>
+
+               <FrameLayout
+                   android:layout_marginEnd="@dimen/offset_20"
+                   android:layout_width="@dimen/length_40"
+                   android:layout_height="@dimen/length_40"
+                   android:layout_gravity="end|bottom">
+                   <ImageView
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:src="@drawable/ic_report_rupee"/>
+               </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/length_32" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dr_rect_round_on_surface_4_32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/offset_28"
+            android:paddingTop="@dimen/offset_20"
+            android:paddingEnd="@dimen/offset_28"
+            android:paddingBottom="@dimen/offset_20">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="@dimen/length_48"
+                    android:layout_height="@dimen/length_48"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/dr_rect_white_10_24dp"
+                    >
+
+                    <ImageView
+                        app:tint="@color/material_on_surface_emphasis_medium"
+                        android:scaleType="fitCenter"
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/length_32"
+                        android:layout_height="@dimen/length_32"
+                        app:srcCompat="@drawable/ic_scooter"
+                        />
+                </FrameLayout>
+
+                <View
+                    android:layout_width="@dimen/length_12"
+                    android:layout_height="@dimen/length_8"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 Wheeler"
+                        android:textAppearance="@style/Tb.TextAppearance.h6"
+                        android:textColor="@color/material_on_surface_disabled" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Tb.TextAppearance.h5"
+                        android:textColor="@color/material_on_surface_emphasis_high_type"
+                        tools:text="120 vehicles" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="₹700"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/Tb.TextAppearance.h5.bold"
+                    android:textColor="@color/material_on_surface_emphasis_high_type" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/length_32" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dr_rect_round_on_surface_4_32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/offset_28"
+            android:paddingTop="@dimen/offset_20"
+            android:paddingEnd="@dimen/offset_28"
+            android:paddingBottom="@dimen/offset_20">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="@dimen/length_48"
+                    android:layout_height="@dimen/length_48"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/dr_rect_white_10_24dp"
+                    >
+
+                    <ImageView
+                        app:tint="@color/material_on_surface_emphasis_medium"
+                        android:scaleType="fitCenter"
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/length_32"
+                        android:layout_height="@dimen/length_32"
+                        app:srcCompat="@drawable/ic_report_car"
+                        />
+                </FrameLayout>
+
+                <View
+                    android:layout_width="@dimen/length_12"
+                    android:layout_height="@dimen/length_8"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 Wheeler"
+                        android:textAppearance="@style/Tb.TextAppearance.h6"
+                        android:textColor="@color/material_on_surface_disabled" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Tb.TextAppearance.h5"
+                        android:textColor="@color/material_on_surface_emphasis_high_type"
+                        tools:text="120 vehicles" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="₹700"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/Tb.TextAppearance.h5.bold"
+                    android:textColor="@color/material_on_surface_emphasis_high_type" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
+
+

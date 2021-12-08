@@ -42,6 +42,19 @@
             android:layout_marginTop="@dimen/offset_6"
             android:text="Dialog" />
 
+
+        <Button
+            android:id="@+id/activity_main_report_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:text="Report" />
+
+        <Button
+            android:id="@+id/activity_main_profile_btn"
+            style="@style/ButtonNormal"
+            android:layout_marginTop="@dimen/offset_6"
+            android:text="Profile" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

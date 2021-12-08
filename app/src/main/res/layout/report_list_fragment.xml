@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clipToPadding="false">-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/length_48"
+        android:layout_margin="@dimen/offset_20"
+        android:layout_gravity="end"
+        android:text="Checked In"
+        app:icon="@drawable/ic_round_expand_more_24"
+        app:iconSize="@dimen/length_20"
+        app:iconGravity="end"
+        app:iconTint="@color/black"
+        app:iconPadding="@dimen/length_12"
+        android:textColor="@color/md_grey_900"
+        app:backgroundTint="@color/colorPrimaryLight"
+        app:cornerRadius="@dimen/offset_12"
+        android:id="@+id/activity_onboard_google_btn"
+        android:textAppearance="@style/Tb.TextAppearance.Button"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/report_list_item" />
+</LinearLayout>
+
+    <!--</androidx.core.widget.NestedScrollView>-->

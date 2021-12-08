@@ -1,4 +1,4 @@
-package `in`.junkielabs.parking.ui.components.report.fragments
+package `in`.junkielabs.parking.ui.components.report.list
 
 import `in`.junkielabs.parking.databinding.ReportListFragmentBinding
 import `in`.junkielabs.parking.ui.base.FragmentBase

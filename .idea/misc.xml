@@ -22,6 +22,7 @@
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_launcher.xml" value="0.10416666666666667" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_onboard.xml" value="0.1" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_profile.xml" value="0.176" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_qr_scanner.xml" value="0.2" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_report.xml" value="0.1" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_walk_through.xml" value="0.11388888888888889" />
@@ -33,10 +34,12 @@
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/home_form_layout.xml" value="0.171875" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/qr_scanner_error.xml" value="0.1962962962962963" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/qr_scanner_vehicle.xml" value="0.144" />
-        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/report_list_fragment.xml" value="0.13541666666666666" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/report_list_fragment.xml" value="0.264" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/report_list_item.xml" value="0.176" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/report_overview_fragment.xml" value="0.152" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/wheeler_item_bike.xml" value="0.1" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/wheeler_item_car.xml" value="0.1" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/menu/report_checkinout_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

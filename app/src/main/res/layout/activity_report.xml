@@ -12,15 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
-        app:elevation="@dimen/offset_0">
+        app:elevation="@dimen/offset_0"
 
-<!--
-app:navigationIcon="@drawable/ic_round_arrow_back_24"
+        app:layout_scrollFlags="scroll|snap|enterAlways">
 
--->
+        <!--
+        app:navigationIcon="@drawable/ic_round_arrow_back_24"
+
+        -->
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             android:layout_height="wrap_content">
 
 
@@ -28,11 +32,10 @@ app:navigationIcon="@drawable/ic_round_arrow_back_24"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                app:title="Target Area"
                 app:navigationIconTint="?attr/colorOnSurface"
+                app:title="Target Area"
                 app:titleTextAppearance="@style/Tb.TextAppearance.h4.medium"
-                app:titleTextColor="?attr/colorOnSurface"
-                />
+                app:titleTextColor="?attr/colorOnSurface" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,20 +44,19 @@ app:navigationIcon="@drawable/ic_round_arrow_back_24"
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"/>
+                    android:layout_height="?attr/actionBarSize" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/length_32"/>
+                    android:layout_height="@dimen/length_32" />
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tablayout"
-                    app:tabMode="fixed"
-                    app:tabGravity="fill"
-                    app:tabTextAppearance="@style/Tb.TextAppearance.h5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    app:tabGravity="fill"
+                    app:tabMode="fixed"
+                    app:tabTextAppearance="@style/Tb.TextAppearance.h5" />
 
             </LinearLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -72,7 +74,7 @@ app:navigationIcon="@drawable/ic_round_arrow_back_24"
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

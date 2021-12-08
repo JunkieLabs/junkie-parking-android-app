@@ -4,7 +4,7 @@ import `in`.junkielabs.parking.R
 import `in`.junkielabs.parking.databinding.ActivityReportBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import android.os.Bundle
-import androidx.core.view.ViewCompat
+import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -18,7 +18,19 @@ class ActivityReport : ActivityBase() {
         binding = ActivityReportBinding.inflate(layoutInflater)
         setStatusDefault(false)
         setContentView(binding.root)
+        initToolbar(R.drawable.ic_arrow_back, binding.toolbar)
+        toolbarTitle = ""
         initPager()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initPager() {

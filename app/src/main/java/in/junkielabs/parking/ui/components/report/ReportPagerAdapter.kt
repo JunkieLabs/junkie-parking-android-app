@@ -1,11 +1,7 @@
 package `in`.junkielabs.parking.ui.components.report
 
-import `in`.junkielabs.parking.ui.components.report.fragments.ReportListFragment
-import `in`.junkielabs.parking.ui.components.report.fragments.ReportOverviewFragment
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
+import `in`.junkielabs.parking.ui.components.report.list.ReportListFragment
+import `in`.junkielabs.parking.ui.components.report.overview.ReportOverviewFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter

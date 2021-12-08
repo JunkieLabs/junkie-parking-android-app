@@ -17,4 +17,14 @@ class ApiRepoCheckInOut : ApiRepositoryBase<ParamErrorRes>(ParamErrorRes::class.
             apiPointCheckInOut.checkInOut(accessToken, reqCheckInOut)
         }
 
+    suspend fun checkInOuts(
+        accessToken: String,
+        parkingAreaId: String,
+        status: String,
+        key: String?
+    ) =
+        request {
+            apiPointCheckInOut.checkInOuts(accessToken, parkingAreaId, status, key)
+        }
+
 }

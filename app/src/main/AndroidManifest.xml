@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JunkieParking">
         <activity
+            android:name=".ui.components.account.ActivityProfile"
+            android:exported="false" />
+        <activity
             android:name=".ui.components.report.ActivityReport"
             android:exported="false" />
         <activity

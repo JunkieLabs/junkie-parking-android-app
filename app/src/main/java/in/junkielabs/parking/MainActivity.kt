@@ -7,9 +7,11 @@ import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckInDialog
 import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckOutDialog
 import `in`.junkielabs.parking.ui.common.scanner.ActivityQrScanner
+import `in`.junkielabs.parking.ui.components.account.ActivityProfile
 import `in`.junkielabs.parking.ui.components.home.ActivityHome
 import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
 import `in`.junkielabs.parking.ui.components.onboard.ActivityOnboard
+import `in`.junkielabs.parking.ui.components.report.ActivityReport
 import `in`.junkielabs.parking.ui.components.wait.ActivityWait
 import `in`.junkielabs.parking.ui.components.walkthrough.ActivityWalkThrough
 import `in`.junkielabs.parking.ui.labs.slidebutton.LabsActivitySlide
@@ -62,6 +64,16 @@ class MainActivity : ActivityBase() {
 
         binding.activityMainDialogBtn.setOnClickListener {
             dialogCheckOut()
+        }
+
+        binding.activityMainReportBtn.setOnClickListener {
+            var i = Intent(this, ActivityReport::class.java)
+            startActivity(i)
+        }
+
+        binding.activityMainProfileBtn.setOnClickListener {
+            var i = Intent(this, ActivityProfile::class.java)
+            startActivity(i)
         }
 
         binding.activityMainLauncherBtn.setOnClickListener {

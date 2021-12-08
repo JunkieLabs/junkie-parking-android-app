@@ -8,6 +8,7 @@
     <color name="colorPrimary">@color/junkie_parking_orange_500</color>
     <color name="colorPrimaryDark">@color/junkie_parking_orange_700</color>
     <color name="colorPrimaryLight">@color/junkie_parking_orange_200</color>
+    <color name="colorRed">#F53A47</color>
 
 
 

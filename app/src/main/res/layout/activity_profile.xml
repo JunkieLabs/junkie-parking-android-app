@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_shop_detail_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        app:elevation="@dimen/offset_0">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/transparent"
+            app:layout_collapseMode="pin"
+
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextAppearance="@style/Tb.TextAppearance.h3"
+            app:titleTextColor="@color/colorPrimary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_48" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Info"
+                android:layout_marginStart="@dimen/offset_24"
+                android:layout_marginEnd="@dimen/offset_24"
+                android:textAppearance="@style/Tb.TextAppearance.h3.bold"
+                android:textColor="@color/material_on_surface_emphasis_high_type" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_24"/>
+
+            <LinearLayout
+                android:layout_marginStart="@dimen/offset_24"
+                android:layout_marginEnd="@dimen/offset_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textAppearance="@style/Tb.TextAppearance.h5"
+                    android:textColor="@color/material_on_surface_emphasis_high_type" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Name"
+                    android:textAppearance="@style/Tb.TextAppearance.h5"
+                    android:textColor="@color/material_on_surface_disabled" />
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_48" />
+
+            <TextView
+                android:layout_marginStart="@dimen/offset_24"
+                android:layout_marginEnd="@dimen/offset_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Parking Area"
+                android:textAppearance="@style/Tb.TextAppearance.h3.bold"
+                android:textColor="@color/material_on_surface_emphasis_high_type" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_24"/>
+
+
+            <LinearLayout
+                android:layout_marginStart="@dimen/offset_24"
+                android:layout_marginEnd="@dimen/offset_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textAppearance="@style/Tb.TextAppearance.h5"
+                    android:textColor="@color/material_on_surface_emphasis_high_type" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Name"
+                    android:textAppearance="@style/Tb.TextAppearance.h5"
+                    android:textColor="@color/material_on_surface_disabled" />
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_24"/>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginEnd="@dimen/offset_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:text="Logout"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:textColor="@color/colorRed"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="@dimen/length_56"
+                        android:layout_height="@dimen/length_56"
+                        android:layout_marginStart="@dimen/offset_16"
+                        app:cardBackgroundColor="@color/colorRed"
+                        app:cardCornerRadius="@dimen/offset_20">
+                        <FrameLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+
+                                android:layout_width="@dimen/length_24"
+                                android:layout_height="@dimen/length_24"
+                                android:layout_gravity="center"
+                                android:scaleType="center"
+                                app:srcCompat="@drawable/ic_round_logout_24"/>
+                        </FrameLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

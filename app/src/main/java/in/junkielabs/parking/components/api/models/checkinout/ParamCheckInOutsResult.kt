@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class ParamCheckInOutsResult(
-    var key:  String,
+    var key:  String?,
     var result: List<ParamCheckInOut>,
     var pageSize: Int
 ) {

@@ -24,7 +24,7 @@ interface ApiPointCheckInOut {
     suspend fun checkInOuts(
         @Header("Authorization") token: String,
         @Query("parkingAreaId") parkingAreaId: String,
-        @Query("status") status: String,
+        @Query("status") status: Int,
         @Query("key") key: String?
     ): Response<ParamCheckInOutsResult>
 

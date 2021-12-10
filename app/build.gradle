@@ -74,6 +74,9 @@ dependencies {
      */
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
+//    implementation 'androidx.paging:paging-common-ktx:3.1.0'
+    implementation "androidx.paging:paging-runtime-ktx:3.1.0"
+
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'

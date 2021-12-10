@@ -12,7 +12,7 @@ import com.squareup.moshi.JsonClass
  */
 @Parcelize
 @JsonClass(generateAdapter = true)
-class ParamCheckInOut(
+data class ParamCheckInOut(
     var id: String,
     var parkingAccountId: String,
     var parkingAreaId: String,

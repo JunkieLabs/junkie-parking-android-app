@@ -3,6 +3,7 @@ package `in`.junkielabs.parking.ui.components.report
 import `in`.junkielabs.parking.R
 import `in`.junkielabs.parking.databinding.ActivityReportBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
+import `in`.junkielabs.parking.utils.UtilTheme
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
@@ -16,7 +17,7 @@ class ActivityReport : ActivityBase() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReportBinding.inflate(layoutInflater)
-        setStatusDefault(false)
+        setStatusDefault(true)
         setContentView(binding.root)
         initToolbar(R.drawable.ic_arrow_back, binding.toolbar)
         toolbarTitle = ""
@@ -32,6 +33,10 @@ class ActivityReport : ActivityBase() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+//    override fun setStatusBar(color: Int) {
+//        UtilTheme.setStatusBar(window.decorView, this, color, true)
+//    }
 
     private fun initPager() {
 

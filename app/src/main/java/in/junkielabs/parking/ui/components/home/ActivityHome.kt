@@ -9,14 +9,17 @@ import `in`.junkielabs.parking.tools.livedata.LiveDataObserver
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckInDialog
 import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckOutDialog
+import `in`.junkielabs.parking.ui.components.account.ActivityProfile
 import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModel
 import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModelFactory
+import `in`.junkielabs.parking.ui.components.report.ActivityReport
 import `in`.junkielabs.parking.utils.UtilAnimation
 import `in`.junkielabs.parking.utils.UtilRegex
 import `in`.junkielabs.parking.utils.UtilTheme
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -164,6 +167,14 @@ class ActivityHome : ActivityBase() {
             }
         }
 
+        vBinding.activityHomeActionReport.setOnClickListener {
+            navigateToActivityReport()
+        }
+
+        vBinding.activityHomeActionProfile.setOnClickListener {
+            navigateToActivityProfile()
+        }
+
 
         attachKeyboardListeners()
 
@@ -249,6 +260,20 @@ class ActivityHome : ActivityBase() {
         })
 
 
+    }
+
+
+    private fun navigateToActivityReport() {
+//        info{"navigateToActivityPaperFlow: $pepCourseId"}
+        val i = Intent(this, ActivityReport::class.java)
+        startActivity(i)
+    }
+
+
+    private fun navigateToActivityProfile() {
+//        info{"navigateToActivityPaperFlow: $pepCourseId"}
+        val i = Intent(this, ActivityProfile::class.java)
+        startActivity(i)
     }
 
 

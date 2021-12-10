@@ -69,6 +69,7 @@
                     android:textColor="@color/material_on_surface_emphasis_high_type" />
 
                 <TextView
+                    android:id="@+id/activity_profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Name"
@@ -111,6 +112,8 @@
                     android:textColor="@color/material_on_surface_emphasis_high_type" />
 
                 <TextView
+                    android:id="@+id/activity_profile_parking_area_name"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Name"
@@ -125,6 +128,7 @@
 
 
             <FrameLayout
+                android:id="@+id/activity_profile_action_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"

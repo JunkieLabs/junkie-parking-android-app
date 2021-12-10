@@ -211,6 +211,8 @@
             android:orientation="horizontal">
 
             <FrameLayout
+                android:id="@+id/activity_home_action_report"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -230,6 +232,7 @@
                 android:layout_height="@dimen/offset_8" />
 
             <FrameLayout
+                android:id="@+id/activity_home_action_profile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

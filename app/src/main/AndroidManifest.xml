@@ -19,7 +19,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.components.report.ActivityReport"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.JunkieParking.Default"/>
         <activity
             android:name=".ui.labs.slidebutton.LabsActivitySlide"
             android:exported="true" />

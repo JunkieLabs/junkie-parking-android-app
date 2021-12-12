@@ -24,15 +24,16 @@
                 android:layout_width="@dimen/length_48"
                 android:layout_height="@dimen/length_48"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/dr_rect_white_10_24dp"
+                android:background="@drawable/dr_rect_round_on_surface_4_12dp"
                 >
 
                 <ImageView
+                    android:id="@+id/report_list_item_vehicle_image"
                     app:tint="@color/material_on_surface_emphasis_medium"
                     android:scaleType="fitCenter"
                     android:layout_gravity="center"
-                    android:layout_width="@dimen/length_32"
-                    android:layout_height="@dimen/length_32"
+                    android:layout_width="@dimen/length_28"
+                    android:layout_height="@dimen/length_28"
                     />
             </FrameLayout>
 
@@ -47,6 +48,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/report_list_item_vehicle_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="LDSE 32 3232"
@@ -54,6 +56,7 @@
                     android:textColor="@color/material_on_surface_emphasis_high_type" />
 
                 <TextView
+                    android:id="@+id/report_list_item_timing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Tb.TextAppearance.h6"
@@ -62,6 +65,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/report_list_item_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="₹700"

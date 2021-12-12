@@ -32,18 +32,28 @@ class ReportViewModel(
 
     }
 
+    fun onStatusChange(status: Int): Boolean {
+        if(mCurrentCheckInOutStatus == status){
+            return false
+        }
+        mCurrentCheckInOutStatus = status
+        return true
+    }
+
 
     fun apiData(): Flow<PagingData<ParamCheckInOut>> {
 //        var query = firestoreChapterRepo.query(mBookId)
 
 
-        return Pager(
+        var pager = Pager(
             config = PagingConfig(pageSize = CheckInOutDataSource.PAZE_SIZE),
             pagingSourceFactory = {
                 CheckInOutDataSource::class.java.getConstructor(ApiRepoCheckInOut::class.java, String::class.java, Int::class.java)
                     .newInstance(apiRepoCheckInOut, mParkingAreaId, mCurrentCheckInOutStatus)
             }
-        ).flow
+        )
+
+            return pager.flow
 
             //.cachedIn(viewModelScope)
     }

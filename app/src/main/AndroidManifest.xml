@@ -10,18 +10,21 @@
         android:name=".application.ApplicationMy"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JunkieParking">
+        android:theme="@style/Theme.JunkieParking"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.components.thanks.ActivityThanks"
+            android:exported="false" />
         <activity
             android:name=".ui.components.account.ActivityProfile"
             android:exported="false" />
         <activity
             android:name=".ui.components.report.ActivityReport"
             android:exported="false"
-            android:theme="@style/Theme.JunkieParking.Default"/>
+            android:theme="@style/Theme.JunkieParking.Default" />
         <activity
             android:name=".ui.labs.slidebutton.LabsActivitySlide"
             android:exported="true" />
@@ -34,7 +37,8 @@
         <activity android:name=".ui.components.onboard.ActivityOnboard" />
         <activity android:name=".ui.components.walkthrough.ActivityWalkThrough" />
         <activity android:name=".ui.components.launcher.ActivityLauncher" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

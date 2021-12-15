@@ -44,3 +44,12 @@ https://github.com/G00fY2/quickie/blob/main/quickie/src/main/kotlin/io/github/g0
 
 - https://github.com/vipulasri/TicketView
 - https://github.com/mreram/TicketView/blob/master/ticketview/src/main/java/com/mreram/ticketview/TicketView.kt
+
+
+# TODO
+- add content
+- fix theming 
+- remove extra codes
+- add github link
+
+

@@ -41,24 +41,83 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/length_48" />
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/activity_profile_btn_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:clickable="true"
+                android:focusable="true"
+                app:cardElevation="0dp"
+                android:foreground="?selectableItemBackground"
+                android:layout_marginStart="@dimen/offset_24"
+                android:layout_marginEnd="@dimen/offset_24"
+                app:cardBackgroundColor="@color/colorPrimaryLight"
+                app:cardCornerRadius="@dimen/offset_20">
+
+                <FrameLayout
+                    android:id="@+id/activity_profile_action_aboutus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/offset_24"
+                        android:layout_marginTop="@dimen/offset_16"
+                        android:layout_marginEnd="@dimen/offset_24"
+                        android:layout_marginBottom="@dimen/offset_16"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="About Junkie Labs"
+                            android:textAppearance="@style/Tb.TextAppearance.h5.medium"
+                            android:textColor="@color/colorAccent" />
+
+                        <ImageView
+
+                            android:layout_width="@dimen/length_20"
+                            android:layout_height="@dimen/length_20"
+                            android:layout_gravity="center"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@drawable/ic_round_chevron_right_24"
+                            app:tint="@color/colorAccent" />
+
+
+                    </LinearLayout>
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/length_36" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Info"
                 android:layout_marginStart="@dimen/offset_24"
                 android:layout_marginEnd="@dimen/offset_24"
+                android:text="My Info"
                 android:textAppearance="@style/Tb.TextAppearance.h3.bold"
                 android:textColor="@color/material_on_surface_emphasis_high_type" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_24"/>
+                android:layout_height="@dimen/length_24" />
 
             <LinearLayout
-                android:layout_marginStart="@dimen/offset_24"
-                android:layout_marginEnd="@dimen/offset_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_24"
+                android:layout_marginEnd="@dimen/offset_24"
                 android:orientation="vertical">
 
                 <TextView
@@ -72,11 +131,10 @@
                     android:id="@+id/activity_profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Name"
                     android:textAppearance="@style/Tb.TextAppearance.h5"
-                    android:textColor="@color/material_on_surface_disabled" />
+                    android:textColor="@color/material_on_surface_disabled"
+                    tools:text="Name" />
             </LinearLayout>
-
 
 
             <View
@@ -84,24 +142,24 @@
                 android:layout_height="@dimen/length_48" />
 
             <TextView
-                android:layout_marginStart="@dimen/offset_24"
-                android:layout_marginEnd="@dimen/offset_24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_24"
+                android:layout_marginEnd="@dimen/offset_24"
                 android:text="Parking Area"
                 android:textAppearance="@style/Tb.TextAppearance.h3.bold"
                 android:textColor="@color/material_on_surface_emphasis_high_type" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_24"/>
+                android:layout_height="@dimen/length_24" />
 
 
             <LinearLayout
-                android:layout_marginStart="@dimen/offset_24"
-                android:layout_marginEnd="@dimen/offset_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_24"
+                android:layout_marginEnd="@dimen/offset_24"
                 android:orientation="vertical">
 
                 <TextView
@@ -116,15 +174,17 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Name"
                     android:textAppearance="@style/Tb.TextAppearance.h5"
-                    android:textColor="@color/material_on_surface_disabled" />
+                    android:textColor="@color/material_on_surface_disabled"
+                    tools:text="Name" />
 
 
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/length_24"/>
+                android:layout_height="@dimen/length_36" />
+
 
 
             <FrameLayout
@@ -136,19 +196,19 @@
                 android:foreground="?selectableItemBackground">
 
                 <LinearLayout
-                    android:layout_marginStart="@dimen/offset_24"
-                    android:layout_marginEnd="@dimen/offset_24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginEnd="@dimen/offset_24"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:text="Logout"
-                        android:layout_gravity="center_vertical"
-                        android:layout_width="0dp"
-                        android:textColor="@color/colorRed"
-                        android:layout_height="wrap_content"/>
+                        android:textColor="@color/colorRed" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="@dimen/length_56"
@@ -156,6 +216,7 @@
                         android:layout_marginStart="@dimen/offset_16"
                         app:cardBackgroundColor="@color/colorRed"
                         app:cardCornerRadius="@dimen/offset_20">
+
                         <FrameLayout
 
                             android:layout_width="match_parent"
@@ -167,7 +228,7 @@
                                 android:layout_height="@dimen/length_24"
                                 android:layout_gravity="center"
                                 android:scaleType="center"
-                                app:srcCompat="@drawable/ic_round_logout_24"/>
+                                app:srcCompat="@drawable/ic_round_logout_24" />
                         </FrameLayout>
 
 

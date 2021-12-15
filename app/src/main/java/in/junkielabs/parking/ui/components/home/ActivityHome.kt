@@ -119,14 +119,15 @@ class ActivityHome : ActivityBase() {
 
     }
 
-    override fun getStatusBarColor(): Int {
+  override fun getStatusBarColor(): Int {
 //        info { "getStatusBarColor 1" }
         return ContextCompat.getColor(this, R.color.colorAccent)
     }
 
+/*
     override fun setStatusBar(color: Int) {
         UtilTheme.setDarkStatusBar(window.decorView, this, color)
-    }
+    }*/
 
     override fun onDestroy() {
         super.onDestroy()

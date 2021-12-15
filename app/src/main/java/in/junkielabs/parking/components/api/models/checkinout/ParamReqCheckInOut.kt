@@ -9,6 +9,7 @@ import java.io.Serializable
 @JsonClass(generateAdapter = true)
 data class ParamReqCheckInOut(
     var parkingAreaId: String?,
+    var guardId: String?,
     var wheelerType: Int,
     var vehicleNumber: String,
     var phone: String?,

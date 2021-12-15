@@ -109,6 +109,7 @@ class HomeViewModel(
 
         var paramRepoCheckInOut = ParamReqCheckInOut(
             ApplicationMy.instance.appAccount.getParkingAreaId(),
+            ApplicationMy.instance.appAccount.getGuardId(),
             mActiveWheelerType?: ParkingConstants.Wheeler.TYPE_BIKE,
             _mFormVehicleNumber,
             _mFormPhoneNumber,
@@ -123,6 +124,7 @@ class HomeViewModel(
          viewModelScope.launch {
              var paramRepoCheckInOut = ParamReqCheckInOut(
                  ApplicationMy.instance.appAccount.getParkingAreaId(),
+                 ApplicationMy.instance.appAccount.getGuardId(),
                  vehicle.wheeler.type,
                  vehicle.number,
                  null,

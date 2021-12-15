@@ -41,8 +41,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="@dimen/length_168">
-            <include layout="@layout/qr_scanner_error"/>
-            <include layout="@layout/qr_scanner_vehicle"/>
+            <include layout="@layout/qr_scanner_error"
+                android:id="@+id/qr_scanner_error"/>
+            <include layout="@layout/qr_scanner_vehicle"
+                android:id="@+id/qr_scanner_vehicle"/>
+
+            <include layout="@layout/frame_progress_transparent"
+                android:id="@+id/frame_progress"/>
 
         </FrameLayout>
     </LinearLayout>

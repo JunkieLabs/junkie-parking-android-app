@@ -16,6 +16,7 @@
         android:padding="@dimen/offset_20">
 
         <TextView
+            android:id="@+id/qr_scanner_error_text"
             android:layout_width="wrap_content"
             android:textColor="@color/material_surface_84"
             android:layout_height="wrap_content"

@@ -5,11 +5,11 @@ import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 
 /**
- * Created by Niraj on 20-10-2021.
+ * Created by Niraj on 15-12-2021.
  */
 @Parcelize
 @JsonClass(generateAdapter = true)
-data class ParamWheelerRate(
+data class ParamWheeler(
     /** type */
     var type: Int,
 
@@ -19,7 +19,5 @@ data class ParamWheelerRate(
     /** label */
     var label: String?,
 
-    /**  rate */
-    var rate: Float?
 ) : Parcelable {
 }

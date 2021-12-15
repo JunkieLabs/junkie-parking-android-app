@@ -15,6 +15,7 @@
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable/dr_rect_round_primary_24dp.xml" value="0.15462962962962962" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable/dr_rect_white_10_24dp.xml" value="0.10572916666666667" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable/dr_transparent.xml" value="0.165625" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable/ic_arrow_back_boxed.xml" value="0.14444444444444443" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/drawable/ic_scooter.xml" value="0.1515625" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_auth.xml" value="0.1" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_auth_google.xml" value="0.10185185185185185" />
@@ -25,7 +26,7 @@
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_onboard.xml" value="0.1" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_profile.xml" value="0.176" />
-        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_qr_scanner.xml" value="0.2" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_qr_scanner.xml" value="0.12" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_report.xml" value="0.1" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/activity_walk_through.xml" value="0.11388888888888889" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/checkin_dialog.xml" value="0.128" />
@@ -33,6 +34,7 @@
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/checkout_dialog.xml" value="0.1" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/frame_progress.xml" value="0.11200000000000002" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/frame_progress_dialog.xml" value="0.14947916666666666" />
+        <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/frame_progress_transparent.xml" value="0.1359375" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/home_form_layout.xml" value="0.171875" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/qr_scanner_error.xml" value="0.1962962962962963" />
         <entry key="..\:/our/development/dummy/junkiepark/junkiepark-android-app/app/src/main/res/layout/qr_scanner_vehicle.xml" value="0.144" />

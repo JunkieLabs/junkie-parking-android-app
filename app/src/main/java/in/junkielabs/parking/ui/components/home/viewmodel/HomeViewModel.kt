@@ -5,6 +5,7 @@ import `in`.junkielabs.parking.components.api.base.ApiResponse
 import `in`.junkielabs.parking.components.api.models.checkinout.ParamCheckInOut
 import `in`.junkielabs.parking.components.api.models.checkinout.ParamReqCheckInOut
 import `in`.junkielabs.parking.components.api.models.parking.area.ParamParkingArea
+import `in`.junkielabs.parking.components.api.models.vehicle.ParamVehicle
 import `in`.junkielabs.parking.components.api.models.wheeler.ParamWheelerRate
 import `in`.junkielabs.parking.components.api.repository.ApiRepoAuth
 import `in`.junkielabs.parking.components.api.repository.ApiRepoCheckInOut
@@ -99,18 +100,12 @@ class HomeViewModel(
     fun onSubmit() {
         if (bFormIsValid.value == true) {
              viewModelScope.launch {
-                 apiCheckInOut()
+                 formCheckInOut()
              }
         }
     }
 
-
-    /* ******************************************************************************************
-     *                                              api
-     */
-    private suspend fun apiCheckInOut() {
-        var token: String? = FirebaseToken.getToken() ?: return
-
+    private suspend fun formCheckInOut(){
 
         var paramRepoCheckInOut = ParamReqCheckInOut(
             ApplicationMy.instance.appAccount.getParkingAreaId(),
@@ -120,7 +115,35 @@ class HomeViewModel(
             null,
             null
         )
-        var response = apiRepoCheckInOut.checkInOut(token!!, paramRepoCheckInOut)
+
+        apiCheckInOut(paramRepoCheckInOut)
+    }
+
+     fun onQrVehicleSubmit(vehicle: ParamVehicle) {
+         viewModelScope.launch {
+             var paramRepoCheckInOut = ParamReqCheckInOut(
+                 ApplicationMy.instance.appAccount.getParkingAreaId(),
+                 vehicle.wheeler.type,
+                 vehicle.number,
+                 null,
+                 null,
+                 null
+             )
+             apiCheckInOut(paramRepoCheckInOut)
+
+         }
+
+    }
+    /* ******************************************************************************************
+     *                                              api
+     */
+    private suspend fun apiCheckInOut(paramReqCheckInOut: ParamReqCheckInOut) {
+        var token: String? = FirebaseToken.getToken() ?: return
+
+
+
+
+        var response = apiRepoCheckInOut.checkInOut(token!!, paramReqCheckInOut)
 
         if (response.status == ApiResponse.Status.SUCCESS) {
             Log.i("AuthViewModel: result", response.data.toString())
@@ -149,6 +172,8 @@ class HomeViewModel(
             }
         }
     }
+
+
 
 
 }

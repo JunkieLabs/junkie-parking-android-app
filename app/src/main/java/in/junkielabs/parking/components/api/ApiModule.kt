@@ -135,4 +135,7 @@ object ApiModule {
     fun provideApiCheckInOut(): ApiPointCheckInOut = provideRetrofit().create(ApiPointCheckInOut::class.java)
 
     fun provideApiReport() :  ApiPointReport =  provideRetrofit().create(ApiPointReport::class.java)
+
+    fun provideApiQrCode(): ApiPointQrCode = provideRetrofit().create(ApiPointQrCode::class.java)
+
 }

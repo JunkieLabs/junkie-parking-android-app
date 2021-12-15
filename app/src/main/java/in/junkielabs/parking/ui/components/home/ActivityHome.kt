@@ -3,12 +3,14 @@ package `in`.junkielabs.parking.ui.components.home
 import `in`.junkielabs.parking.R
 import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.components.api.models.checkinout.ParamCheckInOut
+import `in`.junkielabs.parking.components.api.models.vehicle.ParamVehicle
 import `in`.junkielabs.parking.components.parking.ParkingConstants
 import `in`.junkielabs.parking.databinding.ActivityHomeBinding
 import `in`.junkielabs.parking.tools.livedata.LiveDataObserver
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckInDialog
 import `in`.junkielabs.parking.ui.common.checkinout.dialogs.CheckOutDialog
+import `in`.junkielabs.parking.ui.common.scanner.ActivityQrScanner
 import `in`.junkielabs.parking.ui.components.account.ActivityProfile
 import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModel
 import `in`.junkielabs.parking.ui.components.home.viewmodel.HomeViewModelFactory
@@ -42,6 +44,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.internal.TextWatcherAdapter
 import com.google.android.material.snackbar.Snackbar
@@ -63,12 +66,15 @@ class ActivityHome : ActivityBase() {
         val heightDiff: Int = heightRoot - heightLayout// - vBinding.getHeight()
         val contentViewTop = window.findViewById<View>(Window.ID_ANDROID_CONTENT).top
 
-        if (heightDiff <= contentViewTop) {
+        if (heightDiff <= contentViewTop+200) {
             showBottomTab()
             _mKeyBoardOpen = false
             vBinding.bottomAppBar.hideOnScroll = true
         } else {
-
+            Log.i(
+                "ActivityHome: mKeyboardListener hide:",
+                "$heightRoot $heightLayout  $heightDiff $contentViewTop"
+            )
             Handler(Looper.getMainLooper()).postDelayed({
                 _mKeyBoardOpen = true
 
@@ -86,15 +92,17 @@ class ActivityHome : ActivityBase() {
 
     }
 
-    private fun showBottomTab() {
-        vBinding.bottomAppBar.performShow()
-        vBinding.activityHomeFab.show()
-    }
+    var mActivityResultQrScanner =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            info{"mActivityResultSignin: ${result.data}"}
 
-    private fun hideBottomTab() {
-        vBinding.bottomAppBar.performHide()
-        vBinding.activityHomeFab.hide()
-    }
+            if(result.resultCode == RESULT_OK && result.data!=null){
+                onScannerResult(result.data!!)
+            }
+        }
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -175,6 +183,10 @@ class ActivityHome : ActivityBase() {
             navigateToActivityProfile()
         }
 
+        vBinding.activityHomeFab.setOnClickListener {
+            navigateToActivityQrScanner()
+        }
+
 
         attachKeyboardListeners()
 
@@ -218,6 +230,8 @@ class ActivityHome : ActivityBase() {
             showSubmitBtn()
             hideProgress()
             dialogCheckInOut(t)
+
+            // TODO uncomment clearFormInputs()
         })
 
         mViewModel.bParkingArea.observe(this, {
@@ -249,17 +263,22 @@ class ActivityHome : ActivityBase() {
                 vBinding.wheelerItemBike.wheelerBikeText.isChecked = true
 
                 vBinding.wheelerItemCar.wheelerCar.isChecked = false
-                vBinding.wheelerItemCar.wheelerCarText.isChecked = true
+                vBinding.wheelerItemCar.wheelerCarText.isChecked = false
             } else if (it == ParkingConstants.Wheeler.TYPE_CAR) {
                 vBinding.wheelerItemBike.wheelerBike.isChecked = false
                 vBinding.wheelerItemBike.wheelerBikeText.isChecked = false
 
                 vBinding.wheelerItemCar.wheelerCar.isChecked = true
-                vBinding.wheelerItemCar.wheelerCarText.isChecked = false
+                vBinding.wheelerItemCar.wheelerCarText.isChecked = true
             }
         })
 
 
+    }
+
+    private fun clearFormInputs() {
+        vBinding.homeInputVehicleNumber.setText("")
+        vBinding.homeInputPhone.setText("")
     }
 
 
@@ -276,20 +295,12 @@ class ActivityHome : ActivityBase() {
         startActivity(i)
     }
 
-
-    private fun setRoundedCorner() {
-        val bottomBarBackground = vBinding.bottomAppBar.background as MaterialShapeDrawable
-        bottomBarBackground.shapeAppearanceModel =
-            bottomBarBackground.shapeAppearanceModel.toBuilder()
-                .setTopLeftCorner(RoundedCornerTreatment())
-                .setTopLeftCornerSize(RelativeCornerSize(0.5f))
-                .setTopRightCorner(RoundedCornerTreatment()).setTopRightCornerSize(
-                    RelativeCornerSize(
-                        0.5f
-                    )
-                )
-                .build()
+    private fun navigateToActivityQrScanner(){
+        var i = Intent(this, ActivityQrScanner::class.java)
+        mActivityResultQrScanner.launch(i)
     }
+
+
 
     private fun setupForm() {
         vBinding.homeInputVehicleNumber.filters = arrayOf(
@@ -354,6 +365,48 @@ class ActivityHome : ActivityBase() {
 
          }*/
 
+    }
+
+    /* ****************************************************************************
+     *                              Scanner
+     */
+
+    private fun onScannerResult(data: Intent) {
+
+        var vehicle = data.getParcelableExtra<ParamVehicle>(ActivityQrScanner.B_RESULT_ARG_VEHICLE)
+        if (vehicle != null) {
+
+            mViewModel.onQrVehicleSubmit(vehicle)
+        }
+
+    }
+
+    /* ****************************************************************************
+     *                              Bottom Tab
+     */
+
+    private fun setRoundedCorner() {
+        val bottomBarBackground = vBinding.bottomAppBar.background as MaterialShapeDrawable
+        bottomBarBackground.shapeAppearanceModel =
+            bottomBarBackground.shapeAppearanceModel.toBuilder()
+                .setTopLeftCorner(RoundedCornerTreatment())
+                .setTopLeftCornerSize(RelativeCornerSize(0.5f))
+                .setTopRightCorner(RoundedCornerTreatment()).setTopRightCornerSize(
+                    RelativeCornerSize(
+                        0.5f
+                    )
+                )
+                .build()
+    }
+
+     private fun showBottomTab() {
+        vBinding.bottomAppBar.performShow()
+        vBinding.activityHomeFab.show()
+    }
+
+    private fun hideBottomTab() {
+        vBinding.bottomAppBar.performHide()
+        vBinding.activityHomeFab.hide()
     }
 
     /* ****************************************************************************

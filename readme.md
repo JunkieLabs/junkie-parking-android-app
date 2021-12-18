@@ -1,49 +1,184 @@
-# swipe
-
-- https://medium.com/android-dev-hacks/swipe-to-unlock-with-motion-layout-878f7a216c8e
-
-- https://medium.com/salt-pepper/getting-started-with-motionlayout-motionscene-40768d55b83a
-
-- https://developer.android.com/training/constraint-layout/motionlayout/examples
-
-# qr scanner
-
-https://github.com/G00fY2/quickie/blob/main/quickie/src/main/kotlin/io/github/g00fy2/quickie/QROverlayView.kt
-
-# transition scene
-
-- https://stackoverflow.com/questions/62406493/how-to-run-particular-transition-in-motionlayout
-- https://stackoverflow.com/questions/64230143/how-to-check-if-motionscene-is-at-transition-start-or-end
-- https://stackoverflow.com/questions/52339024/can-we-use-onswipe-and-onclick-in-the-same-transition-for-android-motionlayout
-- https://stackoverflow.com/questions/61345198/motionlayout-prevents-clicklistener-on-all-views
-
-# circular reveal
-
-- https://medium.com/android-news/login-screen-on-dialog-box-with-circular-reveal-animation-77d4766a4931
-
-- https://gist.github.com/divyanshub024/87fc43c5265e78733e2ad6a00dfbc00e
-
-# api
-
-- https://johncodeos.com/how-to-parse-json-with-retrofit-converters-using-kotlin/
-
-- https://github.com/kittinunf/fuel
-
-# keyboard hide
-
-- https://stackoverflow.com/questions/25216749/soft-keyboard-open-and-close-listener-in-an-activity-in-android
 
 
-# masked input
+---
 
-- https://www.javamex.com/tutorials/regular_expressions/character_classes.shtml
-- https://github.com/Gary111/MaskedEditText
-- https://github.com/RedMadRobot/input-mask-android
+![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-Media%20Picker-green.svg?style=flat )]( https://android-arsenal.com/details/1/7635 )
 
-# ticket view
 
-- https://github.com/vipulasri/TicketView
-- https://github.com/mreram/TicketView/blob/master/ticketview/src/main/java/com/mreram/ticketview/TicketView.kt
+
+![](images/banner.png)
+
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+alt="Get it on Google Play"
+height="80">](https://play.google.com/store/apps/details?id=)
+
+---
+
+## Junkie Parking Android App 
+
+A Simple Parking Model with simplistic design.
+This repo is made in Kotlin Language with Firebase authentication and connected with Rest api.
+
+This project contains all of the latest technologies, from design to developemnt, and common features needed to build an release ready android app.
+
+
+<br>
+
+## Table of contents
+- [About](#about)
+- [Getting started](#getting-started)
+- [Features](#features)
+- [Components](#components)
+- [FAQ](#faq)
+- [connect](#further-help)
+
+
+<br>
+
+
+# Getting Started:
+
+### **Initial Setup**
+
+Step 1: Create a Firebase Project.
+
+Step 2: Add package in the firebase project
+
+Step 3: Download the `google-services.json` from the firebase and add inside the app folder.
+
+
+> for more detail visit [Firebase Project setup](https://firebase.google.com/docs/android/setup)
+
+<br>
+
+### **For Backend**
+
+ You have to create backend for this project. Or Run our backend form this repo.
+
+
+# Features:
+
+> These are some of the important features implemented in this starter!
+
+<br>
+
+- **View Model Structure**
+  - All functional logics are pared inside Viewmodel and Fragment/Activity used only for Naviagtion logics.
+  
+<br>
+
+
+- **Coroutines Events**
+  - Used in place of asynchronous programming .  
+  - Used in Cases when events/callback is needed From ViewModel to Activity/Fragment. For Detail, [see here](app\src\main\java\in\junkielabs\parking\tools\livedata)
+
+<br>
+
+- **Rest Api in Retrofit**
+  - Retrofit library for HTTP request.  
+  - Moshi Converter used to parse JSON in Kotlin.
+  - For more details , [ see here](app\src\main\java\in\junkielabs\parking\components\api\ApiModule.kt) 
+
+<br>
+
+<br>
+
+# Components:
+
+> These are some of the important components in this app!
+
+- **Qr Scanner**
+- **Motion Layout Animations**
+- **Ticket**
+  
+<br>
+
+
+## Qr Scanner
+
+ZXing ("zebra crossing") an open-source library is used for Qr Code Scanning.
+
+
+- Used in [ActivityQrScanner](app\src\main\java\in\junkielabs\parking\ui\common\scanner) with Camera Api to scan Qr code. 
+
+- Used Inside [CheckInOut Ticket Dialogs](app\src\main\java\in\junkielabs\parking\ui\common\checkinout\dialogs) to create Qr Code image from code.
+
+<br>
+
+
+## Motion Layout Animations
+
+MotionLayout is Extended Class of ConstraintLayout. Used for making animation inside widgets. 
+
+- Used in implementation of CheckInOut Button button Animation. See layout [checkinout_slide.xml](app\src\main\res\layout\checkinout_slide.xml)
+
+
+> For examples visit: [`Motion Layout Examples`](https://developer.android.com/training/constraint-layout/motionlayout/examples)
+
+
+<br>
+
+
+
+## Ticket
+
+[`TicketView`](app\src\main\java\in\junkielabs\parking\ui\widgets\TicketView.kt) is Used to Create [`Ticket Dialogs`](app\src\main\java\in\junkielabs\parking\ui\common\checkinout\dialogs)
+
+
+
+---
+
+<br>
+
+# FAQ:
+
+### Does this project require backend Api?
+
+
+
+>  Yes! This App won't run without backend. You can create this on any platform like nodejs, python, spring etc.
+
+> We will soon open source backend code.
+
+
+
+
+
+# Special Thanks:
+
+A special thanks to other 3rd party libraries and resource, which we have used in this project.
+
+- Mohammad Reza Eram: [TicketView](https://github.com/mreram/TicketView)
+
+- Tyulkanov Igor: [MaskedEditText](https://github.com/Gary111/MaskedEditText)
+
+- Divyanshu Bhargava: [Reveal Animation](https://gist.github.com/divyanshub024/87fc43c5265e78733e2ad6a00dfbc00e)
+
+- John Codeos: [Rest Client Setup with Retrofit](https://johncodeos.com/how-to-parse-json-with-retrofit-converters-using-kotlin/)
+
+<br>
+
+# Further help
+
+This project is an open-source initiative by Junkie Labs.
+
+For any questions or suggestions send a mail to junkielabs.dev@gmail.com or chat with the core-team on gitter.
+
+[![Gitter](https://badges.gitter.im/JunkieLabs/treeform-angular.svg)](https://gitter.im/JunkieLabs/treeform-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+
+<br>
+<br>
+
+# License
+
+[MIT License](/LICENSE).
+
+---
+
+
+
 
 
 # TODO

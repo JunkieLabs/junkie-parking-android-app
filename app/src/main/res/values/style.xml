@@ -14,15 +14,6 @@
     </style>
 
 
-    <style name="App.Widget.TextInputLayout.Filled" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-<!--        <item name="boxStrokeColor">@color/boxstroke_selector</item>-->
-        <!-- .... -->
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputEditText.FilledBox</item>
-    </style>
 
-    <style name="ThemeOverlay.App.TextInputEditText.FilledBox"
-        parent="ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox">
-        <!-- to change the cursor color -->
-        <item name="colorControlActivated">@color/teal_200</item>
-    </style>
+
 </resources>

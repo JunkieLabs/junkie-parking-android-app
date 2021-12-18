@@ -93,62 +93,21 @@
 
     <!--    Button -->
 
-    <style name="Tb.Button" parent="@style/Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/md_white_1000</item>
-        <item name="cornerRadius">@dimen/offset_8</item>
-        <item name="android:textAppearance">@style/Tb.TextAppearance.Button</item>
-    </style>
 
-
-    <style name="Tb.Button.Normal" parent="@style/Tb.Button">
-        <item name="android:minHeight">@dimen/length_56</item>
-    </style>
-
-    <style name="Tb.Button.Text" parent="@style/Widget.MaterialComponents.Button.TextButton">
-        <item name="cornerRadius">@dimen/offset_8</item>
-        <item name="android:textAppearance">@style/Tb.TextAppearance.Button</item>
-    </style>
-
-    <style name="Tb.Button.Text.Primary" parent="@style/Tb.Button.Text">
-        <item name="cornerRadius">@dimen/offset_8</item>
-        <item name="android:textAppearance">@style/Tb.TextAppearance.Button</item>
-    </style>
 
 
     <!--  application theme. -->
 
-    <style name="Tb.Theme.Button.Cart" parent="Theme.MaterialComponents">
-        <item name="colorButtonNormal">@color/md_grey_500</item>
-        <item name="colorSecondary">@color/md_amber_500</item>
-        <item name="backgroundTint">@color/md_amber_500</item>
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
+
 
 
     <!--  application style. -->
-    <style name="Tb.Style.Button.Cart" parent="Widget.MaterialComponents.Button">
-        <item name="android:minHeight">@dimen/length_32</item>
-        <item name="android:minWidth">@dimen/length_72</item>
-        <item name="android:paddingEnd">@dimen/length_16</item>
-        <item name="android:paddingStart">@dimen/length_16</item>
-        <item name="android:textColor">@color/md_white_1000</item>
-        <item name="backgroundTint">@color/md_amber_500</item>
-        <!--<item name="android:textAppearance">@style/Tb.TextAppearance.h5</item>-->
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
 
-    <style name="Tools.Tb.Style.Button.Cart" parent="Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="backgroundTint">@color/md_amber_500</item>
-        <!--<item name="android:textAppearance">@style/Tb.TextAppearance.h5</item>-->
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
+
+
 
     <!-- toolbar -->
 
-    <style name="Tb.Theme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
-    </style>
 
     <style name="Tb.Progress.Primary" parent="Theme.MaterialComponents.Light">
         <item name="colorAccent">@color/colorPrimary</item>
@@ -163,27 +122,6 @@
     </style>
 
 
-<!--    &lt;!&ndash; button &ndash;&gt;-->
-
-<!--    &lt;!&ndash;not in use&ndash;&gt;-->
-<!--    <style name="Tb.Button" parent="Widget.MaterialComponents.Button">-->
-<!--        <item name="android:minHeight">@dimen/length_56</item>-->
-<!--        <item name="android:minWidth">@dimen/length_128</item>-->
-<!--        <item name="android:paddingEnd">@dimen/length_24</item>-->
-<!--        <item name="android:paddingStart">@dimen/length_24</item>-->
-<!--        <item name="android:textColor">@color/md_white_1000</item>-->
-<!--        &lt;!&ndash;<item name="android:textAppearance">@style/Tb.TextAppearance.h5</item>&ndash;&gt;-->
-<!--        &lt;!&ndash;<item name="colorControlHighlight">@color/colorAccent</item>&ndash;&gt;-->
-<!--    </style>-->
-
-
-
-<!--    &lt;!&ndash; button primary &ndash;&gt;-->
-<!--    <style name="Tb.Button.Primary" parent="ThemeOverlay.AppCompat.Dark">-->
-<!--        <item name="colorButtonNormal">@color/md_grey_500</item>-->
-<!--        <item name="colorAccent">@color/colorPrimary</item>-->
-<!--        &lt;!&ndash;<item name="colorControlHighlight">@color/colorAccent</item>&ndash;&gt;-->
-<!--    </style>-->
 
     <style name="Tb.Style.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:minHeight">@dimen/length_56</item>
@@ -195,63 +133,6 @@
         <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
     </style>
 
-    <!-- button Accent -->
-    <style name="Tb.Theme.Button.Accent" parent="Theme.MaterialComponents">
-        <item name="colorButtonNormal">@color/md_grey_500</item>
-        <!--<item name="colorSecondary">@color/colorAccent</item>-->
-        <item name="backgroundTint">@color/colorAccent</item>
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
-
-    <style name="Tb.Style.Button.Accent" parent="Tb.Style.Button">
-        <item name="backgroundTint">@color/colorAccent</item>
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
-    <style name="Tb.Style.Button.Accent.Normal" parent="Tb.Style.Button.Accent">
-<!--        <item name="backgroundTint">@color/colorAccent</item>-->
-        <item name="android:minHeight">@dimen/length_44</item>
-        <item name="android:minWidth">@dimen/length_72</item>
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
-
-    <style name="Tools.Tb.Style.Button.Accent" parent="Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="backgroundTint">@color/colorAccent</item>
-        <!--<item name="android:textAppearance">@style/Tb.TextAppearance.h5</item>-->
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
-    <style name="Tb.Style.Button.Accent.Small" parent="Tb.Style.Button.Accent">
-
-        <item name="android:minHeight">@dimen/length_32</item>
-        <item name="android:minWidth">@dimen/length_72</item>
-        <!--<item name="android:textAppearance">@style/Tb.TextAppearance.h5</item>-->
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
-
-    <!-- button Normal -->
-    <style name="Tb.Theme.Button.Normal" parent="Theme.MaterialComponents">
-        <item name="colorButtonNormal">@color/md_grey_500</item>
-        <item name="backgroundTint">@color/colorPrimary</item>
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
-
-    <style name="Tb.Style.Button.Normal" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/colorPrimary</item>
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
-
-    <style name="Tools.Tb.Style.Button.Normal" parent="Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="backgroundTint">@color/md_grey_500</item>
-        <!--<item name="android:textAppearance">@style/Tb.TextAppearance.h5</item>-->
-        <!--<item name="colorControlHighlight">@color/colorAccent</item>-->
-    </style>
-
-
-
-    <!-- radio group -->
-    <style name="App.RadioGroup" parent="Theme.MaterialComponents">
-        <item name="colorControlNormal">@color/colorPrimary</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
-    </style>
 
 
 </resources>

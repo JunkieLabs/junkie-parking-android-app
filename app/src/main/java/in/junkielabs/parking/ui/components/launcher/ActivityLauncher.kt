@@ -22,7 +22,6 @@ import androidx.activity.viewModels
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
-import org.jetbrains.anko.info
 
 
 @AndroidEntryPoint
@@ -57,7 +56,6 @@ class ActivityLauncher : ActivityBase() {
         mViewModel.mEventAccountState.observe(this,
             LiveDataObserver { t ->
 
-                info { "mEventAccountState: $t" }
                 when (t) {
                     AccountConstants.AccountUser.STATE_NOT_EXIST -> {
 //                        mViewModel.reqAuth(this)
@@ -84,7 +82,6 @@ class ActivityLauncher : ActivityBase() {
 //        val a = TypedValue()
 //        theme.resolveAttribute(R.attr.colorSurface, a, true)
 
-        info { "getStatusBarColor 1" }
 //        val endColor = ContextCompat.getColor(applicationContext, a.resourceId)
 //        val endColor = ContextCompat.getColor(context, R.color.yellow)
 //        return ColorUtils.blendARGB(Color.parseColor("#FA2AD0"), endColor, 0.12F)

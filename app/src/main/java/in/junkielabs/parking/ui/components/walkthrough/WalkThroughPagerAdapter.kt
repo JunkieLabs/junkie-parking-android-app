@@ -18,6 +18,7 @@ class WalkThroughPagerAdapter() : RecyclerView.Adapter<WalkThroughPagerAdapter.P
             arrayOf(
                 "Parking Area"
             ),
+            "Handle Vehicle Parking spaces from the app.",
             R.drawable.pic_walk_through_manage
 
         ),
@@ -26,6 +27,7 @@ class WalkThroughPagerAdapter() : RecyclerView.Adapter<WalkThroughPagerAdapter.P
             arrayOf(
                 "QR Code"
             ),
+            "Unique QR code track of vehicles in any parking area",
             R.drawable.pic_walk_through_generate
         ),
         WalkThroughModel(
@@ -33,6 +35,7 @@ class WalkThroughPagerAdapter() : RecyclerView.Adapter<WalkThroughPagerAdapter.P
             arrayOf(
                 "Payment"
             ),
+            "Auto bill generation inside app on checkout.",
             R.drawable.pic_walk_through_collect
         )
 
@@ -103,6 +106,7 @@ class WalkThroughPagerAdapter() : RecyclerView.Adapter<WalkThroughPagerAdapter.P
 
             binding.walkThroughPagerItemTitle.text = model.title
 
+            binding.walkThroughPagerItemDetailText1.text = model.details
 //
 //            vImageView.setImageDrawable(
 //                ContextCompat.getDrawable(

@@ -22,7 +22,6 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import org.jetbrains.anko.info
 
 @AndroidEntryPoint
 class ActivityOnboard : ActivityBase() {
@@ -61,7 +60,6 @@ class ActivityOnboard : ActivityBase() {
     }
 
     override fun getStatusBarColor(): Int {
-        info { "getStatusBarColor 1" }
         return ContextCompat.getColor(this, R.color.colorAccentDark)
     }
 
@@ -73,7 +71,6 @@ class ActivityOnboard : ActivityBase() {
         mViewModel.mEventAccountState.observe(this,
             LiveDataObserver { t ->
 
-                info { "mEventAccountState: $t" }
                 when (t) {
                     AccountConstants.AccountUser.STATE_NOT_EXIST -> {
 //                        mViewModel.reqAuth(this)
@@ -128,7 +125,6 @@ class ActivityOnboard : ActivityBase() {
         */
 
     private fun startActivityAuth() {
-        info { "startActivityAuth" }
         val i = Intent(this, ActivityAuth::class.java)
          i.putExtra(AccountConstants.Account.Arguments.ACCOUNT_ACTION, AccountConstants.Account.ACTION_SIGNIN)
         mActivityResultAuth.launch(i)

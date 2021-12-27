@@ -4,10 +4,8 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import androidx.annotation.Nullable
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 
-class AppActivityLifecycleCallbacks (private val application: Application): AnkoLogger {
+class AppActivityLifecycleCallbacks (private val application: Application) {
     private var liveActivityOrNull: Activity? = null
     private var activityLifecycleCallbacks: Application.ActivityLifecycleCallbacks? = null
 

@@ -36,25 +36,6 @@
             android:layout_marginTop="@dimen/offset_6"
             android:text="App" />
 
-        <Button
-            android:id="@+id/activity_main_dialog_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:text="Dialog" />
-
-
-        <Button
-            android:id="@+id/activity_main_report_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:text="Report" />
-
-        <Button
-            android:id="@+id/activity_main_profile_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:text="Profile" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -74,17 +55,6 @@
             android:background="@color/md_grey_600"/>
 
 
-        <Button
-            android:id="@+id/activity_main_function_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:text="Function" />
-
-        <Button
-            android:id="@+id/activity_main_signin_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:text="Sign in" />
 
         <Button
             android:id="@+id/activity_main_logout_btn"
@@ -96,107 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/md_grey_600"/>
-
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sections"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="@dimen/offset_8"/>
-        <!--
-                <Button
-                    android:id="@+id/activity_main_logout_btn"
-                    style="@style/ButtonNormal"
-                    android:layout_marginTop="@dimen/offset_6"
-                    android:text="Logout" />
-
-                <Button
-                    android:id="@+id/activity_main_test_btn"
-                    style="@style/ButtonNormal"
-                    android:layout_marginTop="@dimen/offset_6"
-                    android:text="Token" />-->
-
-        <!--        <Button-->
-        <!--            android:id="@+id/activity_main_login_btn"-->
-        <!--            style="@style/ButtonNormal"-->
-        <!--            android:layout_marginTop="@dimen/offset_6"-->
-        <!--            android:text="Login" />-->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_600"/>
-
-        <Button
-            android:id="@+id/activity_main_walk_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:textColor="@color/white"
-            android:text="Walk through" />
-
-
-        <Button
-            android:id="@+id/activity_main_onboard_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:textColor="@color/white"
-            android:text="Onboard" />
-
-        <Button
-            android:id="@+id/activity_main_wait_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:textColor="@color/white"
-            android:text="Wait" />
-
-        <Button
-            android:id="@+id/activity_main_home_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:textColor="@color/white"
-            android:text="Home" />
-
-        <Button
-            android:id="@+id/activity_main_scanner_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:textColor="@color/white"
-            android:text="Scanner" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_600"/>
-
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="other Parts"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="@dimen/offset_8"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_600"/>
-
-        <Button
-            android:id="@+id/activity_main_slide_btn"
-            style="@style/ButtonNormal"
-            android:layout_marginTop="@dimen/offset_6"
-            android:textColor="@color/white"
-            android:text="Slide Btn" />
-
-        <!--        <Button-->
-        <!--            android:id="@+id/activity_main_login_btn"-->
-        <!--            style="@style/ButtonNormal"-->
-        <!--            android:textColor="@color/colorPrimaryDark"-->
-        <!--            android:layout_marginTop="@dimen/offset_6"-->
-        <!--            android:text="Login" />-->
-
-
 
     </LinearLayout>
 

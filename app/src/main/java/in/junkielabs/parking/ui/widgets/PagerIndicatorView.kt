@@ -6,7 +6,6 @@ import `in`.junkielabs.parking.ui.widgets.internal.PagerIndicator
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import org.jetbrains.anko.AnkoLogger
 import android.util.TypedValue
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -19,7 +18,7 @@ import androidx.annotation.Nullable
  */
 
 
-class PagerIndicatorView: View, AnkoLogger {
+class PagerIndicatorView: View {
 
 
     private var mColor: Int = 0

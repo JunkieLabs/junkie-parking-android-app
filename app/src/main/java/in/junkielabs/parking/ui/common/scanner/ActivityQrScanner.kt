@@ -40,8 +40,6 @@ import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener
 import dagger.hilt.android.AndroidEntryPoint
-import org.jetbrains.anko.info
-import org.jetbrains.anko.toast
 import java.util.concurrent.ExecutionException
 
 
@@ -94,7 +92,6 @@ class ActivityQrScanner : ActivityBase() {
 
 
     override fun getStatusBarColor(): Int {
-        info { "getStatusBarColor 1" }
 
 //        return ColorUtils.blendARGB(Color.parseColor("#FFFFFF"), Color.BLACK, 0.12F)
         return ContextCompat.getColor(this, R.color.md_grey_900)
@@ -327,7 +324,6 @@ class ActivityQrScanner : ActivityBase() {
 
                 if (p0 != null) {
                     if (p0.areAllPermissionsGranted()) {
-                        info { "areAllPermissionsGranted" }
                         Snackbar.make(vBinding.frameContent, "Permission Granted !!", 4000).show()
                         startCamera()
                     }

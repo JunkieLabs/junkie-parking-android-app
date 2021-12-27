@@ -2,8 +2,7 @@
 
 ---
 
-![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
-[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-Media%20Picker-green.svg?style=flat )]( https://android-arsenal.com/details/1/7635 )
+![API](https://img.shields.io/badge/API-24%2B-34bf49.svg)
 
 
 

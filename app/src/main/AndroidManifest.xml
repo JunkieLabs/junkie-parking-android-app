@@ -25,9 +25,6 @@
             android:name=".ui.components.report.ActivityReport"
             android:exported="false"
             android:theme="@style/Theme.JunkieParking.Default" />
-        <activity
-            android:name=".ui.labs.slidebutton.LabsActivitySlide"
-            android:exported="true" />
         <activity android:name=".ui.common.scanner.ActivityQrScanner" />
         <activity
             android:name=".ui.components.home.ActivityHome"

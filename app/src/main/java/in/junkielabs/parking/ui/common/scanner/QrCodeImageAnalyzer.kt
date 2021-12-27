@@ -6,15 +6,13 @@ import androidx.camera.core.ImageProxy
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import com.google.zxing.multi.qrcode.QRCodeMultiReader
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import java.nio.ByteBuffer
 
 
 /**
  * Created by Niraj on 31-05-2021.
  */
-class QrCodeImageAnalyzer(var mListener: QrCodeImageAnalyzerListener?) : ImageAnalysis.Analyzer, AnkoLogger {
+class QrCodeImageAnalyzer(var mListener: QrCodeImageAnalyzerListener?) : ImageAnalysis.Analyzer {
     private var mIsAnalysing: Boolean  = true
 
     override fun analyze(image: ImageProxy) {

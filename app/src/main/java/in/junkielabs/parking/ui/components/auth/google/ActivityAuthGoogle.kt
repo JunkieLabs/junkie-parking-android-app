@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -21,8 +22,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import org.jetbrains.anko.info
-import org.jetbrains.anko.warn
 
 /**
  * Created by Niraj on 22-10-2021.
@@ -76,7 +75,7 @@ class ActivityAuthGoogle : ActivityBase() {
 
     // [START auth_with_google]
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        info("firebaseAuthWithGoogle:" + acct.id!!)
+        Log.i("ActivityAuthGoogle", "firebaseAuthWithGoogle:" + acct.id!!)
         // [START_EXCLUDE silent]
         vBinding.frameProgress.root.visibility = View.VISIBLE
         // [END_EXCLUDE]
@@ -88,12 +87,12 @@ class ActivityAuthGoogle : ActivityBase() {
             ) { task ->
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
-                    info("signInWithCredential:success")
+                    Log.i("ActivityAuthGoogle","signInWithCredential:success")
                     val user = mAuth?.currentUser
                     updateResult(user)
                 } else {
                     // If sign in fails, display a message to the user.
-                    warn("signInWithCredential:failure", task.getException())
+                    Log.w("ActivityAuthGoogle","signInWithCredential:failure", task.getException())
                     Snackbar.make(
                         findViewById(R.id.frame_progress),
                         "Authentication Failed.",
@@ -145,7 +144,7 @@ class ActivityAuthGoogle : ActivityBase() {
             account?.let { firebaseAuthWithGoogle(it) }
         } catch (e: ApiException) {
             // Google Sign In failed, update UI appropriately
-            warn("Google sign in failed", e)
+            Log.w("ActivityAuthGoogle","Google sign in failed", e)
             e.printStackTrace()
             // [START_EXCLUDE]
             updateResult(null)
@@ -155,7 +154,7 @@ class ActivityAuthGoogle : ActivityBase() {
 
 
     private fun updateResult(user: FirebaseUser?) {
-        user?.let { info { "user: $it" } }
+//        user?.let { info { "user: $it" } }
 
         vBinding.frameProgress.root.visibility = View.GONE
         if (mAuthAction == AccountConstants.Account.ACTION_SIGNIN && user != null && user.isEmailVerified) {

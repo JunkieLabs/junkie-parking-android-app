@@ -23,7 +23,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import org.jetbrains.anko.info
 
 /**
  * Created by Niraj on 22-10-2021.
@@ -68,7 +67,6 @@ class ActivityAuth : ActivityBase() {
 //        val a = TypedValue()
 //        theme.resolveAttribute(R.attr.colorSurface, a, true)
 
-        info { "getStatusBarColor 1" }
 //        val endColor = ContextCompat.getColor(applicationContext, a.resourceId)
 //        val endColor = ContextCompat.getColor(context, R.color.yellow)
 //        return ColorUtils.blendARGB(Color.parseColor("#FA2AD0"), endColor, 0.12F)

@@ -22,13 +22,11 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 
 //https://material.io/components/buttons/android#theming-buttons
 @AndroidEntryPoint
 class ActivityWalkThrough : ActivityBase(),
-    WalkThroughPagerAdapter.WalkThroughPagerAdapterListener, AnkoLogger {
+    WalkThroughPagerAdapter.WalkThroughPagerAdapterListener {
     private lateinit var binding: ActivityWalkThroughBinding
 
 //    var mStopwatch: Stopwatch? =null //= Stopwatch(10000, 1000)
@@ -55,7 +53,6 @@ class ActivityWalkThrough : ActivityBase(),
 //        val a = TypedValue()
 //        theme.resolveAttribute(R.attr.colorSurface, a, true)
 
-        info { "getStatusBarColor 1" }
 //        val endColor = ContextCompat.getColor(applicationContext, a.resourceId)
 //        val endColor = ContextCompat.getColor(context, R.color.yellow)
 //        return ColorUtils.blendARGB(Color.parseColor("#FA2AD0"), endColor, 0.12F)
@@ -118,7 +115,6 @@ class ActivityWalkThrough : ActivityBase(),
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 binding.activityWalkThroughBtnPrev.isEnabled = position != 0
-                info { "slected: $position" }
             }
 
         })

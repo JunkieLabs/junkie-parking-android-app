@@ -6,8 +6,6 @@ import `in`.junkielabs.parking.components.api.repository.ApiRepoCheckInOut
 import `in`.junkielabs.parking.components.firebase.auth.FirebaseToken
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import org.jetbrains.anko.info
-import retrofit2.http.Query
 
 /**
  * Created by Niraj on 10-12-2021.

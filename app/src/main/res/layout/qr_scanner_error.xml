@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/offset_24"
-    android:layout_marginEnd="@dimen/offset_24"
+    android:layout_marginStart="@dimen/offset_32"
+    android:layout_marginEnd="@dimen/offset_32"
+    android:maxWidth="@dimen/length_128"
     android:layout_gravity="center"
     android:background="@drawable/dr_rect_round_on_surface_medium_32dp">
 

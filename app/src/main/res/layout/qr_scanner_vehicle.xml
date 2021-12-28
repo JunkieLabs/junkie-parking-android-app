@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/offset_24"
     android:layout_gravity="center"
+    android:layout_marginStart="@dimen/offset_24"
     android:layout_marginEnd="@dimen/offset_24"
     android:background="@drawable/dr_rect_round_primary_32dp">
 
@@ -19,61 +20,58 @@
             android:id="@+id/qr_scanner_vehicle_image"
             android:layout_width="@dimen/length_48"
             android:layout_height="@dimen/length_48"
-            android:layout_gravity="center_vertical"
-            />
+            android:layout_gravity="center_vertical" />
 
         <LinearLayout
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/offset_20"
             android:layout_marginEnd="@dimen/offset_20"
             android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/qr_scanner_vehicle_number"
                 android:layout_width="wrap_content"
-                android:textColor="@color/material_surface_84"
-                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/offset_6"
                 android:textAppearance="@style/Tb.TextAppearance.h5"
-               android:layout_marginBottom="@dimen/offset_6"
-                android:text="AS QW ER QWER" />
+                android:textColor="@color/material_surface_84"
+                tools:text="AS QW ER QWER" />
 
             <TextView
                 android:id="@+id/qr_scanner_vehicle_type"
                 android:layout_width="wrap_content"
-                android:textColor="#FFB46D"
-                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:textAppearance="@style/Tb.TextAppearance.h5"
-                android:text="Some issue found" />
+                android:textColor="#FFB46D"
+                tools:text="vehicle type" />
 
         </LinearLayout>
 
 
-
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/qr_scanner_ok_btn"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/length_64"
-            android:minWidth="@dimen/length_56"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/offset_8"
-            android:textColor="@color/md_white_1000"
-            app:iconPadding="@dimen/length_0"
             android:gravity="center"
-            app:cornerRadius="@dimen/offset_16"
             android:insetLeft="@dimen/length_0"
+            android:insetRight="@dimen/length_0"
+            android:minWidth="@dimen/length_56"
+            android:textAppearance="@style/Tb.TextAppearance.Button"
+            android:textColor="@color/md_white_1000"
+            app:cornerRadius="@dimen/offset_16"
+
             app:icon="@drawable/ic_round_done_24"
 
-            android:insetRight="@dimen/length_0"
-
-            app:iconSize="@dimen/length_24"
-             android:textAppearance="@style/Tb.TextAppearance.Button"/>
-
+            app:iconPadding="@dimen/length_0"
+            app:iconSize="@dimen/length_24" />
 
 
     </LinearLayout>

@@ -4,6 +4,7 @@ import `in`.junkielabs.parking.application.ApplicationMy
 import `in`.junkielabs.parking.databinding.ActivityMainBinding
 import `in`.junkielabs.parking.ui.base.ActivityBase
 import `in`.junkielabs.parking.ui.components.home.ActivityHome
+import `in`.junkielabs.parking.ui.components.launcher.ActivityLauncher
 import android.content.Intent
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
@@ -38,6 +39,11 @@ class MainActivity : ActivityBase() {
     }
 
     private fun initButton() {
+
+        binding.activityMainLauncherBtn.setOnClickListener {
+            var i = Intent(this, ActivityLauncher::class.java)
+            startActivity(i)
+        }
 
         binding.activityMainLogoutBtn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()

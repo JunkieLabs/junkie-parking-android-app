@@ -106,7 +106,7 @@ class WalkThroughPagerAdapter() : RecyclerView.Adapter<WalkThroughPagerAdapter.P
 
             binding.walkThroughPagerItemTitle.text = model.title
 
-            binding.walkThroughPagerItemDetailText1.text = model.details
+            binding.walkThroughPagerItemDetails.text = model.details
 //
 //            vImageView.setImageDrawable(
 //                ContextCompat.getDrawable(

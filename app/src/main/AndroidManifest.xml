@@ -33,7 +33,14 @@
         <activity android:name=".ui.components.wait.ActivityWait" />
         <activity android:name=".ui.components.onboard.ActivityOnboard" />
         <activity android:name=".ui.components.walkthrough.ActivityWalkThrough" />
-        <activity android:name=".ui.components.launcher.ActivityLauncher" />
+        <activity android:name=".ui.components.launcher.ActivityLauncher"
+            android:exported="true" >
+<!--            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

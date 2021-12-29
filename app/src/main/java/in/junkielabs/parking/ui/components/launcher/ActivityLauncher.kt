@@ -19,7 +19,6 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -75,6 +74,10 @@ class ActivityLauncher : ActivityBase() {
 
             }
         )
+
+        mViewModel.mEventExit.observe(this, LiveDataObserver{
+            t -> finish()
+        })
     }
 
     override fun getStatusBarColor(): Int {

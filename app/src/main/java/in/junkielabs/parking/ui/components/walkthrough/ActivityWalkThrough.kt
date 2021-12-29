@@ -1,7 +1,6 @@
 package `in`.junkielabs.parking.ui.components.walkthrough
 
 import `in`.junkielabs.parking.R
-import `in`.junkielabs.parking.databinding.ActivityLauncherBinding
 import `in`.junkielabs.parking.databinding.ActivityWalkThroughBinding
 import `in`.junkielabs.parking.tools.timer.Stopwatch
 import `in`.junkielabs.parking.tools.viewpager.transformer.ZoomOutPageTransformer

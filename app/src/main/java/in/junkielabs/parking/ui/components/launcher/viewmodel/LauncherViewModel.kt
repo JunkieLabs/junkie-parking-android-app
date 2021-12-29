@@ -30,6 +30,9 @@ class LauncherViewModel(
     private val _mEventAccountState = MutableLiveData<LiveDataEvent<Int>>()
     val mEventAccountState: LiveData<LiveDataEvent<Int>> = _mEventAccountState
 
+    private val _mEventExit = MutableLiveData<LiveDataEvent<Boolean>>()
+    val mEventExit: LiveData<LiveDataEvent<Boolean>> = _mEventExit
+
     override fun onCleared() {
         super.onCleared()
     }
@@ -47,13 +50,22 @@ class LauncherViewModel(
                     "Enrollment info called for account state ${AccountConstants.AccountUser.STATE_AUTHORIZED}"
                 )
 
-                apiGetGuardInfo()
-                apiGetParkingArea()
-                accountState = getAccountState()
+                var isSuccess = apiGetGuardInfo()
+                if(isSuccess){
+                    isSuccess = apiGetParkingArea()
+                }
+                if(!isSuccess){
+                    _mEventExit.postValue(LiveDataEvent(true));
+                }else{
+                    accountState = getAccountState()
+                    _mEventAccountState.postValue(LiveDataEvent(accountState))
+                }
 
+
+            }else{
+                _mEventAccountState.postValue(LiveDataEvent(accountState))
             }
 
-            _mEventAccountState.postValue(LiveDataEvent(accountState))
 
 //            (application as ApplicationMy).appAccount.setHasAccount(hasAccount)
 
@@ -114,7 +126,7 @@ class LauncherViewModel(
      *                                      api
      */
 
-    private suspend fun apiGetGuardInfo() {
+    private suspend fun apiGetGuardInfo(): Boolean {
         var guardId = getApplication<ApplicationMy>().appAccount.getGuardId()
 
         var token = FirebaseToken.getToken()
@@ -124,11 +136,13 @@ class LauncherViewModel(
 
                 Log.i("apiGetGuardInfo", "${response.data}");
                 getApplication<ApplicationMy>().appAccount.setGuard(response.data!!)
+                return true
             }
         }
+        return false
     }
 
-    private suspend fun apiGetParkingArea() {
+    private suspend fun apiGetParkingArea(): Boolean {
         var parkingAreaId = getApplication<ApplicationMy>().appAccount.getParkingAreaId()
 
         var token = FirebaseToken.getToken()
@@ -138,8 +152,11 @@ class LauncherViewModel(
 
                 Log.i("apiGetParkingArea", "${response.data}");
                 getApplication<ApplicationMy>().appAccount.setParkingArea(response.data!!)
+                return true
             }
         }
+
+        return false
     }
 
 

@@ -184,5 +184,6 @@ For any questions or suggestions send a mail to junkielabs.dev@gmail.com or chat
 - fix theming 
 - remove extra codes
 - add github link
+- fix report list
 
 

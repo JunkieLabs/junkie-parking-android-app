@@ -67,18 +67,17 @@
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:minWidth="@dimen/length_56"
+                android:layout_width="@dimen/length_52"
                 android:layout_height="@dimen/length_64"
                 android:layout_margin="@dimen/offset_8"
                 android:layout_gravity="center_vertical"
                 android:insetLeft="@dimen/length_0"
                 app:strokeColor="@color/color_state_enable_primary"
-
                 android:insetRight="@dimen/length_0"
                 app:iconPadding="@dimen/length_0"
                 app:cornerRadius="@dimen/offset_16"
                 app:iconSize="@dimen/length_18"
+
                 app:icon="@drawable/ic_left_arrow"
                 android:id="@+id/activity_walk_through_btn_prev"
                 android:textAppearance="@style/Tb.TextAppearance.Button"/>
@@ -104,7 +103,7 @@
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/length_52"
                 android:layout_height="@dimen/length_64"
                 android:minWidth="@dimen/length_56"
                 android:layout_gravity="center_vertical"

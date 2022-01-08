@@ -53,7 +53,19 @@ Step 3: Download the `google-services.json` from the firebase and add inside the
 
 ### **For Backend**
 
- You have to create backend for this project. Or Run our backend form this repo.
+ You have to create backend for this project. Or Run our backend from [this repo](https://github.com/JunkieLabs/junkie-parking-rest-api).
+
+ 
+
+### configure app/build.gradle file
+
+- change API_URL value to your server api url
+
+
+![](images/build_config.png)
+
+
+<br>
 
 
 # Features:

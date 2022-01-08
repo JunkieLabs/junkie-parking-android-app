@@ -22,8 +22,7 @@ android {
 
     compileSdkVersion 31
     buildToolsVersion "30.0.2"
-//  buildConfigField 'String', 'API_URL', '"https://asia-south1-junkielabs-57977.cloudfunctions.net/parkingApi/"'
-//         buildConfigField 'String', 'API_URL', '"http://192.168.0.113:5000/junkielabs-57977/asia-south1/parkingApi/"'
+
     defaultConfig {
         applicationId "in.junkielabs.parking"
         minSdkVersion 23

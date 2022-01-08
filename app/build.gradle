@@ -31,7 +31,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField 'String', 'API_URL', '"http://192.168.0.110:5000/junkielabs-57977/asia-south1/parkingApi/"'
+        buildConfigField 'String', 'API_URL', '"http://api_url/"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

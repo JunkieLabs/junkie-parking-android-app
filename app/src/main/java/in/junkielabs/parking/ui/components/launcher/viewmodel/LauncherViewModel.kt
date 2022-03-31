@@ -14,6 +14,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+import java.net.HttpURLConnection
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -32,6 +33,8 @@ class LauncherViewModel(
 
     private val _mEventExit = MutableLiveData<LiveDataEvent<Boolean>>()
     val mEventExit: LiveData<LiveDataEvent<Boolean>> = _mEventExit
+
+    var mShouldRemoveAccount = false
 
     override fun onCleared() {
         super.onCleared()
@@ -137,6 +140,13 @@ class LauncherViewModel(
                 Log.i("apiGetGuardInfo", "${response.data}");
                 getApplication<ApplicationMy>().appAccount.setGuard(response.data!!)
                 return true
+            }else {
+                if(response.errorData!=null){
+                   if(response.errorData!!.code ==  HttpURLConnection.HTTP_NOT_FOUND){
+                       mShouldRemoveAccount = true
+                   }
+                }
+                //response.errorData
             }
         }
         return false

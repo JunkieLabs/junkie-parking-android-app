@@ -20,6 +20,7 @@
             android:id="@+id/qr_scanner_vehicle_image"
             android:layout_width="@dimen/length_48"
             android:layout_height="@dimen/length_48"
+            android:layout_marginStart="@dimen/offset_4"
             android:layout_gravity="center_vertical" />
 
         <LinearLayout
@@ -38,7 +39,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginBottom="@dimen/offset_6"
                 android:textAppearance="@style/Tb.TextAppearance.h5"
-                android:textColor="@color/material_surface_84"
+                android:textColor="@color/md_white_1000"
                 tools:text="AS QW ER QWER" />
 
             <TextView

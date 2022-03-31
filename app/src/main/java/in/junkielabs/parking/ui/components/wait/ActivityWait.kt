@@ -7,7 +7,6 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class ActivityWait : ActivityBase() {
     private lateinit var vBinding: ActivityWaitBinding
     override fun onCreate(savedInstanceState: Bundle?) {

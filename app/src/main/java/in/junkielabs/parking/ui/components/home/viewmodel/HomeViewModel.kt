@@ -105,6 +105,12 @@ class HomeViewModel(
         }
     }
 
+    private fun formClear() {
+        _mFormVehicleNumber = ""
+        _mFormPhoneNumber = ""
+        formEnable()
+    }
+
     private suspend fun formCheckInOut(){
 
         var paramRepoCheckInOut = ParamReqCheckInOut(
@@ -151,6 +157,7 @@ class HomeViewModel(
             Log.i("AuthViewModel: result", response.data.toString())
 
             if(response.data?.checkInOut!=null){
+               formClear()
                 _mEventCheckInOut.postValue(LiveDataEvent(response.data!!.checkInOut))
             }
 //

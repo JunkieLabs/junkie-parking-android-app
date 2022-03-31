@@ -109,6 +109,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="@dimen/offset_8"
                 android:textColor="@color/md_white_1000"
+                app:iconTint="@color/md_white_1000"
                 app:iconPadding="@dimen/length_0"
                 android:gravity="center"
                 app:cornerRadius="@dimen/offset_16"

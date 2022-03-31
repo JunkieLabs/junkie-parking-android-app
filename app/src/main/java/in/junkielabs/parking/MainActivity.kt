@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
 
-@AndroidEntryPoint
 class MainActivity : ActivityBase() {
     private lateinit var binding: ActivityMainBinding
     private val job = SupervisorJob()

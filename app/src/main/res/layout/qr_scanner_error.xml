@@ -19,7 +19,7 @@
         <TextView
             android:id="@+id/qr_scanner_error_text"
             android:layout_width="wrap_content"
-            android:textColor="@color/material_surface_84"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:textAppearance="@style/Tb.TextAppearance.h5"
             android:layout_marginStart="@dimen/offset_20"
@@ -36,6 +36,7 @@
             android:layout_marginStart="@dimen/offset_32"
             android:layout_marginEnd="@dimen/offset_32"
             android:text="Retry"
+            android:textColor="@color/white"
             app:backgroundTint="#DA3337"
             android:textAppearance="@style/Tb.TextAppearance.Button"
             app:cornerRadius="@dimen/offset_16"

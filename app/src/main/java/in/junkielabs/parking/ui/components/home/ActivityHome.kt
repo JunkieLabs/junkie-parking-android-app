@@ -66,7 +66,7 @@ class ActivityHome : ActivityBase() {
         val heightDiff: Int = heightRoot - heightLayout// - vBinding.getHeight()
         val contentViewTop = window.findViewById<View>(Window.ID_ANDROID_CONTENT).top
 
-        if (heightDiff <= contentViewTop+200) {
+        if (heightDiff <= contentViewTop+250) {
             showBottomTab()
             _mKeyBoardOpen = false
             vBinding.bottomAppBar.hideOnScroll = true
@@ -207,7 +207,7 @@ class ActivityHome : ActivityBase() {
     private fun setupViewModel() {
         mViewModel.initData()
 
-        mViewModel.bFormIsValid.observe(this, {
+        mViewModel.bFormIsValid.observe(this) {
 
             Log.d("ActivityHome", "bFormIsValid: $it")
             if (it) {
@@ -215,7 +215,7 @@ class ActivityHome : ActivityBase() {
             } else {
                 hideSubmitBtn()
             }
-        })
+        }
 
         mViewModel.mEventErrorMessage.observe(this, LiveDataObserver { t ->
             Snackbar.make(
@@ -228,35 +228,36 @@ class ActivityHome : ActivityBase() {
 
         mViewModel.mEventCheckInOut.observe(this, LiveDataObserver { t ->
 //            show
-            showSubmitBtn()
+            clearFormInputs()
+
             hideProgress()
             dialogCheckInOut(t)
 
             // TODO uncomment clearFormInputs()
         })
 
-        mViewModel.bParkingArea.observe(this, {
+        mViewModel.bParkingArea.observe(this) {
             vBinding.activityHomeAreaName.text =
                 it.name?.replace("_", " ")?.replaceFirstChar { it1 -> it1.titlecase() }
-        })
+        }
 
-        mViewModel.bWheelerBike.observe(this, {
+        mViewModel.bWheelerBike.observe(this) {
             if (it != null) {
                 vBinding.wheelerItemBike.root.visibility = View.VISIBLE
             } else {
                 vBinding.wheelerItemBike.root.visibility = View.GONE
             }
-        })
+        }
 
-        mViewModel.bWheelerCar.observe(this, {
+        mViewModel.bWheelerCar.observe(this) {
             if (it != null) {
                 vBinding.wheelerItemCar.root.visibility = View.VISIBLE
             } else {
                 vBinding.wheelerItemCar.root.visibility = View.GONE
             }
-        })
+        }
 
-        mViewModel.bWheelerType.observe(this, {
+        mViewModel.bWheelerType.observe(this) {
 
             Log.i("ActivityHome", "bWheelerType $it")
             if (it == ParkingConstants.Wheeler.TYPE_BIKE) {
@@ -272,7 +273,7 @@ class ActivityHome : ActivityBase() {
                 vBinding.wheelerItemCar.wheelerCar.isChecked = true
                 vBinding.wheelerItemCar.wheelerCarText.isChecked = true
             }
-        })
+        }
 
 
     }
@@ -354,14 +355,17 @@ class ActivityHome : ActivityBase() {
 
         })
 
-        vBinding.homeInputPhone.addTextChangedListener(object : TextWatcherAdapter() {
+        vBinding.homeInputPhone.addTextChangedListener {
+            mViewModel.formPhoneNumber(it.toString())
+        }
+       /* istener(object : TextWatcherAdapter() {
             @SuppressLint("RestrictedApi")
             override fun afterTextChanged(s: Editable) {
                 super.afterTextChanged(s)
-                mViewModel.formPhoneNumber(s.toString())
+
             }
 
-        })
+        })*/
         /* vBinding.homeInputVehicleNumber.addTextChangedListener { text ->
 
          }*/

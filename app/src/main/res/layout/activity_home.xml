@@ -224,6 +224,7 @@
                     android:layout_width="@dimen/length_24"
                     android:layout_height="@dimen/length_24"
                     android:layout_gravity="center"
+                    app:tint="@color/md_white_1000"
                     app:srcCompat="@drawable/ic_if_option" />
             </FrameLayout>
 
@@ -244,6 +245,7 @@
                     android:layout_width="@dimen/length_24"
                     android:layout_height="@dimen/length_24"
                     android:layout_gravity="center"
+                    app:tint="@color/md_white_1000"
                     app:srcCompat="@drawable/ic_profile" />
             </FrameLayout>
 

@@ -38,6 +38,12 @@ class ActivityLauncher : ActivityBase() {
             onAuthenticationResult(result.data, result.resultCode)
         }
 
+    private val mActivityResultAuthRemove =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            info{"mActivityResultAuthRemove: ${result.data}"}
+            onAuthenticationRemoveResult(result.data, result.resultCode)
+        }
+
     private lateinit var binding: ActivityLauncherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +82,14 @@ class ActivityLauncher : ActivityBase() {
         )
 
         mViewModel.mEventExit.observe(this, LiveDataObserver{
-            t -> finish()
+            t ->
+
+            if(mViewModel.mShouldRemoveAccount){
+                startActivityRemove()
+            }else{
+                finish()
+            }
+
         })
     }
 
@@ -152,6 +165,12 @@ class ActivityLauncher : ActivityBase() {
 //        finish()
     }
 
+    private fun startActivityRemove() {
+        val i = Intent(this, ActivityAuth::class.java)
+        i.putExtra(AccountConstants.Account.Arguments.ACCOUNT_ACTION, AccountConstants.Account.ACTION_REMOVE)
+        mActivityResultAuthRemove.launch(i)
+    }
+
     private fun onAuthenticationResult(data: Intent?, resultCode: Int) {
         if (resultCode == RESULT_OK) {
 
@@ -170,6 +189,27 @@ class ActivityLauncher : ActivityBase() {
             //finishAuthenticationWithFailMessage("Canceled")
 
         }*/
+
+    }
+
+    private fun onAuthenticationRemoveResult(data: Intent?, resultCode: Int) {
+        if (resultCode == RESULT_OK) {
+        startWalkThrough()
+
+        }else{
+            finish()
+        }
+//        mViewModel.onSignInResult()
+        /* if (resultCode == RESULT_OK) {
+
+
+             // startActivityAuth()
+
+         } else {
+
+             //finishAuthenticationWithFailMessage("Canceled")
+
+         }*/
 
     }
 }

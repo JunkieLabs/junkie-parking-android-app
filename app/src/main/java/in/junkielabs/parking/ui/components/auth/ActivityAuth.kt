@@ -11,7 +11,6 @@ import `in`.junkielabs.parking.ui.common.progress.FrameProgressDialog
 import `in`.junkielabs.parking.ui.components.auth.google.ActivityAuthGoogle
 import `in`.junkielabs.parking.ui.components.auth.viewmodel.AuthViewModel
 import `in`.junkielabs.parking.ui.components.auth.viewmodel.AuthViewModelFactory
-import `in`.junkielabs.parking.ui.components.wait.ActivityWait
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.ActivityInfo

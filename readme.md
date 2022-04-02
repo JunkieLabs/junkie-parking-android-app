@@ -44,7 +44,11 @@ Step 1: Create a Firebase Project.
 
 Step 2: Add package in the firebase project
 
-Step 3: Download the `google-services.json` from the firebase and add inside the app folder.
+Step 3: Enable google auth, this will be needed for authorizing App.
+
+![](images/auth-enable.png)
+
+Step 4: Download the `google-services.json` from the firebase and add inside the app folder.
 
 
 > for more detail visit [Firebase Project setup](https://firebase.google.com/docs/android/setup)
@@ -190,12 +194,5 @@ For any questions or suggestions send a mail to junkielabs.dev@gmail.com or chat
 
 
 
-
-# TODO
-- add content
-- fix theming 
-- remove extra codes
-- add github link
-- fix report list
 
 

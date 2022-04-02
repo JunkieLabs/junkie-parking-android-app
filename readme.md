@@ -40,15 +40,18 @@ This project contains all of the latest technologies, from design to developemnt
 
 ### **Initial Setup**
 
-Step 1: Create a Firebase Project.
+- Step 1: Create a Firebase Project.
 
-Step 2: Add package in the firebase project
+- Step 2: Add package in the firebase project
 
-Step 3: Enable google auth, this will be needed for authorizing App.
+- Step 3: Enable google auth, this will be needed for authorizing App.
 
 ![](images/auth-enable.png)
 
-Step 4: Download the `google-services.json` from the firebase and add inside the app folder.
+- Step 4: Download the `google-services.json` from the firebase and add inside the app folder.
+
+
+- ***Step 5: make sure your firebase project is in blaze.***
 
 
 > for more detail visit [Firebase Project setup](https://firebase.google.com/docs/android/setup)

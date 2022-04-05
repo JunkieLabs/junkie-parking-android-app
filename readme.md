@@ -10,7 +10,7 @@
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
 alt="Get it on Google Play"
-height="80">](https://play.google.com/store/apps/details?id=)
+height="80">](https://play.google.com/store/apps/details?id=in.junkielabs.parking)
 
 ---
 
@@ -157,7 +157,7 @@ MotionLayout is Extended Class of ConstraintLayout. Used for making animation in
 
 >  Yes! This App won't run without backend. You can create this on any platform like nodejs, python, spring etc.
 
-> We will soon open source backend code.
+> We have open sourced backend code in nodejs. Please see [For Backend](#for-backend)
 
 
 
